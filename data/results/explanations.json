@@ -1,0 +1,57 @@
+{
+  "kospi_return": {
+    "feature": "kospi_return",
+    "meaning": "Korean stock market performance",
+    "posterior_mean": 0.06121738652753188,
+    "posterior_std": 0.031494785724516236,
+    "prior_belief": 0.611,
+    "direction": "positive",
+    "effect_size": 0.06121738652753188,
+    "confidence": "high",
+    "business_interpretation": "When Korean stock market performance goes up by 1 standard deviation, Hanwha Solutions returns increases slightly (effect size: 0.061). We have high confidence in this relationship."
+  },
+  "oil_price_change": {
+    "feature": "oil_price_change",
+    "meaning": "Oil price changes (input costs for Hanwha)",
+    "posterior_mean": -0.062194065248026,
+    "posterior_std": 0.025186020236761447,
+    "prior_belief": -0.22799999999999992,
+    "direction": "negative",
+    "effect_size": 0.062194065248026,
+    "confidence": "high",
+    "business_interpretation": "When Oil price changes (input costs for Hanwha) goes up by 1 standard deviation, Hanwha Solutions returns decreases slightly (effect size: -0.062). We have high confidence in this relationship."
+  },
+  "usd_krw_change": {
+    "feature": "usd_krw_change",
+    "meaning": "Exchange rate changes (export competitiveness)",
+    "posterior_mean": -0.005165587412382426,
+    "posterior_std": 0.027992093226805955,
+    "prior_belief": -0.075,
+    "direction": "negative",
+    "effect_size": 0.005165587412382426,
+    "confidence": "high",
+    "business_interpretation": "When Exchange rate changes (export competitiveness) goes up by 1 standard deviation, Hanwha Solutions returns decreases slightly (effect size: -0.005). We have high confidence in this relationship."
+  },
+  "vix_change": {
+    "feature": "vix_change",
+    "meaning": "Market volatility and risk sentiment",
+    "posterior_mean": -0.0012384843510644384,
+    "posterior_std": 0.030163051950999324,
+    "prior_belief": -0.274,
+    "direction": "negative",
+    "effect_size": 0.0012384843510644384,
+    "confidence": "high",
+    "business_interpretation": "When Market volatility and risk sentiment goes up by 1 standard deviation, Hanwha Solutions returns decreases slightly (effect size: -0.001). We have high confidence in this relationship."
+  },
+  "materials_sector_return": {
+    "feature": "materials_sector_return",
+    "meaning": "Chemical sector performance",
+    "posterior_mean": 0.010560363419068113,
+    "posterior_std": 0.03632443974215949,
+    "prior_belief": 0.5579999999999999,
+    "direction": "positive",
+    "effect_size": 0.010560363419068113,
+    "confidence": "high",
+    "business_interpretation": "When Chemical sector performance goes up by 1 standard deviation, Hanwha Solutions returns increases slightly (effect size: 0.011). We have high confidence in this relationship."
+  }
+}

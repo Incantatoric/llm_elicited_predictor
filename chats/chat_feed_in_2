@@ -1,0 +1,2556 @@
+gpt.py:
+import os
+import re
+import io
+import itertools
+import typing as t
+import numpy as np
+import pandas as pd
+import tqdm
+from .datasets import load_raw_dataset_frame
+import sklearn.metrics as skmetrics
+import sklearn.linear_model as sklm
+from openai import OpenAI
+
+from .utils import inv_logistic, find_best_matches
+
+
+class LLMOutputs(object):
+    """
+    Base class that allows you to interact with a language model.
+    """
+
+
+class LlamaOutputs(LLMOutputs):
+    def __init__(
+        self,
+        model_id: str = "meta-llama/Meta-Llama-3.1-8B-Instruct",
+        top_p: float = 0.9,
+        temperature: float = 1.0,
+        max_new_tokens: int = 2048,
+        result_args: t.Optional[t.Dict[str, t.Any]] = {},
+        quantisation: str = "none",
+    ):
+        """
+        This class allows you to interact with the Meta-Llama model.
+        If the language model is not already downloaded in the
+        default hugging face hub directory, then it will be downloaded
+        when this class is instantiated.
+
+        Arguments
+        ---------
+
+        model_id : str
+            The model ID to use.
+            Defaults to :code:`"meta-llama/Meta-Llama-3-8B-Instruct"`.
+
+        top_p : float
+            The top-p value to use.
+            Defaults to :code:`0.9`.
+
+        temperature : float
+            The temperature to use.
+            Defaults to :code:`1.0`.
+
+        max_new_tokens : int
+            The maximum number of new tokens to generate.
+            Defaults to :code:`2048`.
+
+        result_args : Dict[str, Any]
+            Additional arguments to pass to the model chat
+            completion.
+            Defaults to :code:`{}`.
+
+        quantisation : str
+            The quantisation to use.
+            This can be one of :code:`"none"`, :code:`"bfloat16"`,
+            or :code:`"int8"`, or :code:`"int4"`.
+            Defaults to :code:`"none"`.
+
+        """
+        try:
+            import transformers
+            import torch
+        except ImportError:
+            raise ImportError(
+                "Please ensure that the transformers and torch libraries are installed if using Llama."
+            )
+
+        print("model_id:", model_id)
+        print("quantisation:", quantisation)
+
+        model_pipeline_args = {}
+        if quantisation in ["bfloat16", "int8", "int4"]:
+            model_pipeline_args["torch_dtype"] = torch.bfloat16
+            if quantisation == "int8":
+                model_pipeline_args["quantization_config"] = (
+                    transformers.BitsAndBytesConfig(load_in_8bit=True)
+                )
+            if quantisation == "int4":
+                model_pipeline_args["quantization_config"] = (
+                    transformers.BitsAndBytesConfig(load_in_4bit=True)
+                )
+        elif quantisation == "none":
+            pass
+        else:
+            raise ValueError(
+                "Please ensure that the quantisation is one of 'none', 'bfloat16', 'int8', or 'int4'."
+            )
+        self.pipeline = transformers.pipeline(
+            "text-generation",
+            model=model_id,
+            model_kwargs=model_pipeline_args,
+            device_map="auto",
+            # device_map="balanced_low_0",
+        )
+        self.terminators = [
+            self.pipeline.tokenizer.eos_token_id,
+            self.pipeline.tokenizer.convert_tokens_to_ids("<|eot_id|>"),
+        ]
+        self.top_p = top_p
+        self.temperature = temperature
+        self.max_new_tokens = max_new_tokens
+        self.result_args = result_args
+
+    def get_result(self, messages: t.List[t.Dict[str, str]]) -> str:
+        """
+        Arguments
+        ---------
+
+        messages : List[Dict[str, str]]
+            A list of dictionaries with the role and content of the messages.
+
+
+        Returns
+        -------
+
+        str
+            The generated text.
+
+        """
+
+        result_args = self.result_args.copy()
+        if "response_format" in result_args:
+            response_format = result_args["response_format"]
+            del result_args["response_format"]
+            if response_format == {"type": "json_object"}:
+                messages.append(
+                    {
+                        "role": "system",
+                        "content": "I am only returning a JSON object with "
+                        + "'mean' and 'std' for each feature and nothing else: {",
+                    }
+                )
+
+        prompt = self.pipeline.tokenizer.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True
+        )
+
+        outputs = self.pipeline(
+            prompt,
+            max_new_tokens=self.max_new_tokens,
+            eos_token_id=self.terminators,
+            pad_token_id=self.pipeline.tokenizer.eos_token_id,
+            do_sample=True,
+            return_full_text=False,
+            temperature=self.temperature,
+            top_p=self.top_p,
+            **result_args,
+        )
+        return outputs[0]["generated_text"]
+
+
+class QwenOutputs(LLMOutputs):
+    def __init__(
+        self,
+        model_id: str = "Qwen/Qwen2.5-14B-Instruct",
+        top_p: float = 0.9,
+        temperature: float = 1.0,
+        max_new_tokens: int = 2048,
+        result_args: t.Optional[t.Dict[str, t.Any]] = {},
+        quantisation: str = "none",
+    ):
+        """
+        This class allows you to interact with the Meta-Llama model.
+        If the language model is not already downloaded in the
+        default hugging face hub directory, then it will be downloaded
+        when this class is instantiated.
+
+        Arguments
+        ---------
+
+        model_id : str
+            The model ID to use.
+            Defaults to :code:`"meta-llama/Meta-Llama-3-8B-Instruct"`.
+
+        top_p : float
+            The top-p value to use.
+            Defaults to :code:`0.9`.
+
+        temperature : float
+            The temperature to use.
+            Defaults to :code:`1.0`.
+
+        max_new_tokens : int
+            The maximum number of new tokens to generate.
+            Defaults to :code:`2048`.
+
+        result_args : Dict[str, Any]
+            Additional arguments to pass to the model chat
+            completion.
+            Defaults to :code:`{}`.
+
+        quantisation : str
+            The quantisation to use.
+            This can be one of :code:`"none"`, :code:`"bfloat16"`,
+            or :code:`"int8"`, or :code:`"int4"`.
+            Defaults to :code:`"none"`.
+
+        """
+        try:
+            import transformers
+            import torch
+        except ImportError:
+            raise ImportError(
+                "Please ensure that the transformers and torch libraries are installed if using Llama."
+            )
+
+        print("model_id:", model_id)
+        print("quantisation:", quantisation)
+
+        model_pipeline_args = {}
+        if quantisation in ["bfloat16", "int8", "int4"]:
+            model_pipeline_args["torch_dtype"] = torch.bfloat16
+            if quantisation == "int8":
+                model_pipeline_args["quantization_config"] = (
+                    transformers.BitsAndBytesConfig(load_in_8bit=True)
+                )
+            if quantisation == "int4":
+                model_pipeline_args["quantization_config"] = (
+                    transformers.BitsAndBytesConfig(load_in_4bit=True)
+                )
+        elif quantisation == "none":
+            pass
+        else:
+            raise ValueError(
+                "Please ensure that the quantisation is one of 'none', 'bfloat16', 'int8', or 'int4'."
+            )
+        self.pipeline = transformers.pipeline(
+            "text-generation",
+            model=model_id,
+            model_kwargs=model_pipeline_args,
+            device_map="auto",
+            # device_map="balanced_low_0",
+        )
+        self.top_p = top_p
+        self.temperature = temperature
+        self.max_new_tokens = max_new_tokens
+        self.result_args = result_args
+
+    def get_result(self, messages: t.List[t.Dict[str, str]]) -> str:
+        """
+        Arguments
+        ---------
+
+        messages : List[Dict[str, str]]
+            A list of dictionaries with the role and content of the messages.
+
+
+        Returns
+        -------
+
+        str
+            The generated text.
+
+        """
+
+        result_args = self.result_args.copy()
+        if "response_format" in result_args:
+            response_format = result_args["response_format"]
+            del result_args["response_format"]
+            if response_format == {"type": "json_object"}:
+                messages.append(
+                    {
+                        "role": "system",
+                        "content": "I am only returning a JSON object with "
+                        + "'mean' and 'std' for each feature and nothing else: {",
+                    }
+                )
+
+        prompt = self.pipeline.tokenizer.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True
+        )
+
+        outputs = self.pipeline(
+            prompt,
+            max_new_tokens=self.max_new_tokens,
+            eos_token_id=self.pipeline.tokenizer.eos_token_id,
+            pad_token_id=self.pipeline.tokenizer.eos_token_id,
+            do_sample=True,
+            return_full_text=False,
+            temperature=self.temperature,
+            top_p=self.top_p,
+            **result_args,
+        )
+        return outputs[0]["generated_text"]
+
+
+class GPTOutputs(LLMOutputs):
+    def __init__(
+        self,
+        model_id: str = "gpt-4-turbo",
+        temperature: float = 1.0,
+        result_args: t.Optional[t.Dict[str, t.Any]] = {},
+        rng: np.random._generator.Generator = None,
+    ):
+        """
+        This class allows you to interact with the OpenAI models.
+
+        Arguments
+        ---------
+
+        model_id : str
+            The model ID to use.
+            Defaults to :code:`"gpt-4-turbo"`.
+
+        temperature : float
+            The temperature to use.
+            Defaults to :code:`0.6`.
+
+        result_args : Dict[str, Any]
+            Additional arguments to pass to the model chat
+            completion.
+            Defaults to :code:`{}`.
+
+        rng : np.random._generator.Generator
+            The random number generator to use
+            to allow for reproducibility.
+            Defaults to :code:`None`.
+
+        """
+        self.client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+        self.model_id = model_id
+        self.temperature = temperature
+        self.result_args = result_args
+        self.rng = np.random.default_rng() if rng is None else rng
+
+    def get_result(self, messages: t.List[t.Dict[str, str]]) -> str:
+        """
+        Arguments
+        ---------
+
+        messages : List[Dict[str, str]]
+            A list of dictionaries with the role and content of the messages.
+
+
+        Returns
+        -------
+
+        str
+            The generated text.
+
+        """
+        response = self.client.chat.completions.create(
+            model=self.model_id,
+            messages=messages,
+            temperature=self.temperature,
+            seed=int(self.rng.integers(1e9)),
+            **self.result_args,
+        )
+
+        return response.choices[0].message.content
+
+
+class DeepSeekOutputs(LLMOutputs):
+    def __init__(
+        self,
+        model_id: str = "deepseek-r1:32b",
+        temperature: float = 1.0,
+        result_args: t.Optional[t.Dict[str, t.Any]] = {},
+        rng: np.random._generator.Generator = None,
+        show_full_output: bool = True,
+    ):
+        """
+        This class allows you to interact with the OpenAI models.
+
+        Arguments
+        ---------
+
+        model_id : str
+            The model ID to use. This should be
+            from Ollama and be one of the DeepSeek models
+            otherwise the results may not be as expected.
+            Defaults to :code:`"deepseek-r1:32b"`.
+
+        temperature : float
+            The temperature to use.
+            Defaults to :code:`0.6`.
+
+        result_args : Dict[str, Any]
+            Additional arguments to pass to options of Ollama.
+            This is passed to :code:`options` in the Ollama API.
+            Defaults to :code:`{}`.
+
+        rng : np.random._generator.Generator
+            The random number generator to use
+            to allow for reproducibility.
+            Defaults to :code:`None`.
+
+        """
+        try:
+            from ollama import chat as ollama_chat
+            from ollama import ChatResponse as OllamaChatResponse
+        except ImportError:
+            raise ImportError(
+                "Please ensure that the ollama python library is installed if using DeepSeek. "
+                "You will also need to install Ollama software."
+            )
+
+        self.client = ollama_chat
+        self.model_id = model_id
+        self.temperature = temperature
+        self.result_args = result_args
+        self.rng = np.random.default_rng() if rng is None else rng
+        self.show_full_output = show_full_output
+
+    def get_result(self, messages: t.List[t.Dict[str, str]]) -> str:
+        """
+        Arguments
+        ---------
+
+        messages : List[Dict[str, str]]
+            A list of dictionaries with the role and content of the messages.
+
+
+        Returns
+        -------
+
+        str
+            The generated text.
+
+        """
+        reformatted_messages = []
+
+        result_args = self.result_args.copy()
+        if "response_format" in result_args:
+            response_format = result_args["response_format"]
+            del result_args["response_format"]
+            if response_format == {"type": "json_object"}:
+                messages.append(
+                    {
+                        "role": "user",
+                        "content": "This is really important: After you have finished thinking, "
+                        + "only return a JSON object with "
+                        + "'mean' and 'std' for each feature and no text or other code explaining the answer. "
+                        + "The final asnwer should start with ```json { and end with }``` and contain no other text. "
+                        + "You fail if you return anything other than a JSON object with 'mean' and 'std' for each feature. "
+                        + "Do not mention python, or any other coding language, just return a code block with the JSON object. "
+                        + "An example where there are two features is: "
+                        + "```json { $feature_0 : {'mean': ..., 'std': ...}, $feature_1: {'mean': ..., 'std': ...} }```",
+                    }
+                )
+                print("added response format instructions")
+
+        ## Looks like deepseek responds to system messages just fine
+        # for message in messages:
+        #     if message["role"] == "system":
+        #         reformatted_messages.append({"role": "assistant", "content": message["content"]})
+        #     elif message["role"] == "user":
+        #         reformatted_messages.append({"role": "user", "content": message["content"]})
+        #     else:
+        #         raise ValueError("Please ensure that the role is either 'system' or 'user'.")
+
+        response = self.client(
+            model=self.model_id,
+            messages=messages,
+            options=dict(
+                temperature=self.temperature,
+                seed=int(self.rng.integers(1e9)),
+                **self.result_args,
+            ),
+        )
+
+        if self.show_full_output:
+            print("---" * 20 + " Start Input " + "---" * 20)
+            print(messages)
+            print("---" * 20 + "  End Input  " + "---" * 20)
+
+            print("---" * 20 + " Start Response " + "---" * 20)
+            print(response["message"]["content"])
+            print("---" * 20 + "  End Response  " + "---" * 20)
+
+        final_response = (
+            response["message"]["content"].split("</think>")[1].replace("\n", "")
+        )
+        if "# Final Answer" in final_response:
+            final_response = final_response.split("Final Answer")[1]
+
+        return final_response
+
+
+def get_llm_elicitation(
+    client: LLMOutputs,
+    system_role: t.Optional[str] = None,
+    user_role: t.Optional[str] = None,
+    task_title: t.Optional[str] = None,
+    feature_names: t.Optional[t.List[str]] = None,
+    target_map: t.Optional[t.Dict[str, int]] = None,
+    verbose: bool = True,
+    dry_run: bool = False,
+    try_again_on_error: bool = True,
+) -> t.Dict[str, float]:
+    """
+    Given a task description, model, and feature names, this
+    function will return a language model's guess of the weights
+    of a linear model.
+
+
+    Arguments
+    ---------
+
+    client: LLMOutputs
+        An instance of the LLMOutputs class.
+
+    system_role: str
+        The role of the system.
+        If this is not provided, then the :code:`task_title`,
+        :code:`feature_names`, and :code:`target_map` must be provided.
+        Additionally, even if this argument is provided, the :code:`task_title`,
+        :code:`feature_names`, and :code:`target_map` can also be provided
+        and the string :code:`sytem_role` can contain the following placeholders:
+        :code:`'{task_title}'`, :code:`'{feature_names}'`, :code:`'{unique_targets}'`,
+        and :code:`'{target_map}'` which will be filled in before prompting the
+        language model.
+        Defaults to :code:`None`.
+
+    user_role: str
+        The role of the user.
+        If this is not provided, then the :code:`task_title`,
+        :code:`feature_names`, and :code:`target_map` must be provided.
+        Additionally, even if this argument is provided, the :code:`task_title`,
+        :code:`feature_names`, and :code:`target_map` can also be provided
+        and the string :code:`user_role` can contain the following placeholders:
+        :code:`'{task_title}'`, :code:`'{feature_names}'`, :code:`'{unique_targets}'`,
+        and :code:`'{target_map}'` which will be filled in before prompting the
+        language model.
+        Defaults to :code:`None`.
+
+    task_title: str
+        The title of the task that the model is being asked to
+        predict.
+        Defaults to :code:`None`.
+
+    feature_names: List[str]
+        A list of the feature names that the model is being asked
+        to predict.
+        Defaults to :code:`None`.
+
+    target_map: Dict[str, int]
+        A dictionary with the target names as keys and the values
+        as the target values.
+        Defaults to :code:`None`.
+
+    verbose: bool
+        Whether or not to print the system and user roles.
+        Defaults to :code:`True`.
+
+    dry_run: bool
+        Whether or not to run the function in dry run mode.
+        When in dry run mode, the function will not make any API
+        requests and will return a mock response.
+        Defaults to :code:`False`.
+
+    try_again_on_error: bool
+        Whether to try asking the LLM if an error occurs in processing the output.
+        Defaults to :code:`True`.
+
+
+    Returns
+    -------
+
+    Dict[str, float]
+        Hopefully, a dictionary with the feature names as keys and the weights
+        as values.
+
+    """
+
+    if target_map is None:
+        target_map = {}
+
+    if not isinstance(feature_names, list):
+        raise ValueError("Please ensure that the feature_names is a list")
+    if not isinstance(target_map, dict):
+        raise ValueError(
+            "Please ensure that the target_map is a dictionary with the target names as keys "
+            "and the values as the target values"
+        )
+
+    example_response = {
+        "feature_1": {"mean": "mean1", "std": "std1"},
+        "feature_2": {"mean": "mean2", "std": "std2"},
+        "feature_3": {"mean": "mean3", "std": "std3"},
+    }
+
+    if system_role is None:
+        system_role = f"""
+        You are an expert in
+        {task_title}.
+        You have access to an internal predictive model of
+        {task_title}
+        and are great at guessing the prior distribution of weights of a linear model.
+        """
+
+    else:
+        system_role = system_role.format(
+            task_title=task_title,
+            feature_names="[" + "'" + "', '".join(feature_names) + "'" + "]",
+            unique_targets=" or ".join(target_map.keys()),
+            target_map=" and ".join([f"'{k}' = {v}" for k, v in target_map.items()]),
+        )
+
+    if user_role is None:
+        user_role = f"""
+        I am a data scientist with a dataset of {task_title} samples.
+        I would like to use your model to predict the diagnosis of my samples.
+        I have a dataset that is made up of the following features:
+        [ {"[" +  "'" + "', '".join(feature_names) +  "'" + "]"} ].
+        All of the feature values are standardized using the z-score.
+        By thinking about how each feature might be related to a diagnosis of
+        {' or '.join(target_map.keys())},
+        and whether each feature is positively or negatively correlated with the
+        outcome of
+        {' and '.join([f"'{k}' = {v}" for k,v in target_map.items()])},
+        I would like you to guess the
+        mean and standard deviation for a normal distribution prior for each feature
+        for a logistic regression model that predicts the
+        {task_title}.
+        Please respond with a JSON object with the feature names as keys
+        and a nested dictionary of mean and standard deviation as values.
+        A positive mean indicates a positive correlation with the outcome,
+        a negative mean indicates a negative correlation with the outcome,
+        whilst a small standard deviation indicates that you are confident in your guess.
+        Please only respond with a JSON, no other text.
+        """
+
+    else:
+        user_role = user_role.format(
+            task_title=task_title,
+            feature_names="[" + "'" + "', '".join(feature_names) + "'" + "]",
+            unique_targets=" or ".join(target_map.keys()),
+            target_map=" and ".join([f"'{k}' = {v}" for k, v in target_map.items()]),
+        )
+
+    if verbose:
+        print("System role", "\n", "---------", "\n", system_role)
+        print("User query", "\n", "---------", "\n", user_role)
+
+    system_role = system_role.replace("\n", " ")
+    user_role = user_role.replace("\n", " ")
+
+    if dry_run:
+        return None
+
+    # deepseek sometimes just doesnt listen to the return
+    # format instructions, so we will try a few times
+    # this will happen at the same time given a seed and
+    # so is still reproducible
+    how_many_tries = 0
+    max_tries = 3
+    still_trying = True
+    while still_trying:
+
+        if how_many_tries > 0:
+            print(
+                "---" * 20
+                + f"trying again {how_many_tries + 1}/{max_tries}"
+                + "---" * 20
+            )
+
+        result = client.get_result(
+            [
+                {"role": "system", "content": system_role},
+                {"role": "user", "content": user_role},
+            ]
+        )
+
+        how_many_tries += 1
+
+        try:
+            processed_result = result.replace("\n", "").replace("\\", "")
+
+            # for some models (often deepseek), it returns the
+            # result in a code block with an explanation
+            if "```json" in processed_result:
+                processed_result = re.findall(
+                    r"```json(.*?)```", processed_result, re.DOTALL
+                )[0]
+
+            if processed_result.startswith("json"):
+                processed_result = processed_result[4:]
+
+            if processed_result.startswith('"'):
+                processed_result = processed_result[1:]
+
+            if processed_result.endswith('"'):
+                processed_result = processed_result[:-1]
+
+            if not processed_result.replace(" ", "").startswith("{"):
+                processed_result = "{" + processed_result
+
+            if not processed_result.replace(" ", "").endswith("}"):
+                processed_result = processed_result + "}"
+
+            if not processed_result.replace(" ", "").endswith("}}"):
+                processed_result = processed_result + "}}"
+
+            llm_weights = {key: value for key, value in eval(processed_result).items()}
+            still_trying = False
+        except:
+            print("tried the processed result:", processed_result)
+            print("the original was:", result)
+            if not try_again_on_error or how_many_tries >= max_tries:
+                raise ValueError(
+                    "Could not evaluate the response from the language model."
+                )
+
+    return llm_weights
+
+
+def data_points_to_sentence(
+    x: np.array,
+    feature_names: t.List[str] = None,
+    y: t.Optional[np.array] = None,
+) -> str:
+    """
+    This converts a given array of data points and
+    optionally the target variable into a sentence.
+    The sentence will have the following form:
+
+    .. code-block::
+        '''
+        # data point 1
+        {
+            'feature_1' = value_1,
+            'feature_2' = value_2,
+        },
+        # data point 2
+        {
+            'feature_1' = value_1,
+            'feature_2' = value_2,
+        },
+        # data point 3
+        {
+            'feature_1' = value_1,
+            'feature_2' = value_2,
+        }"
+        '''
+
+    Arguments
+    ---------
+
+    x : np.array
+        The data points to convert to a sentence.
+
+    feature_names : t.List[str]
+        The names of the features.
+        This should be a list of strings.
+        Defaults to :code:`None`.
+
+    y : t.Optional[np.array]
+        The target variable.
+        Defaults to :code:`None`.
+
+    """
+    sentence_of_data_points = ""
+
+    if feature_names is None:
+        raise ValueError("Feature names must be provided.")
+
+    for index, x_i in enumerate(x):
+        sentence_of_data_points += "{"
+        sentence_of_data_points += "\n"
+        for feature_name, value in zip(feature_names, x_i):
+            sentence_of_data_points += f"'{feature_name}' = {value}, "
+            sentence_of_data_points += "\n"
+        sentence_of_data_points += "}"
+        sentence_of_data_points += "\n"
+        if y is not None:
+            sentence_of_data_points += f"gives y = {y[index]}, "
+        sentence_of_data_points += "\n"
+
+    return sentence_of_data_points
+
+
+def get_llm_predictions(
+    client: LLMOutputs,
+    x: np.array,
+    system_role: str = None,
+    final_message: str = None,
+    feature_names: t.List[str] = None,
+    demonstration: t.Optional[t.List[np.array]] = None,
+    dry_run: bool = False,
+    verbose: bool = False,
+) -> np.array:
+    """
+    Get predictions for a linear model from a language model.
+
+    Arguments
+    ---------
+
+    client: LLMOutputs
+        An instance of the LLMOutputs class.
+
+    x : np.array
+        The data to be used to predict the target variable.
+
+    system_role : str
+        The system role in the conversation.
+        Defaults to :code:`None`.
+
+    final_message : str
+        The final message to display to the language model.
+        Defaults to :code:`None`.
+
+    feature_names : t.List[str]
+        The names of the features.
+        This should be a list of strings.
+        Defaults to :code:`None`.
+
+    demonstration : t.List[np.array]
+        The demonstration data to use.
+        This should be a list of numpy arrays
+        with the first array containing the features
+        and the second array containing the target variable.
+        Defaults to :code:`None`.
+
+    dry_run : bool
+        Whether to run the function in dry run mode.
+        Defaults to :code:`False`.
+
+    verbose : bool
+        Whether to print information.
+        Defaults to :code:`False`.
+
+    Returns
+    -------
+
+    np.array
+        The predictions for the target variable.
+
+    """
+
+    assert isinstance(x, np.ndarray), "x must be a numpy array."
+    if system_role is None:
+        raise ValueError("System role must be provided.")
+    if feature_names is None:
+        raise ValueError("Feature names must be provided.")
+
+    user_role = f"""
+    I will give you {x.shape[1]} features, which are:
+    [ '{"', '".join(feature_names)}' ],
+    You then need to make predictions y from
+    the data.
+    """
+
+    if demonstration is not None:
+        # turn demonstrations into text for in-context learning
+        demonstration_sentence = data_points_to_sentence(
+            x=demonstration[0], feature_names=feature_names, y=demonstration[1]
+        )
+
+        some_example_data = (
+            "Here are some examples of data points and their predictions: \n"
+            + demonstration_sentence
+        )
+
+    sentence_of_data_points = data_points_to_sentence(x=x, feature_names=feature_names)
+
+    some_new_data = (
+        "Here are some data points, please make predictions for y: \n"
+        + sentence_of_data_points
+    )
+
+    if final_message is None:
+        final_message = ""
+
+    final_message = (
+        final_message
+        + f"""
+    You should return {x.shape[0]} predictions.
+    """
+    )
+
+    if verbose:
+        print("System role", "\n", "---------", "\n", system_role)
+        print("User query", "\n", "---------", "\n", user_role)
+        if demonstration is not None:
+            print("Demonstration", "\n", "---------", "\n", some_example_data)
+        print("New data", "\n", "---------", "\n", some_new_data)
+        print("Final message", "\n", "---------", "\n", final_message)
+
+    messages = [
+        {"role": "system", "content": system_role.replace("\n", " ")},
+        {"role": "user", "content": user_role.replace("\n", " ")},
+    ]
+    if demonstration is not None:
+        messages.append(
+            {"role": "system", "content": some_example_data.replace("\n", " ")}
+        )
+
+    messages.extend(
+        [
+            {"role": "user", "content": some_new_data.replace("\n", " ")},
+            {"role": "user", "content": final_message.replace("\n", " ")},
+        ]
+    )
+
+    if dry_run:
+        print(messages)
+        output = None
+    else:
+        result = client.get_result(
+            messages=messages,
+        )
+        # try to turn output into an array, if that fails try [ output ]
+        # and if that fails, raise error
+
+        result
+
+        ### function with things to try and:
+        possible_process_funcs = [
+            lambda x: np.array(eval(x)),
+            lambda x: np.array(eval("[" + x + "]")),
+            lambda x: np.array(eval(x.replace("\n", ", "))),
+            lambda x: np.array(eval(x.replace(" ", ", "))),
+            lambda x: np.array(eval("[" + x.replace("\n", ", ") + "]")),
+            lambda x: np.array(eval("[" + x.replace(" ", ", ") + "]")),
+            # regex to match inly floats and integers in the string
+            lambda x: np.array([float(d) for d in re.findall(r"\d+\.\d+|\d+", x)]),
+        ]
+
+        not_working = True
+        i = -1
+        while not_working:
+            try:
+                i += 1
+                output = possible_process_funcs[i](result)
+                not_working = False
+            except:
+                if i == len(possible_process_funcs):
+                    not_working = False
+                    print(result)
+                    raise ValueError("The LLM did not return a valid response.")
+
+    if verbose:
+        print("Output", "\n", "---------", "\n", output)
+
+    return output
+
+
+def get_llm_elicitation_for_dataset(
+    client: LLMOutputs,
+    system_roles: t.List[str],
+    user_roles: t.List[str],
+    feature_names: t.List[str],
+    target_map: t.Dict[str, int] = None,
+    verbose=True,
+    std_lower_clip=1e-3,
+    try_again_on_error=True,
+) -> t.List[np.array]:
+    """
+    Given a task description, model, and feature names, this
+    function will return a language model's guess of the weights
+    of a linear model.
+
+
+    Arguments
+    ---------
+
+    client: LLMOutputs
+        An instance of the LLMOutputs class.
+
+    system_roles: List[str]
+        The roles of the system.
+        These are used to describe the language model's role.
+        This should mention that the language model is an
+        expert in the field of the task.
+        The :code:`feature_names`, and :code:`target_map` should also be provided
+        and the strings in :code:`sytem_roles` can contain the following placeholders:
+        :code:`'{feature_names}'` and :code:`'{target_map}'`
+        which will be filled in before prompting the language model.
+
+    user_roles: List[str]
+        The roles of the user.
+        These are used to describe the users role.
+        This should describe that the user wants to elicit a prior
+        distribution for a given task.
+        The :code:`feature_names`, and :code:`target_map` should also be provided
+        and the strings in :code:`sytem_roles` can contain the following placeholders:
+        :code:`'{feature_names}'` and :code:`'{target_map}'`
+        which will be filled in before prompting the language model.
+
+    feature_names: List[str]
+        A list of the feature names that the model is being asked
+        to predict.
+
+    target_map: Dict[str, int]
+        A dictionary with the target names as keys and the values
+        as the target values.
+        Defaults to :code:`None`.
+
+    verbose: bool
+        Whether or not to print the system and user roles.
+        Defaults to :code:`True`.
+
+    std_lower_clip: float
+        The lower bound for the standard deviation.
+        If the standard deviation is lower than this value,
+        then it will be replaced with this value.
+        Defaults to :code:`1e-3`.
+
+    try_again_on_error: bool
+        Whether to try asking the LLM again if an error occurs in processing the output.
+        Defaults to :code:`True`.
+
+
+
+    Returns
+    -------
+
+    t.List[np.array]
+        The elicitation priors for the given system roles and user roles.
+
+    """
+
+    pbar = tqdm.tqdm(
+        total=len(system_roles) * len(user_roles),
+        desc=f"Getting priors for {len(system_roles) * len(user_roles)} combinations",
+        disable=not verbose,
+    )
+
+    priors = []
+
+    for i, (sr, ur) in enumerate(itertools.product(system_roles, user_roles)):
+        # deepseek sometimes doesnt provide a prior
+        # for each feature
+        how_many_tries = 0
+        max_tries = 3
+        still_trying = True
+        while still_trying:
+
+            if how_many_tries > 0:
+                print(
+                    "---" * 20
+                    + f"trying again {how_many_tries + 1}/{max_tries}"
+                    + "---" * 20
+                )
+
+            gpt_elicitation = get_llm_elicitation(
+                client=client,
+                system_role=sr,
+                user_role=ur,
+                feature_names=feature_names,
+                target_map=target_map,
+                verbose=verbose,
+            )
+            how_many_tries += 1
+
+            try:
+
+                if isinstance(list(gpt_elicitation.values())[0], dict):
+
+                    possible_mean_keys = [
+                        "mean",
+                        "mu",
+                        "m",
+                        "average",
+                        "expected_value",
+                        "expectedvalue",
+                        "expected value",
+                    ]
+                    possible_std_keys = [
+                        "std",
+                        "sigma",
+                        "s",
+                        "standard deviation",
+                        "standard_deviation",
+                        "standarddeviation",
+                        "stddev",
+                        "std_dev",
+                        "std dev",
+                        "std_deviation",
+                        "std deviation",
+                        "stddeviation",
+                        "standard_dev",
+                        "standarddev",
+                        "standard dev",
+                        "standardDeviation",
+                    ]
+
+                    mean_key = None
+                    std_key = None
+                    gpt_4_keys = list(gpt_elicitation.values())[0].keys()
+
+                    for key in possible_mean_keys:
+                        if key in gpt_4_keys:
+                            mean_key = key
+                            break
+
+                    for key in possible_std_keys:
+                        if key in gpt_4_keys:
+                            std_key = key
+                            break
+
+                    if (mean_key is None) or (std_key is None):
+                        print(gpt_4_keys)
+                        raise ValueError(
+                            "Could not find mean and std keys in GPT-4 output"
+                        )
+
+                    gpt_elicitation = {
+                        key: [value[mean_key], value[std_key]]
+                        for key, value in gpt_elicitation.items()
+                    }
+
+                gpt_bias = [[0.0, 1.0]]
+                gpt_weights = []
+
+                features_in_dataset = feature_names
+                features_in_elicitation = list(gpt_elicitation.keys())
+
+                matches = find_best_matches(
+                    features_in_elicitation, features_in_dataset
+                )
+
+                matches = {item2: item1 for item1, item2 in matches}
+
+                print("\n")
+                print("matched features:")
+                print(
+                    *[f"{k}: {v}: {gpt_elicitation[v]}" for k, v in matches.items()],
+                    sep="\n",
+                )
+                print("\n")
+
+                for f_dataset in feature_names:
+                    f_elicitation = matches[f_dataset]
+                    gpt_weights.append(gpt_elicitation[f_elicitation])
+
+                gpt_weights = np.array(gpt_weights).astype(float)
+
+                if np.any(gpt_weights[:, 1] < std_lower_clip):
+                    print(
+                        "Zero standard deviation found in elicitation, repalced with",
+                        std_lower_clip,
+                    )
+                    gpt_weights[gpt_weights[:, 1] < std_lower_clip, 1] = std_lower_clip
+                    print(gpt_weights)
+
+                prior = np.concatenate([gpt_bias, gpt_weights], axis=0)
+                print("elicitation prior:\n", prior)
+
+                still_trying = False
+
+            except Exception as e:
+                print(f"Error getting prior: {e}")
+                print(gpt_elicitation)
+                if not try_again_on_error or how_many_tries >= max_tries:
+                    raise e
+
+            priors.append(prior)
+
+            pbar.update(1)
+
+    pbar.close()
+
+    return priors
+
+
+def sample_approximate_llm_internal_predictive_model_parameters(
+    client: LLMOutputs,
+    n_samples: int = 20,
+    n_datapoints_in_sample: int = 25,
+    required_model: str = "linear",
+    system_role: str = None,
+    final_message: str = None,
+    feature_names: t.List[str] = None,
+    rng: np.random._generator.Generator = None,
+    demonstration: t.List[np.array] = None,
+    x_sample_low: float = -5,
+    x_sample_high: float = 5,
+    return_mle_loss_and_samples: bool = False,
+    dry_run: bool = False,
+    verbose: bool = True,
+) -> np.array:
+    """
+    Get predictions for a linear model from GPT-4.
+
+    Arguments
+    ---------
+
+    client: LLMOutputs
+        An instance of the LLMOutputs class.
+
+    n_samples : int
+        The number of times to sample the language model.
+
+    n_datapoints_in_sample : int
+        The number of data points in each sample.
+
+    required_model : str
+        The required internal model that the language model
+        must use.
+
+    system_role : str
+        The system role in the conversation.
+        Defaults to :code:`None`.
+
+    feature_names : typing.List[str]
+        The names of the features.
+        This should be a list of strings.
+        Defaults to :code:`None`.
+
+    rng : np.random._generator.Generator
+        The random number generator to use.
+
+    demonstration : t.List[np.array]
+        The demonstration data to use.
+        This should be a list of numpy arrays
+        with the first array containing the features
+        and the second array containing the target variable.
+        Defaults to :code:`None`.
+
+    x_sample_low : float
+        The lower bound for the samples. A uniform distribution
+        is used to sample the values.
+        Defaults to :code:`-5`.
+
+    x_sample_high : float
+        The upper bound for the samples. A uniform distribution
+        is used to sample the values.
+        Defaults to :code:`5`.
+
+    return_mle_loss_and_samples : bool
+        Whether to return the MLE loss for the approximated
+        model and the samples. In this case, the MLE loss
+        is calculated over the logits of the predictions.
+        Defaults to :code:`False`.
+
+    dry_run : bool
+        If :code:`True`, then the function will not make any API calls.
+        Defaults to :code:`False`.
+
+    verbose : bool
+        If :code:`True`, then the function will print progress bars
+        and other information.
+        Defaults to :code:`True`.
+
+    Returns
+    -------
+
+    np.array:
+        Samples of the parameterisation.
+
+    np.array: optional:
+        The MLE loss for the approximated model
+        if :code:`return_mle_loss_and_samples` is :code:`True`.
+
+    Tuple[np.array, np.array]: optional:
+        The samples of the data points and the predictions
+        if :code:`return_mle_loss_and_samples` is :code:`True`.
+
+    """
+
+    # check the inputs
+    if feature_names is None:
+        raise ValueError("Feature names must be provided.")
+
+    possible_required_models = [
+        "linear",
+        "logistic",
+    ]
+    assert (
+        required_model in possible_required_models
+    ), f"required_model must be one of {possible_required_models}"
+
+    if required_model not in system_role:
+        raise ValueError(
+            "The system role must contain the required model "
+            "so that the language model knows what to use internally."
+        )
+
+    # sample the data
+    x = rng.uniform(
+        low=x_sample_low,
+        high=x_sample_high,
+        size=(n_samples, n_datapoints_in_sample, len(feature_names)),
+    )
+
+    # get the predictions from the gpt model
+    # that we can use to build a distribition
+    y_pred = [
+        get_llm_predictions(
+            client=client,
+            x=np.round(x_sample, 3),
+            system_role=system_role,
+            final_message=final_message,
+            feature_names=feature_names,
+            demonstration=demonstration,
+            dry_run=dry_run,
+            verbose=verbose,
+        )
+        for x_sample in tqdm.tqdm(x, desc="Getting predictions", disable=not verbose)
+    ]
+
+    if dry_run:
+        return None
+
+    x_sample_out, y_sample_out = [], []
+
+    if required_model == "linear":
+
+        weights = []
+        mle_loss = []
+        # we use linear regression to get the weights
+        # by performing MLE
+        for x_sample, y_sample in zip(x, y_pred):
+            y_sample = np.array(y_sample).ravel()
+
+            try:
+                mle_model = sklm.LinearRegression(fit_intercept=True).fit(
+                    x_sample, y_sample
+                )
+                weights_sample = mle_model.coef_
+                intercept_sample = mle_model.intercept_
+                weights_sample = np.concatenate(
+                    [np.array([intercept_sample]), weights_sample]
+                )
+                weights.append(weights_sample)
+                if return_mle_loss_and_samples:
+                    mle_loss.append(
+                        skmetrics.mean_squared_error(
+                            y_sample, mle_model.predict(x_sample)
+                        )
+                    )
+                    x_sample_out.append(x_sample)
+                    y_sample_out.append(y_sample)
+
+            except ValueError as e:
+                print("y:", y_pred)
+                print("y:", y_sample)
+                print("x:", x_sample)
+                print(e)
+                print("skipping this sample")
+                weights.append(None)
+                mle_loss.append(None)
+                x_sample_out.append(x_sample)
+                y_sample_out.append(y_sample)
+
+            parameter_distribution = weights
+
+    if required_model == "logistic":
+
+        weights = []
+
+        # we use linear regression to get the weights
+        # by performing MLE
+
+        # we will first perform the opposite of the sigmoid
+        # function to get the logits
+
+        mle_loss = []
+
+        for x_sample, y_sample in zip(x, y_pred):
+            y_sample = inv_logistic(y_sample)
+            y_sample = np.array(y_sample).ravel()
+
+            try:
+                mle_model = sklm.LinearRegression(fit_intercept=True).fit(
+                    x_sample, y_sample
+                )
+                weights_sample = mle_model.coef_
+                intercept_sample = mle_model.intercept_
+                weights_sample = np.concatenate(
+                    [np.array([intercept_sample]), weights_sample]
+                )
+                weights.append(weights_sample)
+                if return_mle_loss_and_samples:
+                    mle_loss.append(
+                        skmetrics.mean_squared_error(
+                            y_sample, mle_model.predict(x_sample)
+                        )
+                    )
+                    x_sample_out.append(x_sample)
+                    y_sample_out.append(y_sample)
+
+            except ValueError as e:
+                print("y:", y_pred)
+                print("inverse logistic y:", y_sample)
+                print("x:", x_sample)
+                print(e)
+                print("skipping this sample")
+                weights.append(None)
+                mle_loss.append(None)
+                x_sample_out.append(x_sample)
+                y_sample_out.append(y_sample)
+
+            parameter_distribution = weights
+
+    if return_mle_loss_and_samples:
+        return (
+            parameter_distribution,
+            mle_loss,
+            (x_sample_out, y_sample_out),
+        )
+
+    return parameter_distribution
+
+utils.py:
+import copy
+import typing as t
+import numpy as np
+import pandas as pd
+import difflib
+from pathlib import Path
+
+
+def inv_logistic(x: np.array) -> np.array:
+    """
+    The inverse of the logistic function.
+
+    Arguments
+    ----------
+
+    x : array-like
+        The input to the inverse logistic function.
+
+    Returns
+    ---------
+
+    y : array-like
+        The output of the inverse logistic function.
+
+    """
+    x = np.array(x)
+    return np.log(x / (1 - x))
+
+
+def load_prompts(path: Path, delim="\n\n") -> t.List[str]:
+    """
+    This function loads a text file of prompts into a list.
+    In the text file, each prompt should be separated by
+    a delimiter that is specified by the :code:`delim` argument.
+
+    Arguments
+    ----------
+    path : Path
+        The path to the text file containing the prompts.
+
+    delim : str
+        The delimiter that separates the prompts in the text file.
+        Defaults to :code:`\n\n`.
+
+    Returns
+    --------
+
+    prompts : list of str
+        A list of prompts loaded from the text file.
+
+
+    """
+    return open(path).read().split(delim)
+
+
+def load_nested_dict_to_pandas(
+    results_dict: t.Dict[t.Any, t.Any],
+    level_names: t.List[t.Any] = None,
+) -> pd.DataFrame:
+    """
+    This function loads a nested dictionary into a pandas DataFrame.
+
+    Arguments
+    ----------
+
+    results_dict : dict
+        The nested dictionary to load.
+
+    level_names : list
+        The names of the levels in the dictionary.
+        This can be used to name the columns of the
+        outputted :code:`DataFrame`.
+        Defaults to :code:`None`.
+
+
+    Returns
+    --------
+
+    df : DataFrame
+        The pandas DataFrame with the nested dictionary loaded.
+
+
+    """
+
+    # internal function to call recursively
+    def internal_load_nested_dict_to_pandas(results_dict, level, level_names):
+        df = pd.DataFrame()
+        level = level + 1
+        for key in results_dict.keys():
+            if isinstance(results_dict[key], dict):
+                df_output = internal_load_nested_dict_to_pandas(
+                    results_dict[key], level, level_names
+                )
+                if level_names is None:
+                    df_output.insert(0, f"level_{level}", key)
+                else:
+                    df_output.insert(0, level_names[level], key)
+                df = pd.concat([df, df_output])
+            else:
+                try:
+                    df[key] = [results_dict[key]]
+                except:
+                    df[key] = np.nan
+        return df
+
+    return internal_load_nested_dict_to_pandas(
+        results_dict=results_dict, level=-1, level_names=level_names
+    )
+
+
+def cut_end_points(
+    x: np.array,
+    lower_percentile: float,
+    upper_percentile: float,
+) -> np.array:
+    """
+    Return an array that is a subset of :code:`x` that
+    only contains data from with in the :code:`lower_percentile`
+    and :code:`upper_percentile`.
+
+
+    Arguments
+    ----------
+
+    - x : array-like
+        The input array.
+
+    - lower_percentile : float
+        The lower percentile to cut the data at.
+        This should be in the range [0, 100].
+
+    - upper_percentile : float
+        The upper percentile to cut the data at.
+        This should be in the range [0, 100].
+
+    Returns
+    ---------
+    - x_subset : array-like
+        The subset of the input array that is within the
+        :code:`lower_percentile` and :code:`upper_percentile`.
+
+    """
+    lower = np.percentile(x, lower_percentile)
+    upper = np.percentile(x, upper_percentile)
+    return x[(lower < x) & (x < upper)]
+
+
+def cut_end_points_groupby(
+    df: pd.DataFrame,
+    groupby: str,
+    cut_on: str,
+    lower_percentile: float,
+    upper_percentile: float,
+) -> pd.DataFrame:
+    """
+    Return a dataframe that is a subset of :code:`df` that
+    only contains data from with in the :code:`lower_percentile`
+    and :code:`upper_percentile` in the :code:`cut_on` column
+    grouped by the :code:`groupby` column.
+
+
+    Arguments
+    ----------
+
+    - df : pd.DataFrame
+        The input dataframe.
+
+    - groupby : str
+        The column to group the data by.
+
+    - cut_on : str
+        The column to cut the data on.
+
+    - lower_percentile : float
+        The lower percentile to cut the data at.
+        This should be in the range [0, 100].
+
+    - upper_percentile : float
+        The upper percentile to cut the data at.
+        This should be in the range [0, 100].
+
+    Returns
+    ---------
+    - df_subset : array-like
+        The subset of the input df that is within the
+        :code:`lower_percentile` and :code:`upper_percentile`.
+
+    """
+    return df.loc[
+        lambda x: x.groupby(groupby)[cut_on]
+        .apply(
+            lambda l: l.loc[
+                (l > l.quantile(lower_percentile / 100))
+                & (l < l.quantile(upper_percentile / 100))
+            ]
+        )
+        .index.get_level_values(-1)
+    ]
+
+
+def make_list(x: t.Iterable) -> t.List[t.Any]:
+    """
+    This function will take an input and
+    if any of its nested objects are arrays, they will be
+    converted to lists.
+
+    Arguments
+    ----------
+
+    x : any
+        The input to convert to a list.
+
+    Returns
+    ---------
+
+    x : list
+        The input as a list.
+
+    """
+
+    # if x is an array then we can convert it straight away
+    if isinstance(x, np.ndarray):
+        x_new = x.tolist()
+        return x_new
+
+    # otherwise we need to find all the arrays in the object
+    x_new = []
+    for xi in x:
+        if isinstance(xi, np.ndarray):
+            xi = xi.tolist()
+        if isinstance(xi, list):
+            xi = make_list(xi)
+        x_new.append(xi)
+    return x_new
+
+
+def find_best_matches(list1, list2):
+    list1 = copy.deepcopy(list1)
+    list2 = copy.deepcopy(list2)
+    matches = []
+    for item1 in list1:
+        best_match = None
+        highest_similarity = 0
+        for item2 in list2:
+            similarity = difflib.SequenceMatcher(None, item1, item2).ratio()
+            if similarity > highest_similarity:
+                highest_similarity = similarity
+                best_match = item2
+        matches.append((item1, best_match))
+        list2.remove(best_match)  # Ensure each item is matched only once
+    return matches
+
+llm_prior_vs_no_prior.py:
+import os
+from pathlib import Path
+import json
+import tqdm
+import numpy as np
+import pymc as pm
+import sklearn.model_selection as skms
+import sklearn.preprocessing as skpre
+import sklearn.impute as skimpute
+import sklearn.pipeline as skpipe
+import sklearn.metrics as skmetrics
+from sklearn.utils import resample
+from sklearn.compose import ColumnTransformer
+import argparse
+
+from llm_elicited_priors.datasets import (
+    load_fake_data,
+    load_uti,
+    load_breast_cancer,
+    load_california_housing,
+    load_heart_disease,
+    load_wine_quality,
+    load_sk_diabetes,
+    load_hypothyroid,
+)
+from llm_elicited_priors.utils import load_prompts
+from llm_elicited_priors.mc import (
+    train_informative_linear_regression,
+    train_uninformative_linear_regression,
+    train_informative_logistic_regression,
+    train_uninformative_logistic_regression,
+    predict_model,
+)
+from llm_elicited_priors.gpt import (
+    LlamaOutputs,
+    QwenOutputs,
+    GPTOutputs,
+    DeepSeekOutputs,
+    get_llm_elicitation_for_dataset,
+)
+
+os.environ["XLA_PYTHON_CLIENT_PREALLOCATE"] = "false"
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "--dataset",
+    type=str,
+    help="The dataset to use for the experiments",
+    nargs="+",
+    default=[
+        "fake_data",
+        "uti",
+        "breast_cancer",
+        "heart_disease",
+        "diabetes",
+        "hypothyroid",
+        # "california_housing",
+        # "wine_quality",
+    ],
+)
+
+parser.add_argument(
+    "--get_priors",
+    action="store_true",
+    help="Whether to get priors from the API",
+)
+
+
+parser.add_argument(
+    "--quantisation",
+    type=str,
+    help="The quantisation to use for the experiments. "
+    "This only applies to the llama models and can be one "
+    "of 'none', 'bfloat16', 'int8', 'int4'",
+    default="none",
+)
+
+parser.add_argument(
+    "--run_mcmc",
+    action="store_true",
+    help="Whether to run the MCMC experiments",
+)
+
+parser.add_argument(
+    "--model",
+    type=str,
+    help="The model to use for the experiments",
+    default="gpt-3.5-turbo-0125",
+)
+
+
+args = parser.parse_args()
+
+
+for dataset in args.dataset:
+    if dataset not in [
+        "fake_data",
+        "uti",
+        "breast_cancer",
+        "california_housing",
+        "heart_disease",
+        "wine_quality",
+        "diabetes",
+        "hypothyroid",
+    ]:
+        raise ValueError(f"Dataset {dataset} not recognised")
+
+
+PROMPTS_DIR = "./prompts/elicitation"
+PRIORS_DIR = "./priors/elicitation"
+
+
+##### for priors
+GET_FROM_API = args.get_priors
+DATASET_PRIORS_TO_GET = args.dataset
+
+# smallest standard deviation allowed in the priors
+# as for fake data we have a std of 0.0 some times
+STD_LOWER_CLIP = 1e-3
+
+RANDOM_SEED = 2
+
+##### for experiments
+RUN_EXPERIMENTS = args.run_mcmc
+N_SPLITS = 10
+N_DATA_POINTS_SEEN = [2, 5, 10, 20, 30, 40, 50]
+RESULTS_DIR = "./results/elicitation"
+
+DATASETS_TO_EXPERIMENT = args.dataset
+TEST_SIZE = {
+    "fake_data": 0.5,
+    "uti": 0.5,
+    "breast_cancer": 0.5,
+    "california_housing": 0.5,
+    "heart_disease": 0.5,
+    "wine_quality": 0.5,
+    "diabetes": 0.5,
+    "hypothyroid": 0.5,
+}
+N_SAMPLES = 5000
+N_CHAINS = 5
+
+POSSIBLE_MODELS = [
+    "uninformative",
+    "gpt-3.5-turbo-0125",
+    "gpt-4o-2024-08-06",
+    "gpt-4o-mini-2024-07-18",
+    "gpt-4-turbo-2024-04-09",
+    "meta-llama/Llama-3.2-3B-Instruct",
+    "meta-llama/Llama-3.1-8B-Instruct",
+    "meta-llama/Llama-3.1-70B-Instruct",
+    "Qwen/Qwen2.5-14B-Instruct",
+    "deepseek-r1:32b",
+    "deepseek-r1:14b-qwen-distill-fp16",
+]
+
+if args.model not in POSSIBLE_MODELS:
+    raise ValueError(f"Model {args.model} not recognised")
+
+if args.model in [
+    "gpt-3.5-turbo-0125",
+    "gpt-4o-2024-08-06",
+    "gpt-4o-mini-2024-07-18",
+    "gpt-4-turbo-2024-04-09",
+]:
+    CLIENT_CLASS = GPTOutputs
+    CLIENT_KWARGS = dict(
+        temperature=0.1,
+        model_id=args.model,
+        result_args=dict(
+            response_format={"type": "json_object"},
+        ),
+    )
+elif args.model in [
+    "meta-llama/Llama-3.2-3B-Instruct",
+    "meta-llama/Llama-3.1-8B-Instruct",
+    "meta-llama/Llama-3.1-70B-Instruct",
+]:
+    CLIENT_CLASS = LlamaOutputs
+    CLIENT_KWARGS = dict(
+        model_id=args.model,
+        temperature=0.1,
+        quantisation=args.quantisation,
+        result_args=dict(
+            response_format={"type": "json_object"},
+        ),
+    )
+
+    if args.quantisation != "none":
+        args.model += f"-{args.quantisation}"
+elif args.model in ["Qwen/Qwen2.5-14B-Instruct"]:
+    CLIENT_CLASS = QwenOutputs
+    CLIENT_KWARGS = dict(
+        model_id=args.model,
+        temperature=0.1,
+        quantisation=args.quantisation,
+        result_args=dict(
+            response_format={"type": "json_object"},
+        ),
+    )
+
+    if args.quantisation != "none":
+        args.model += f"-{args.quantisation}"
+
+elif args.model in ["deepseek-r1:32b", "deepseek-r1:14b-qwen-distill-fp16"]:
+
+    if args.quantisation != "int4" and args.model == "deepseek-r1:32b":
+        raise ValueError("This model must be run at 'int4' quantisation")
+
+    elif (
+        args.quantisation != "bfloat16"
+        and args.model == "deepseek-r1:14b-qwen-distill-fp16"
+    ):
+        raise ValueError("This model must be run at 'bfloat16' quantisation")
+
+    CLIENT_CLASS = DeepSeekOutputs
+    CLIENT_KWARGS = dict(
+        model_id=args.model,
+        temperature=0.1,
+        result_args=dict(
+            response_format={"type": "json_object"},
+        ),
+    )
+
+    if args.quantisation != "none":
+        args.model += f"-{args.quantisation}"
+
+elif args.model == "uninformative":
+    if GET_FROM_API:
+        raise ValueError("Cannot get priors for uninformative model")
+else:
+    raise ValueError(f"Model {args.model} not recognised")
+
+MODEL_IS_UNINFORMATIVE = args.model == "uninformative"
+
+print("Using model:", args.model)
+
+# we want to save the priors and results in a subfolder
+if not MODEL_IS_UNINFORMATIVE:
+    PRIORS_DIR = os.path.join(
+        PRIORS_DIR,
+        args.model.replace("/", "-").replace(".", "-").replace(":", "-").lower(),
+    )
+    Path(PRIORS_DIR).mkdir(parents=True, exist_ok=True)
+
+RESULTS_DIR = os.path.join(
+    RESULTS_DIR,
+    args.model.replace("/", "-").replace(".", "-").replace(":", "-").lower(),
+)
+Path(RESULTS_DIR).mkdir(parents=True, exist_ok=True)
+
+DATASET_FUNCTIONS = {
+    "fake_data": load_fake_data,
+    "breast_cancer": load_breast_cancer,
+    "uti": load_uti,
+    "california_housing": load_california_housing,
+    "heart_disease": load_heart_disease,
+    "wine_quality": load_wine_quality,
+    "diabetes": load_sk_diabetes,
+    "hypothyroid": load_hypothyroid,
+}
+
+
+print("using the directory for priors:", PRIORS_DIR)
+print("using the directory for results:", RESULTS_DIR)
+
+
+def calculate_accuracies(y_pred, y_true):
+    return (y_pred == y_true.reshape(1, 1, -1)).mean(-1).tolist()
+
+
+def get_metrics_classification(y_true, y_pred):
+    accuracy = calculate_accuracies(y_pred, y_true)
+    average_prediction = np.mean(y_pred.reshape(-1, y_pred.shape[-1]), axis=0)
+    roc_auc = skmetrics.roc_auc_score(y_true, average_prediction)
+    metrics_dict = {
+        "accuracy": accuracy,
+        "average_accuracy": np.mean(accuracy),
+        "average_auc": roc_auc,
+    }
+
+    return metrics_dict
+
+
+def calculate_mse(y_pred, y_true):
+    return ((y_pred - y_true.reshape(1, 1, -1)) ** 2).mean(-1).tolist()
+
+
+def get_metrics_regression(y_true, y_pred):
+    mse = calculate_mse(y_pred, y_true)
+    metrics_dict = {
+        "mse": mse,
+        "average_mse": np.mean(mse),
+    }
+
+    return metrics_dict
+
+
+dataset_uninformative_training_functions = {
+    "fake_data": train_uninformative_linear_regression,
+    "breast_cancer": train_uninformative_logistic_regression,
+    "uti": train_uninformative_logistic_regression,
+    "california_housing": train_uninformative_linear_regression,
+    "heart_disease": train_uninformative_logistic_regression,
+    "wine_quality": train_uninformative_logistic_regression,
+    "diabetes": train_uninformative_linear_regression,
+    "hypothyroid": train_uninformative_logistic_regression,
+}
+
+dataset_informative_training_functions = {
+    "fake_data": train_informative_linear_regression,
+    "breast_cancer": train_informative_logistic_regression,
+    "uti": train_informative_logistic_regression,
+    "california_housing": train_informative_linear_regression,
+    "heart_disease": train_informative_logistic_regression,
+    "wine_quality": train_informative_logistic_regression,
+    "diabetes": train_informative_linear_regression,
+    "hypothyroid": train_informative_logistic_regression,
+}
+
+dataset_split_classes = {
+    "fake_data": skms.ShuffleSplit,
+    "breast_cancer": skms.StratifiedShuffleSplit,
+    "uti": skms.GroupShuffleSplit,
+    "california_housing": skms.ShuffleSplit,
+    "heart_disease": skms.StratifiedShuffleSplit,
+    "wine_quality": skms.StratifiedShuffleSplit,
+    "diabetes": skms.ShuffleSplit,
+    "hypothyroid": skms.StratifiedShuffleSplit,
+}
+
+dataset_metrics_function = {
+    "fake_data": get_metrics_regression,
+    "breast_cancer": get_metrics_classification,
+    "uti": get_metrics_classification,
+    "california_housing": get_metrics_regression,
+    "heart_disease": get_metrics_classification,
+    "wine_quality": get_metrics_classification,
+    "diabetes": get_metrics_regression,
+    "hypothyroid": get_metrics_classification,
+}
+
+dataset_metric_to_print = {
+    "fake_data": "average_mse",
+    "breast_cancer": "average_accuracy",
+    "uti": "average_accuracy",
+    "california_housing": "average_mse",
+    "heart_disease": "average_accuracy",
+    "wine_quality": "average_accuracy",
+    "diabetes": "average_mse",
+    "hypothyroid": "average_accuracy",
+}
+
+
+if GET_FROM_API:
+    print(
+        "Getting priors for",
+        DATASET_PRIORS_TO_GET,
+    )
+    pbar = tqdm.tqdm(
+        total=len(DATASET_PRIORS_TO_GET),
+        desc="Getting priors",
+        position=0,
+    )
+    for dataset_name in DATASET_PRIORS_TO_GET:
+
+        # load the system roles from the txt file
+        system_roles = load_prompts(
+            os.path.join(PROMPTS_DIR, f"system_roles_{dataset_name}.txt")
+        )
+
+        # load the user roles from the txt file
+        user_roles = load_prompts(
+            os.path.join(PROMPTS_DIR, f"user_roles_{dataset_name}.txt")
+        )
+
+        dataset = DATASET_FUNCTIONS[dataset_name](as_frame=True)
+        client = CLIENT_CLASS(**CLIENT_KWARGS)
+
+        priors = get_llm_elicitation_for_dataset(
+            client=client,
+            system_roles=system_roles,
+            user_roles=user_roles,
+            feature_names=dataset.feature_names.tolist(),
+            target_map={k: v for v, k in enumerate(dataset.target_names)},
+            verbose=True,
+            std_lower_clip=STD_LOWER_CLIP,
+        )
+
+        for i, p in enumerate(priors):
+            if len(p) == 0:
+                print("Empty prior found, skipping")
+                continue
+            np.save(
+                os.path.join(PRIORS_DIR, f"{dataset_name}_prior_{i}.npy"),
+                p,
+            )
+
+        pbar.update(1)
+
+    pbar.close()
+
+
+if RUN_EXPERIMENTS:
+
+    pbar = tqdm.tqdm(
+        total=len(DATASETS_TO_EXPERIMENT) * N_SPLITS * len(N_DATA_POINTS_SEEN),
+        desc="Running experiments",
+    )
+
+    for dataset_name in DATASETS_TO_EXPERIMENT:
+        dataset = DATASET_FUNCTIONS[dataset_name](as_frame=True)
+
+        rng = np.random.default_rng(RANDOM_SEED)
+
+        splitter_class = dataset_split_classes[dataset_name]
+
+        splits = splitter_class(
+            n_splits=N_SPLITS,
+            test_size=TEST_SIZE[dataset_name],
+            random_state=rng.integers(1e6),
+        ).split(
+            dataset.data.to_numpy(),
+            dataset.target.to_numpy(),
+            # splitting on groups for UTI dataset
+            groups=(dataset.pid.values if dataset_name == "uti" else None),
+        )
+
+        if not MODEL_IS_UNINFORMATIVE:
+
+            prior_files = [
+                f for f in os.listdir(PRIORS_DIR) if f.startswith(dataset_name)
+            ]
+            priors = []
+            for prior_file in prior_files:
+                prior = np.load(os.path.join(PRIORS_DIR, prior_file))
+                priors.append(prior)
+
+            priors = np.stack(priors)
+
+        i = 1
+
+        for ns, (train_idx, test_idx) in enumerate(splits):
+
+            results_path = os.path.join(
+                RESULTS_DIR,
+                f"prior_no_prior_results_{dataset_name}_{ns}.json",
+            )
+
+            print(f"Running experiments for {dataset_name}, {ns}")
+            print("Results will be saved to:", results_path)
+
+            if Path(results_path).exists():
+                with open(results_path, "r") as f:
+                    results = json.load(f)
+                    print(f"Loaded results for {dataset_name}, {ns}")
+            else:
+                results = {}
+
+            if dataset_name not in results:
+                results[dataset_name] = {}
+
+            # make ns int instead of str
+            if len(results[dataset_name]) > 0:
+                results[dataset_name] = {
+                    int(k): v for k, v in results[dataset_name].items()
+                }
+
+            if ns not in results[dataset_name]:
+                results[dataset_name][ns] = {}
+
+            X_train = dataset.data.iloc[train_idx].to_numpy()
+            y_train = dataset.target.iloc[train_idx].to_numpy()
+            X_test = dataset.data.iloc[test_idx].to_numpy()
+            y_test = dataset.target.iloc[test_idx].to_numpy()
+
+            for nps in N_DATA_POINTS_SEEN:
+
+                rng = np.random.default_rng(RANDOM_SEED * i)
+
+                # make ns int instead of str
+                if len(results[dataset_name][ns]) > 0:
+                    results[dataset_name][ns] = {
+                        int(k): v for k, v in results[dataset_name][ns].items()
+                    }
+
+                # results[dataset_name][ns][npr][nps] = {}
+                if nps not in results[dataset_name][ns]:
+                    results[dataset_name][ns][nps] = {}
+                else:
+                    if ("informative" in results[dataset_name][ns][nps]) or (
+                        "uninformative" in results[dataset_name][ns][nps]
+                    ):
+                        pbar.update(1)
+                        i += 1
+                        print(f"Skipping {dataset_name}, {ns}, {nps}")
+                        continue
+
+                X_train_seen, y_train_seen = resample(
+                    X_train,
+                    y_train,
+                    n_samples=nps,
+                    random_state=rng.integers(1e6),
+                    replace=False,
+                    stratify=y_train,
+                )
+
+                # if we have categorical features, we dont want to scale them
+                if hasattr(dataset, "categorical_features"):
+                    preprocessing = skpipe.Pipeline(
+                        [
+                            (
+                                "scaler",
+                                ColumnTransformer(
+                                    transformers=[
+                                        (
+                                            (f"{i}_no_scaling", "passthrough", [i])
+                                            if i in dataset.categorical_features
+                                            else (
+                                                f"{i}_scaler",
+                                                skpre.StandardScaler(),
+                                                [i],
+                                            )
+                                        )
+                                        for i in range(len(dataset.feature_names))
+                                    ],
+                                ),
+                            ),
+                            (
+                                "imputer",
+                                skimpute.SimpleImputer(
+                                    strategy="mean",
+                                    keep_empty_features=True,
+                                ),
+                            ),
+                        ]
+                    )
+                    X_train_seen_transformed = preprocessing.fit_transform(X_train_seen)
+                    X_test_transformed = preprocessing.transform(X_test)
+                # otherwise scale everything
+                elif dataset_name != "fake_data":
+                    preprocessing = skpipe.Pipeline(
+                        [
+                            ("scaler", skpre.StandardScaler()),
+                            (
+                                "imputer",
+                                skimpute.SimpleImputer(
+                                    strategy="mean",
+                                    keep_empty_features=True,
+                                ),
+                            ),
+                        ]
+                    )
+                    X_train_seen_transformed = preprocessing.fit_transform(X_train_seen)
+                    X_test_transformed = preprocessing.transform(X_test)
+                else:
+                    X_train_seen_transformed = X_train_seen
+                    X_test_transformed = X_test
+
+                if MODEL_IS_UNINFORMATIVE:
+
+                    model_uninformative = pm.Model()
+
+                    uninformative_training_function = (
+                        dataset_uninformative_training_functions[dataset_name]
+                    )
+
+                    idata_uninformative, model_uninformative = (
+                        uninformative_training_function(
+                            model_uninformative,
+                            X_train=X_train_seen_transformed,
+                            y_train=y_train_seen,
+                            rng=rng,
+                            n_samples=N_SAMPLES,
+                            n_chains=N_CHAINS,
+                        )
+                    )
+
+                else:
+
+                    model_informative = pm.Model()
+
+                    informative_training_function = (
+                        dataset_informative_training_functions[dataset_name]
+                    )
+
+                    idata_informative, model_informative = (
+                        informative_training_function(
+                            model_informative,
+                            priors=priors,
+                            X_train=X_train_seen_transformed,
+                            y_train=y_train_seen,
+                            rng=rng,
+                            n_samples=N_SAMPLES,
+                            n_chains=N_CHAINS,
+                        )
+                    )
+
+                if MODEL_IS_UNINFORMATIVE:
+                    posterior_uninformative = predict_model(
+                        model_uninformative,
+                        idata_uninformative,
+                        X_test_transformed,
+                        rng,
+                    )
+
+                    y_pred_test_uninformative = posterior_uninformative["predictions"][
+                        "outcomes"
+                    ].to_numpy()
+                else:
+                    posterior_informative = predict_model(
+                        model_informative, idata_informative, X_test_transformed, rng
+                    )
+
+                    y_pred_test_informative = posterior_informative["predictions"][
+                        "outcomes"
+                    ].to_numpy()
+
+                if MODEL_IS_UNINFORMATIVE:
+                    results[dataset_name][ns][nps]["uninformative"] = (
+                        dataset_metrics_function[dataset_name](
+                            y_test, y_pred_test_uninformative
+                        )
+                    )
+
+                else:
+                    results[dataset_name][ns][nps]["informative"] = (
+                        dataset_metrics_function[dataset_name](
+                            y_test, y_pred_test_informative
+                        )
+                    )
+                    pbar.update(1)
+
+                metric_to_print = dataset_metric_to_print[dataset_name]
+
+                if MODEL_IS_UNINFORMATIVE:
+                    print(
+                        "\n",
+                        f"Dataset: {dataset_name}, Split: {ns+1}, N Points Seen: {nps},",
+                        "\n",
+                        f"Uninformative {metric_to_print}:",
+                        f"{results[dataset_name][ns][nps]['uninformative'][metric_to_print]},",
+                        "\n",
+                        "-" * 80,
+                        "\n",
+                    )
+                else:
+                    print(
+                        "\n",
+                        f"Dataset: {dataset_name}, Split: {ns+1}, N Points Seen: {nps},",
+                        "\n",
+                        f"Informative {metric_to_print}:",
+                        f"{results[dataset_name][ns][nps]['informative'][metric_to_print]}",
+                        "\n",
+                        "-" * 80,
+                        "\n",
+                    )
+
+                i += 1
+
+            print("Saving results to:", results_path)
+            with open(results_path, "w") as f:
+                json.dump(results, f, indent=4)
+
+    pbar.close()
+
+system_roles_breast_cancer.txt:
+
+You are a simulator of a logistic regression predictive model
+for predicting breast cancer diagnosis from tumour characteristics.
+Here the inputs are tumour characteristics and the output is
+the probability of breast cancer diagnosis from tumour characteristics.
+Specifically, the targets are {unique_targets} with mapping
+{target_map}.
+With your best guess, you can provide the probabilities of a malignant
+breast cancer diagnosis for the given tumour characteristics.
+
+
+You act as a simulator for a logistic regression model designed to
+predict predicting breast cancer diagnosis from tumour characteristics.
+The inputs consist of tumour characteristics,
+and the output represents the probability of a breast cancer diagnosis
+based on these characteristics. The targets are {unique_targets}, with
+their mapping provided as {target_map}. Using your best estimate, you can
+offer the probabilities of a malignant breast cancer diagnosis given specific
+tumour characteristics.
+
+
+You simulate a logistic regression predictive model for predicting breast
+cancer diagnosis from tumour characteristics.
+The model takes tumour characteristics as inputs and outputs the
+probability of a breast cancer diagnosis. The targets involved are
+{unique_targets}, mapped as {target_map}. With your most accurate guess,
+you can determine the probabilities of a malignant breast cancer diagnosis
+from the provided tumour characteristics.
+
+
+You serve as a logistic regression simulator for predicting predicting breast
+cancer diagnosis from tumour characteristics.
+Inputs are tumour characteristics, and the output is the probability of
+diagnosing breast cancer from these characteristics. The specific targets
+are {unique_targets}, mapped according to {target_map}. You can provide your
+best estimate of the probabilities of a malignant breast cancer diagnosis based
+on given tumour characteristics.
+
+
+You are a simulation of a logistic regression model focused on predicting breast
+cancer diagnosis from tumour characteristics.
+The inputs include tumour characteristics, and the output is the probability of
+a breast cancer diagnosis derived from these characteristics. The targets are
+{unique_targets} with a mapping of {target_map}. Based on your best judgement,
+you can provide the probabilities of a malignant breast cancer diagnosis for the
+given tumour characteristics.
+
+
+You function as a logistic regression model simulator predicting predicting
+breast cancer diagnosis from tumour characteristics.
+Tumour characteristics are the inputs, and the output is the probability of breast
+cancer diagnosis. The targets are {unique_targets}, with the mapping specified as
+{target_map}. With your best prediction, you can offer the probabilities of a
+malignant breast cancer diagnosis from the tumour characteristics provided.
+
+
+You are a logistic regression model simulator for predicting breast cancer
+diagnosis from tumour characteristics. The model inputs
+are tumour characteristics, and the output is the probability of a breast cancer
+diagnosis. The targets are defined as {unique_targets} with a mapping of {target_map}.
+You can use your best estimate to provide the probabilities of a malignant breast cancer
+diagnosis based on these tumour characteristics.
+
+
+You simulate a logistic regression model predicting predicting breast cancer
+diagnosis from tumour characteristics, with inputs being
+tumour characteristics and the output being the probability of a breast cancer diagnosis.
+The targets are {unique_targets}, mapped as {target_map}. Based on your best estimate,
+you can deliver the probabilities of a malignant breast cancer diagnosis given the tumour
+characteristics.
+
+
+You represent a simulator of a logistic regression model for predicting breast
+cancer diagnosis from tumour characteristics,
+where inputs are tumour characteristics and the output is the probability of a breast
+cancer diagnosis. The targets are {unique_targets} with a corresponding mapping of
+{target_map}. You can provide the probabilities of a malignant breast cancer diagnosis
+for the given tumour characteristics using your best estimate.
+
+
+You act as a logistic regression model simulator for predicting predicting
+breast cancer diagnosis from tumour characteristics. The
+model uses tumour characteristics as inputs and outputs the probability of a breast
+cancer diagnosis. The targets involved are {unique_targets} with the mapping {target_map}.
+With your best guess, you can offer the probabilities of a malignant breast cancer diagnosis
+from the given tumour characteristics.
+
+user_roles_breast_cancer.txt:
+
+I am a data scientist with a dataset and the task: predicting breast
+cancer diagnosis from tumour characteristics.
+I would like to use your model to predict the diagnosis of my samples.
+I have a dataset that is made up of the following features:
+{feature_names}.
+All of the feature values are standardized using the z-score.
+By thinking about how each feature might be related to a diagnosis of
+{unique_targets},
+and whether each feature is positively or negatively correlated with the
+outcome of
+{target_map},
+I would like you to guess the
+mean and standard deviation for a normal distribution prior for each feature
+for a logistic regression model can be used for
+predicting breast cancer diagnosis from tumour characteristics.
+Please respond with a JSON object with the feature names as keys
+and a nested dictionary of mean and standard deviation as values.
+A positive mean indicates a positive correlation with the outcome,
+a negative mean indicates a negative correlation with the outcome,
+whilst a small standard deviation indicates that you are confident in your guess.
+Please only respond with a JSON, no other text.
+
+
+I am a data scientist working on predicting breast cancer diagnosis from
+tumour characteristics using a specific dataset.
+I seek to leverage your model for diagnosing my samples. The dataset comprises
+the following features: {feature_names}. All feature values are standardized
+with z-scores. By considering how each feature correlates with the diagnosis
+of {unique_targets} and the direction of correlation as indicated in {target_map},
+please estimate the mean and standard deviation for a normal distribution prior
+for each feature suitable for a logistic regression model for predicting breast cancer diagnosis from tumour characteristics. Provide
+your response in JSON format with feature names as keys and a nested dictionary
+of mean and standard deviation as values. A positive mean signifies a positive
+correlation, a negative mean a negative correlation, and a small standard
+deviation indicates high confidence in your estimate. Only respond with the
+JSON object, without additional text.
+
+
+As a data scientist with a dataset for predicting breast cancer diagnosis
+from tumour characteristics, I wish to use your model
+to predict diagnoses for my samples. My dataset includes the following
+features: {feature_names}, all standardized using z-scores. Considering how
+each feature might relate to the diagnosis of {unique_targets} and the correlation
+direction provided in {target_map}, I need you to guess the mean and standard
+deviation for a normal distribution prior for each feature to be used in a
+logistic regression model for predicting breast cancer diagnosis from tumour characteristics. Please reply with a JSON object
+containing feature names as keys and nested dictionaries of mean and standard
+deviation as values. A positive mean indicates positive correlation, a negative
+mean indicates negative correlation, and a small standard deviation shows
+confidence in your guess. Please respond with JSON only.
+
+
+As a data scientist with a dataset for predicting breast cancer diagnosis
+from tumour characteristics, I want to use your
+model to predict the diagnoses for my samples. The dataset includes
+features: {feature_names}, standardized using the z-score. Considering
+the relationship of each feature to the diagnosis of {unique_targets} and the
+correlation direction in {target_map}, please estimate the mean and standard
+deviation for a normal distribution prior for each feature for a logistic
+regression model for predicting breast cancer diagnosis from tumour characteristics. Respond in JSON format with feature names as
+keys and a nested dictionary of mean and standard deviation as values. A positive
+mean means a positive correlation, a negative mean means a negative correlation,
+and a small standard deviation indicates confidence. Only respond with JSON.
+
+
+I am a data scientist with a task: predicting breast cancer diagnosis from
+tumour characteristics and a dataset. I want to
+use your model to predict sample diagnoses. My dataset contains these
+features: {feature_names}, all standardized with z-scores. Based on how
+each feature relates to the diagnosis of {unique_targets} and their correlation
+direction in {target_map}, please estimate the mean and standard deviation for a
+normal distribution prior for each feature for a logistic regression model for
+predicting breast cancer diagnosis from tumour characteristics. Provide your response as a JSON object with feature names as keys
+and a nested dictionary of mean and standard deviation as values. Positive means
+indicate positive correlation, negative means indicate negative correlation, and
+small standard deviations indicate confidence. Respond with JSON only.
+
+
+I am a data scientist with a dataset and the task: predicting breast cancer
+diagnosis from tumour characteristics. I aim to use your
+model to predict sample diagnoses. My dataset includes these features: {feature_names},
+standardized using z-scores. Considering the correlation of each feature to the diagnosis
+of {unique_targets} and the correlation direction in {target_map}, please guess the
+mean and standard deviation for a normal distribution prior for each feature for a
+logistic regression model for predicting breast cancer diagnosis from tumour characteristics. Please reply in JSON format, with feature
+names as keys and a nested dictionary of mean and standard deviation as values.
+Positive means indicate positive correlation, negative means indicate negative
+correlation, and small standard deviations indicate confidence. Respond with
+JSON only.
+
+
+As a data scientist, I have a dataset for predicting breast cancer diagnosis
+from tumour characteristics and seek to use your
+model to predict diagnoses for my samples. The dataset consists of features:
+{feature_names}, standardized with z-scores. Considering the relation of each
+feature to the diagnosis of {unique_targets} and their correlation direction
+in {target_map}, please estimate the mean and standard deviation for a normal
+distribution prior for each feature in a logistic regression model for predicting breast cancer diagnosis from tumour characteristics.
+Respond with a JSON object where feature names are keys and nested dictionaries
+contain mean and standard deviation. Positive means show positive correlation, negative
+means show negative correlation, and small standard deviations show confidence. Only
+respond with JSON.
+
+
+I am a data scientist with the task: predicting breast cancer diagnosis from
+tumour characteristics and a dataset. I wish to utilize
+your model to predict diagnoses for my samples. The dataset comprises these features:
+{feature_names}, all standardized using z-scores. By considering each feature's
+relation to the diagnosis of {unique_targets} and the direction of correlation in
+{target_map}, estimate the mean and standard deviation for a normal distribution
+prior for each feature in a logistic regression model for predicting breast cancer diagnosis from tumour characteristics. Provide a
+JSON response with feature names as keys and nested dictionaries of mean and standard
+deviation as values. Positive means indicate positive correlation, negative means
+indicate negative correlation, and small standard deviations indicate confidence.
+Respond with JSON only.
+
+
+As a data scientist tasked with predicting breast cancer diagnosis from
+tumour characteristics, I have a dataset and would like to
+use your model to predict diagnoses. The dataset includes the following features:
+{feature_names}, standardized using z-scores. Considering the relationship of each
+feature to the diagnosis of {unique_targets} and their correlation in {target_map},
+please estimate the mean and standard deviation for a normal distribution prior for
+each feature in a logistic regression model for predicting breast cancer diagnosis from tumour characteristics. Provide a JSON object
+with feature names as keys and nested dictionaries of mean and standard deviation.
+Positive means show positive correlation, negative means show negative correlation,
+and small standard deviations indicate confidence. Respond with JSON only.
+
+
+I am a data scientist working on predicting breast cancer diagnosis from
+tumour characteristics with a dataset. I intend to use your
+model to predict diagnoses for my samples. The dataset features are: {feature_names},
+standardized using z-scores. Considering how each feature might relate to the diagnosis
+of {unique_targets} and their correlation direction in {target_map}, estimate the mean
+and standard deviation for a normal distribution prior for each feature in a logistic
+regression model for predicting breast cancer diagnosis from tumour characteristics. Please respond with a JSON object with feature names
+as keys and nested dictionaries of mean and standard deviation. Positive means indicate
+positive correlation, negative means indicate negative correlation, and small standard
+deviations indicate confidence. Only respond with JSON.

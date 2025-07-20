@@ -1,0 +1,530 @@
+{
+  "base_system": "You are a Korean stock market expert specializing in chemical companies like Hanwha Solutions. You have access to an internal predictive model for Hanwha Solutions stock returns and are excellent at guessing the prior distribution of weights for a linear regression model. Hanwha Solutions is a major Korean chemical company affected by oil prices, exchange rates, and market conditions.",
+  "base_user": "I am a data scientist predicting Hanwha Solutions monthly stock returns. I have a dataset with standardized features (z-scores): kospi_return, oil_price_change, usd_krw_change, vix_change, materials_sector_return. kospi_return: Korean stock market performance. oil_price_change: Oil price changes (Hanwha Solutions uses oil as raw material). usd_krw_change: Exchange rate changes (affects exports/imports). vix_change: Market volatility and risk sentiment. materials_sector_return: Chemical/materials sector performance. Please provide mean and standard deviation for normal distribution priors for each feature in a linear regression model. A positive mean indicates positive correlation with returns, negative mean indicates negative correlation, and smaller standard deviation indicates higher confidence. Respond with JSON only: {\"feature_name\": {\"mean\": value, \"std\": value}, ...}",
+  "system_variations": [
+    "You are a Korean stock market expert specializing in chemical companies like Hanwha Solutions. You have access to an internal predictive model for Hanwha Solutions stock returns and are excellent at guessing the prior distribution of weights for a linear regression model. Hanwha Solutions is a major Korean chemical company affected by oil prices, exchange rates, and market conditions.",
+    "You specialize in chemical companies, particularly Hanwha Solutions, and are considered an expert in the Korean stock market. Your forte lies in predicting stock returns for Hanwha Solutions using an internal model and estimating the initial weights distribution for a linear regression model. Hanwha Solutions, a significant Korean chemical firm, is influenced by oil prices, exchange rates, and market circumstances.",
+    "You specialize in chemical companies, particularly Hanwha Solutions, and are considered an expert in the Korean stock market. Your forte lies in predicting stock returns for Hanwha Solutions using an internal model and estimating the initial weights distribution for a linear regression model. Hanwha Solutions, a significant Korean chemical firm, is influenced by oil prices, exchange rates, and market circumstances.",
+    "You specialize in chemical companies, particularly Hanwha Solutions, and are considered an expert in the Korean stock market. Your forte lies in predicting stock returns for Hanwha Solutions using an internal model and estimating the initial weights distribution for a linear regression model. Hanwha Solutions, a significant Korean chemical firm, is influenced by oil prices, exchange rates, and market circumstances.",
+    "You specialize in chemical companies, particularly Hanwha Solutions, and are considered an expert in the Korean stock market. Your forte lies in predicting stock returns for Hanwha Solutions using an internal model and estimating the initial weights distribution for a linear regression model. Hanwha Solutions, a significant Korean chemical firm, is influenced by oil prices, exchange rates, and market circumstances.",
+    "You specialize in chemical companies, particularly Hanwha Solutions, and are considered an expert in the Korean stock market. Your forte lies in predicting stock returns for Hanwha Solutions using an internal model and estimating the initial weights distribution for a linear regression model. Hanwha Solutions, a significant Korean chemical firm, is influenced by oil prices, exchange rates, and market circumstances.",
+    "You specialize in chemical companies, particularly Hanwha Solutions, and are considered an expert in the Korean stock market. Your forte lies in predicting stock returns for Hanwha Solutions using an internal model and estimating the initial weights distribution for a linear regression model. Hanwha Solutions, a significant Korean chemical firm, is influenced by oil prices, exchange rates, and market circumstances.",
+    "You specialize in chemical companies, particularly Hanwha Solutions, and are considered an expert in the Korean stock market. Your forte lies in predicting stock returns for Hanwha Solutions using an internal model and estimating the initial weights distribution for a linear regression model. Hanwha Solutions, a significant Korean chemical firm, is influenced by oil prices, exchange rates, and market circumstances.",
+    "You specialize in chemical companies, particularly Hanwha Solutions, and are considered an expert in the Korean stock market. Your forte lies in predicting stock returns for Hanwha Solutions using an internal model and estimating the initial weights distribution for a linear regression model. Hanwha Solutions, a significant Korean chemical firm, is influenced by oil prices, exchange rates, and market circumstances.",
+    "You specialize in chemical companies, particularly Hanwha Solutions, and are considered an expert in the Korean stock market. Your forte lies in predicting stock returns for Hanwha Solutions using an internal model and estimating the initial weights distribution for a linear regression model. Hanwha Solutions, a significant Korean chemical firm, is influenced by oil prices, exchange rates, and market circumstances."
+  ],
+  "user_variations": [
+    "I am a data scientist predicting Hanwha Solutions monthly stock returns. I have a dataset with standardized features (z-scores): kospi_return, oil_price_change, usd_krw_change, vix_change, materials_sector_return. kospi_return: Korean stock market performance. oil_price_change: Oil price changes (Hanwha Solutions uses oil as raw material). usd_krw_change: Exchange rate changes (affects exports/imports). vix_change: Market volatility and risk sentiment. materials_sector_return: Chemical/materials sector performance. Please provide mean and standard deviation for normal distribution priors for each feature in a linear regression model. A positive mean indicates positive correlation with returns, negative mean indicates negative correlation, and smaller standard deviation indicates higher confidence. Respond with JSON only: {\"feature_name\": {\"mean\": value, \"std\": value}, ...}",
+    "I am a professional in data analytics forecasting the monthly stock returns of Hanwha Solutions. I possess a dataset containing standardized attributes (z-scores): kospi_return, oil_price_change, usd_krw_change, vix_change, materials_sector_return. kospi_return: Reflects the performance of the Korean stock market. oil_price_change: Records alterations in oil prices (Hanwha Solutions relies on oil as a key material). usd_krw_change: Reveals fluctuations in the exchange rate (impacts exports and imports). vix_change: Represents market volatility and risk attitude. materials_sector_return: Demonstrates the performance of the chemical/materials sector. Kindly present the mean and standard deviation for normal distribution priors related to each attribute in a linear regression model. A positive mean suggests a positive correlation with returns, a negative mean suggests a negative correlation, and a smaller standard deviation implies higher confidence. Provide a response only in JSON format: {\"feature_name\": {\"mean\": value, \"std\": value}, ...}",
+    "I am a professional in data analytics forecasting the monthly stock returns of Hanwha Solutions. I possess a dataset containing standardized attributes (z-scores): kospi_return, oil_price_change, usd_krw_change, vix_change, materials_sector_return. kospi_return: Reflects the performance of the Korean stock market. oil_price_change: Records alterations in oil prices (Hanwha Solutions relies on oil as a key material). usd_krw_change: Reveals fluctuations in the exchange rate (impacts exports and imports). vix_change: Represents market volatility and risk attitude. materials_sector_return: Demonstrates the performance of the chemical/materials sector. Kindly present the mean and standard deviation for normal distribution priors related to each attribute in a linear regression model. A positive mean suggests a positive correlation with returns, a negative mean suggests a negative correlation, and a smaller standard deviation implies higher confidence. Provide a response only in JSON format: {\"feature_name\": {\"mean\": value, \"std\": value}, ...}",
+    "I am a professional in data analytics forecasting the monthly stock returns of Hanwha Solutions. I possess a dataset containing standardized attributes (z-scores): kospi_return, oil_price_change, usd_krw_change, vix_change, materials_sector_return. kospi_return: Reflects the performance of the Korean stock market. oil_price_change: Records alterations in oil prices (Hanwha Solutions relies on oil as a key material). usd_krw_change: Reveals fluctuations in the exchange rate (impacts exports and imports). vix_change: Represents market volatility and risk attitude. materials_sector_return: Demonstrates the performance of the chemical/materials sector. Kindly present the mean and standard deviation for normal distribution priors related to each attribute in a linear regression model. A positive mean suggests a positive correlation with returns, a negative mean suggests a negative correlation, and a smaller standard deviation implies higher confidence. Provide a response only in JSON format: {\"feature_name\": {\"mean\": value, \"std\": value}, ...}",
+    "I am a professional in data analytics forecasting the monthly stock returns of Hanwha Solutions. I possess a dataset containing standardized attributes (z-scores): kospi_return, oil_price_change, usd_krw_change, vix_change, materials_sector_return. kospi_return: Reflects the performance of the Korean stock market. oil_price_change: Records alterations in oil prices (Hanwha Solutions relies on oil as a key material). usd_krw_change: Reveals fluctuations in the exchange rate (impacts exports and imports). vix_change: Represents market volatility and risk attitude. materials_sector_return: Demonstrates the performance of the chemical/materials sector. Kindly present the mean and standard deviation for normal distribution priors related to each attribute in a linear regression model. A positive mean suggests a positive correlation with returns, a negative mean suggests a negative correlation, and a smaller standard deviation implies higher confidence. Provide a response only in JSON format: {\"feature_name\": {\"mean\": value, \"std\": value}, ...}",
+    "I am a professional in data analytics forecasting the monthly stock returns of Hanwha Solutions. I possess a dataset containing standardized attributes (z-scores): kospi_return, oil_price_change, usd_krw_change, vix_change, materials_sector_return. kospi_return: Reflects the performance of the Korean stock market. oil_price_change: Records alterations in oil prices (Hanwha Solutions relies on oil as a key material). usd_krw_change: Reveals fluctuations in the exchange rate (impacts exports and imports). vix_change: Represents market volatility and risk attitude. materials_sector_return: Demonstrates the performance of the chemical/materials sector. Kindly present the mean and standard deviation for normal distribution priors related to each attribute in a linear regression model. A positive mean suggests a positive correlation with returns, a negative mean suggests a negative correlation, and a smaller standard deviation implies higher confidence. Provide a response only in JSON format: {\"feature_name\": {\"mean\": value, \"std\": value}, ...}",
+    "I am a professional in data analytics forecasting the monthly stock returns of Hanwha Solutions. I possess a dataset containing standardized attributes (z-scores): kospi_return, oil_price_change, usd_krw_change, vix_change, materials_sector_return. kospi_return: Reflects the performance of the Korean stock market. oil_price_change: Records alterations in oil prices (Hanwha Solutions relies on oil as a key material). usd_krw_change: Reveals fluctuations in the exchange rate (impacts exports and imports). vix_change: Represents market volatility and risk attitude. materials_sector_return: Demonstrates the performance of the chemical/materials sector. Kindly present the mean and standard deviation for normal distribution priors related to each attribute in a linear regression model. A positive mean suggests a positive correlation with returns, a negative mean suggests a negative correlation, and a smaller standard deviation implies higher confidence. Provide a response only in JSON format: {\"feature_name\": {\"mean\": value, \"std\": value}, ...}",
+    "I am a professional in data analytics forecasting the monthly stock returns of Hanwha Solutions. I possess a dataset containing standardized attributes (z-scores): kospi_return, oil_price_change, usd_krw_change, vix_change, materials_sector_return. kospi_return: Reflects the performance of the Korean stock market. oil_price_change: Records alterations in oil prices (Hanwha Solutions relies on oil as a key material). usd_krw_change: Reveals fluctuations in the exchange rate (impacts exports and imports). vix_change: Represents market volatility and risk attitude. materials_sector_return: Demonstrates the performance of the chemical/materials sector. Kindly present the mean and standard deviation for normal distribution priors related to each attribute in a linear regression model. A positive mean suggests a positive correlation with returns, a negative mean suggests a negative correlation, and a smaller standard deviation implies higher confidence. Provide a response only in JSON format: {\"feature_name\": {\"mean\": value, \"std\": value}, ...}",
+    "I am a professional in data analytics forecasting the monthly stock returns of Hanwha Solutions. I possess a dataset containing standardized attributes (z-scores): kospi_return, oil_price_change, usd_krw_change, vix_change, materials_sector_return. kospi_return: Reflects the performance of the Korean stock market. oil_price_change: Records alterations in oil prices (Hanwha Solutions relies on oil as a key material). usd_krw_change: Reveals fluctuations in the exchange rate (impacts exports and imports). vix_change: Represents market volatility and risk attitude. materials_sector_return: Demonstrates the performance of the chemical/materials sector. Kindly present the mean and standard deviation for normal distribution priors related to each attribute in a linear regression model. A positive mean suggests a positive correlation with returns, a negative mean suggests a negative correlation, and a smaller standard deviation implies higher confidence. Provide a response only in JSON format: {\"feature_name\": {\"mean\": value, \"std\": value}, ...}",
+    "I am a professional in data analytics forecasting the monthly stock returns of Hanwha Solutions. I possess a dataset containing standardized attributes (z-scores): kospi_return, oil_price_change, usd_krw_change, vix_change, materials_sector_return. kospi_return: Reflects the performance of the Korean stock market. oil_price_change: Records alterations in oil prices (Hanwha Solutions relies on oil as a key material). usd_krw_change: Reveals fluctuations in the exchange rate (impacts exports and imports). vix_change: Represents market volatility and risk attitude. materials_sector_return: Demonstrates the performance of the chemical/materials sector. Kindly present the mean and standard deviation for normal distribution priors related to each attribute in a linear regression model. A positive mean suggests a positive correlation with returns, a negative mean suggests a negative correlation, and a smaller standard deviation implies higher confidence. Provide a response only in JSON format: {\"feature_name\": {\"mean\": value, \"std\": value}, ...}"
+  ],
+  "elicitation_mapping": [
+    {
+      "elicitation_num": 1,
+      "system_idx": 0,
+      "user_idx": 0
+    },
+    {
+      "elicitation_num": 2,
+      "system_idx": 0,
+      "user_idx": 1
+    },
+    {
+      "elicitation_num": 3,
+      "system_idx": 0,
+      "user_idx": 2
+    },
+    {
+      "elicitation_num": 4,
+      "system_idx": 0,
+      "user_idx": 3
+    },
+    {
+      "elicitation_num": 5,
+      "system_idx": 0,
+      "user_idx": 4
+    },
+    {
+      "elicitation_num": 6,
+      "system_idx": 0,
+      "user_idx": 5
+    },
+    {
+      "elicitation_num": 7,
+      "system_idx": 0,
+      "user_idx": 6
+    },
+    {
+      "elicitation_num": 8,
+      "system_idx": 0,
+      "user_idx": 7
+    },
+    {
+      "elicitation_num": 9,
+      "system_idx": 0,
+      "user_idx": 8
+    },
+    {
+      "elicitation_num": 10,
+      "system_idx": 0,
+      "user_idx": 9
+    },
+    {
+      "elicitation_num": 11,
+      "system_idx": 1,
+      "user_idx": 0
+    },
+    {
+      "elicitation_num": 12,
+      "system_idx": 1,
+      "user_idx": 1
+    },
+    {
+      "elicitation_num": 13,
+      "system_idx": 1,
+      "user_idx": 2
+    },
+    {
+      "elicitation_num": 14,
+      "system_idx": 1,
+      "user_idx": 3
+    },
+    {
+      "elicitation_num": 15,
+      "system_idx": 1,
+      "user_idx": 4
+    },
+    {
+      "elicitation_num": 16,
+      "system_idx": 1,
+      "user_idx": 5
+    },
+    {
+      "elicitation_num": 17,
+      "system_idx": 1,
+      "user_idx": 6
+    },
+    {
+      "elicitation_num": 18,
+      "system_idx": 1,
+      "user_idx": 7
+    },
+    {
+      "elicitation_num": 19,
+      "system_idx": 1,
+      "user_idx": 8
+    },
+    {
+      "elicitation_num": 20,
+      "system_idx": 1,
+      "user_idx": 9
+    },
+    {
+      "elicitation_num": 21,
+      "system_idx": 2,
+      "user_idx": 0
+    },
+    {
+      "elicitation_num": 22,
+      "system_idx": 2,
+      "user_idx": 1
+    },
+    {
+      "elicitation_num": 23,
+      "system_idx": 2,
+      "user_idx": 2
+    },
+    {
+      "elicitation_num": 24,
+      "system_idx": 2,
+      "user_idx": 3
+    },
+    {
+      "elicitation_num": 25,
+      "system_idx": 2,
+      "user_idx": 4
+    },
+    {
+      "elicitation_num": 26,
+      "system_idx": 2,
+      "user_idx": 5
+    },
+    {
+      "elicitation_num": 27,
+      "system_idx": 2,
+      "user_idx": 6
+    },
+    {
+      "elicitation_num": 28,
+      "system_idx": 2,
+      "user_idx": 7
+    },
+    {
+      "elicitation_num": 29,
+      "system_idx": 2,
+      "user_idx": 8
+    },
+    {
+      "elicitation_num": 30,
+      "system_idx": 2,
+      "user_idx": 9
+    },
+    {
+      "elicitation_num": 31,
+      "system_idx": 3,
+      "user_idx": 0
+    },
+    {
+      "elicitation_num": 32,
+      "system_idx": 3,
+      "user_idx": 1
+    },
+    {
+      "elicitation_num": 33,
+      "system_idx": 3,
+      "user_idx": 2
+    },
+    {
+      "elicitation_num": 34,
+      "system_idx": 3,
+      "user_idx": 3
+    },
+    {
+      "elicitation_num": 35,
+      "system_idx": 3,
+      "user_idx": 4
+    },
+    {
+      "elicitation_num": 36,
+      "system_idx": 3,
+      "user_idx": 5
+    },
+    {
+      "elicitation_num": 37,
+      "system_idx": 3,
+      "user_idx": 6
+    },
+    {
+      "elicitation_num": 38,
+      "system_idx": 3,
+      "user_idx": 7
+    },
+    {
+      "elicitation_num": 39,
+      "system_idx": 3,
+      "user_idx": 8
+    },
+    {
+      "elicitation_num": 40,
+      "system_idx": 3,
+      "user_idx": 9
+    },
+    {
+      "elicitation_num": 41,
+      "system_idx": 4,
+      "user_idx": 0
+    },
+    {
+      "elicitation_num": 42,
+      "system_idx": 4,
+      "user_idx": 1
+    },
+    {
+      "elicitation_num": 43,
+      "system_idx": 4,
+      "user_idx": 2
+    },
+    {
+      "elicitation_num": 44,
+      "system_idx": 4,
+      "user_idx": 3
+    },
+    {
+      "elicitation_num": 45,
+      "system_idx": 4,
+      "user_idx": 4
+    },
+    {
+      "elicitation_num": 46,
+      "system_idx": 4,
+      "user_idx": 5
+    },
+    {
+      "elicitation_num": 47,
+      "system_idx": 4,
+      "user_idx": 6
+    },
+    {
+      "elicitation_num": 48,
+      "system_idx": 4,
+      "user_idx": 7
+    },
+    {
+      "elicitation_num": 49,
+      "system_idx": 4,
+      "user_idx": 8
+    },
+    {
+      "elicitation_num": 50,
+      "system_idx": 4,
+      "user_idx": 9
+    },
+    {
+      "elicitation_num": 51,
+      "system_idx": 5,
+      "user_idx": 0
+    },
+    {
+      "elicitation_num": 52,
+      "system_idx": 5,
+      "user_idx": 1
+    },
+    {
+      "elicitation_num": 53,
+      "system_idx": 5,
+      "user_idx": 2
+    },
+    {
+      "elicitation_num": 54,
+      "system_idx": 5,
+      "user_idx": 3
+    },
+    {
+      "elicitation_num": 55,
+      "system_idx": 5,
+      "user_idx": 4
+    },
+    {
+      "elicitation_num": 56,
+      "system_idx": 5,
+      "user_idx": 5
+    },
+    {
+      "elicitation_num": 57,
+      "system_idx": 5,
+      "user_idx": 6
+    },
+    {
+      "elicitation_num": 58,
+      "system_idx": 5,
+      "user_idx": 7
+    },
+    {
+      "elicitation_num": 59,
+      "system_idx": 5,
+      "user_idx": 8
+    },
+    {
+      "elicitation_num": 60,
+      "system_idx": 5,
+      "user_idx": 9
+    },
+    {
+      "elicitation_num": 61,
+      "system_idx": 6,
+      "user_idx": 0
+    },
+    {
+      "elicitation_num": 62,
+      "system_idx": 6,
+      "user_idx": 1
+    },
+    {
+      "elicitation_num": 63,
+      "system_idx": 6,
+      "user_idx": 2
+    },
+    {
+      "elicitation_num": 64,
+      "system_idx": 6,
+      "user_idx": 3
+    },
+    {
+      "elicitation_num": 65,
+      "system_idx": 6,
+      "user_idx": 4
+    },
+    {
+      "elicitation_num": 66,
+      "system_idx": 6,
+      "user_idx": 5
+    },
+    {
+      "elicitation_num": 67,
+      "system_idx": 6,
+      "user_idx": 6
+    },
+    {
+      "elicitation_num": 68,
+      "system_idx": 6,
+      "user_idx": 7
+    },
+    {
+      "elicitation_num": 69,
+      "system_idx": 6,
+      "user_idx": 8
+    },
+    {
+      "elicitation_num": 70,
+      "system_idx": 6,
+      "user_idx": 9
+    },
+    {
+      "elicitation_num": 71,
+      "system_idx": 7,
+      "user_idx": 0
+    },
+    {
+      "elicitation_num": 72,
+      "system_idx": 7,
+      "user_idx": 1
+    },
+    {
+      "elicitation_num": 73,
+      "system_idx": 7,
+      "user_idx": 2
+    },
+    {
+      "elicitation_num": 74,
+      "system_idx": 7,
+      "user_idx": 3
+    },
+    {
+      "elicitation_num": 75,
+      "system_idx": 7,
+      "user_idx": 4
+    },
+    {
+      "elicitation_num": 76,
+      "system_idx": 7,
+      "user_idx": 5
+    },
+    {
+      "elicitation_num": 77,
+      "system_idx": 7,
+      "user_idx": 6
+    },
+    {
+      "elicitation_num": 78,
+      "system_idx": 7,
+      "user_idx": 7
+    },
+    {
+      "elicitation_num": 79,
+      "system_idx": 7,
+      "user_idx": 8
+    },
+    {
+      "elicitation_num": 80,
+      "system_idx": 7,
+      "user_idx": 9
+    },
+    {
+      "elicitation_num": 81,
+      "system_idx": 8,
+      "user_idx": 0
+    },
+    {
+      "elicitation_num": 82,
+      "system_idx": 8,
+      "user_idx": 1
+    },
+    {
+      "elicitation_num": 83,
+      "system_idx": 8,
+      "user_idx": 2
+    },
+    {
+      "elicitation_num": 84,
+      "system_idx": 8,
+      "user_idx": 3
+    },
+    {
+      "elicitation_num": 85,
+      "system_idx": 8,
+      "user_idx": 4
+    },
+    {
+      "elicitation_num": 86,
+      "system_idx": 8,
+      "user_idx": 5
+    },
+    {
+      "elicitation_num": 87,
+      "system_idx": 8,
+      "user_idx": 6
+    },
+    {
+      "elicitation_num": 88,
+      "system_idx": 8,
+      "user_idx": 7
+    },
+    {
+      "elicitation_num": 89,
+      "system_idx": 8,
+      "user_idx": 8
+    },
+    {
+      "elicitation_num": 90,
+      "system_idx": 8,
+      "user_idx": 9
+    },
+    {
+      "elicitation_num": 91,
+      "system_idx": 9,
+      "user_idx": 0
+    },
+    {
+      "elicitation_num": 92,
+      "system_idx": 9,
+      "user_idx": 1
+    },
+    {
+      "elicitation_num": 93,
+      "system_idx": 9,
+      "user_idx": 2
+    },
+    {
+      "elicitation_num": 94,
+      "system_idx": 9,
+      "user_idx": 3
+    },
+    {
+      "elicitation_num": 95,
+      "system_idx": 9,
+      "user_idx": 4
+    },
+    {
+      "elicitation_num": 96,
+      "system_idx": 9,
+      "user_idx": 5
+    },
+    {
+      "elicitation_num": 97,
+      "system_idx": 9,
+      "user_idx": 6
+    },
+    {
+      "elicitation_num": 98,
+      "system_idx": 9,
+      "user_idx": 7
+    },
+    {
+      "elicitation_num": 99,
+      "system_idx": 9,
+      "user_idx": 8
+    },
+    {
+      "elicitation_num": 100,
+      "system_idx": 9,
+      "user_idx": 9
+    }
+  ]
+}

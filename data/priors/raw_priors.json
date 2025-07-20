@@ -1,0 +1,2202 @@
+[
+  {
+    "kospi_return": {
+      "mean": 0.05,
+      "std": 0.02
+    },
+    "oil_price_change": {
+      "mean": -0.03,
+      "std": 0.01
+    },
+    "usd_krw_change": {
+      "mean": -0.02,
+      "std": 0.01
+    },
+    "vix_change": {
+      "mean": -0.01,
+      "std": 0.005
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.015
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.03
+    },
+    "oil_price_change": {
+      "mean": 0.015,
+      "std": 0.02
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.015
+    },
+    "vix_change": {
+      "mean": -0.005,
+      "std": 0.01
+    },
+    "materials_sector_return": {
+      "mean": 0.025,
+      "std": 0.035
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.03
+    },
+    "oil_price_change": {
+      "mean": 0.01,
+      "std": 0.02
+    },
+    "usd_krw_change": {
+      "mean": -0.005,
+      "std": 0.01
+    },
+    "vix_change": {
+      "mean": -0.015,
+      "std": 0.02
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.04
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.06
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.03
+    },
+    "oil_price_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "usd_krw_change": {
+      "mean": -0.005,
+      "std": 0.01
+    },
+    "vix_change": {
+      "mean": -0.015,
+      "std": 0.02
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.04
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.03
+    },
+    "oil_price_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "usd_krw_change": {
+      "mean": -0.005,
+      "std": 0.01
+    },
+    "vix_change": {
+      "mean": -0.015,
+      "std": 0.02
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.04
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.03
+    },
+    "oil_price_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "usd_krw_change": {
+      "mean": -0.005,
+      "std": 0.01
+    },
+    "vix_change": {
+      "mean": -0.015,
+      "std": 0.02
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.04
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.06
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": -0.03,
+      "std": 0.08
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.01,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.06
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": -0.03,
+      "std": 0.08
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.01,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": -0.03,
+      "std": 0.08
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.01,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": -0.03,
+      "std": 0.08
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.01,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.06
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": -0.03,
+      "std": 0.08
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.01,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.07
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.01,
+      "std": 0.02
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.01,
+      "std": 0.03
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": -0.03,
+      "std": 0.08
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.01,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.06
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": -0.03,
+      "std": 0.08
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.01,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": -0.03,
+      "std": 0.03
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.01,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": -0.03,
+      "std": 0.08
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.01,
+      "std": 0.04
+    },
+    "materials_sector_return": {
+      "mean": 0.03,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.01,
+      "std": 0.03
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.03
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.06
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.07
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.02,
+      "std": 0.05
+    },
+    "oil_price_change": {
+      "mean": 0.03,
+      "std": 0.04
+    },
+    "usd_krw_change": {
+      "mean": -0.01,
+      "std": 0.02
+    },
+    "vix_change": {
+      "mean": -0.02,
+      "std": 0.03
+    },
+    "materials_sector_return": {
+      "mean": 0.04,
+      "std": 0.06
+    }
+  }
+]

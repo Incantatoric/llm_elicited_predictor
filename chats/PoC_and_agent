@@ -1,0 +1,26 @@
+OK. Here is what I think we should do. We need two PoCs.
+
+1. The first PoC is what you have done. I think ideally it should do the following:
+I really like your analysis. I think we should add two models: uninformed prior and naive LLM in-context learning.
+Uninformed prior is what you know. We use N(0,1) mostly other than intercept I think as used in the paper and do the same analysis there.
+Naive LLM is basically giving the LLM the entire csv as text and let him guess.
+And finally I want you to compare their results.
+
+For this, I want you to have a look at @collector.py again. If I run the file, it gives me data up to July 2025. Problem is, today is July 18th so it won't give me the last day of July. I want you to fix the last date as 2025 June. And we can probably use 6 months as testing data and 24 or 36 months as the training data. I will leave the details to you; just report me after you have made your code.
+
+Another concern is that I don't know whether using last date is the best practice. Maybe should we use mean stock price for that month and then apply pct_change or whatever? I will again leave this to you.
+
+The key point is that this PoC will convince the executives that this process actually makes sense and perform well compared to other methods. Of course we should be honest in our work here.
+
+2. For now we don't need an agent. I only gave you the goal because I wanted you to not lose sight of it. But for now, we can suppose that through the conversation the variables and length of the data were fixed as in @collector.py . And assume the user has not given us any feedback so we use autoelicit method using the LLM.
+
+So what the PoC will do is to give all the potential answers that this agent will provide. Plots, thoughts, analysis, explainability, everything. What this PoC will do is to showcase how this agent could help executives in explaining stuff. Also, we will need to show how this agent can predict based on scenarios and how it can help executives. You could be creative and we could discuss further on these topics.
+
+3. The most important part is that these PoCs should be separate from the agent codebase. You probably need to restructure the project structure if necessary.
+
+For now, I want you to focus on 1 and 3. You have created great stuff and I want to move it to first PoC.
+
+Do not code yet.
+- What are your general and professional critical thoughts on these claims of mine?
+- Do you think you have to change the code structures in this project to contain PoCs and agents separately? What are your thoughts?
+- In order to implement 1, how you would approach this problem? What are your thoughts?

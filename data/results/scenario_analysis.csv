@@ -1,0 +1,5 @@
+,scenario,expected_return,std_dev,prob_positive,var_95,scenario_inputs
+0,Bull Market,-0.019496235571408917,0.15889622071744375,0.4475133333333333,-0.2793149750871174,"{'kospi_return': 0.1, 'oil_price_change': -0.05, 'usd_krw_change': 0.05, 'vix_change': -0.2, 'materials_sector_return': 0.08}"
+1,Bear Market,-0.019341993227512205,0.15894372728673356,0.44747333333333333,-0.2781646758248576,"{'kospi_return': -0.1, 'oil_price_change': 0.1, 'usd_krw_change': -0.05, 'vix_change': 0.3, 'materials_sector_return': -0.08}"
+2,Oil Shock,-0.019450205366311184,0.1590014403122316,0.44872,-0.2785761760908658,"{'kospi_return': 0.0, 'oil_price_change': 0.2, 'usd_krw_change': 0.0, 'vix_change': 0.1, 'materials_sector_return': 0.0}"
+3,Export Boost,-0.0195419437226062,0.15929155514558213,0.44725333333333334,-0.27867466251925205,"{'kospi_return': 0.05, 'oil_price_change': 0.0, 'usd_krw_change': 0.1, 'vix_change': 0.0, 'materials_sector_return': 0.05}"

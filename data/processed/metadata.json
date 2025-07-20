@@ -1,0 +1,42 @@
+{
+  "feature_names": [
+    "kospi_return",
+    "oil_price_change",
+    "usd_krw_change",
+    "vix_change",
+    "materials_sector_return"
+  ],
+  "standardization_stats": {
+    "kospi_return": {
+      "mean": 0.008942185383813993,
+      "std": 0.05622863217658292
+    },
+    "oil_price_change": {
+      "mean": -0.008394890015899076,
+      "std": 0.07014765459678063
+    },
+    "usd_krw_change": {
+      "mean": 0.0023445103446303244,
+      "std": 0.03266275621900801
+    },
+    "vix_change": {
+      "mean": 0.01168230545383127,
+      "std": 0.18749788328803285
+    },
+    "materials_sector_return": {
+      "mean": 0.0074679665610308255,
+      "std": 0.056116844473209936
+    }
+  },
+  "data_shape": {
+    "features": [
+      36,
+      5
+    ],
+    "target": 36
+  },
+  "date_range": {
+    "start": "2022-08-31",
+    "end": "2025-07-31"
+  }
+}

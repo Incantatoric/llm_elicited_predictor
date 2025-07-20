@@ -1,0 +1,21 @@
+{
+  "model_fit": {
+    "mae": 0.1245085249963533,
+    "rmse": 0.19872839935247924,
+    "r_squared": 0.31019371742409296,
+    "coverage_95": 0.8333333333333334
+  },
+  "data_summary": {
+    "total_points": 36,
+    "training_points": 30,
+    "test_points": 6,
+    "features": [
+      "kospi_return",
+      "oil_price_change",
+      "usd_krw_change",
+      "vix_change",
+      "materials_sector_return"
+    ]
+  },
+  "prior_count": 100
+}
