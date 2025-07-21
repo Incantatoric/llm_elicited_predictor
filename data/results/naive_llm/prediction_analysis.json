@@ -1,13 +1,13 @@
 {
-  "mean_prediction": 0.011366666666666669,
-  "std_prediction": 0.0887258169243253,
-  "min_prediction": -0.10581999999999998,
-  "max_prediction": 0.14474,
-  "n_positive": 3,
-  "n_negative": 3,
-  "prediction_range": 0.25056,
-  "prediction_std_mean": 0.04239300170794722,
-  "prediction_std_std": 0.010246204477267887,
-  "coverage_90": 0.16666666666666666,
-  "avg_prediction_interval_width": 0.1220233333333333
+  "mean_prediction": 0.11335781084656087,
+  "std_prediction": 0.11011276400159434,
+  "min_prediction": -0.02737777777777778,
+  "max_prediction": 0.23574285714285717,
+  "n_positive": 4,
+  "n_negative": 2,
+  "prediction_range": 0.263120634920635,
+  "prediction_std_mean": 0.07865383120142799,
+  "prediction_std_std": 0.032652260612617355,
+  "coverage_90": 0.3333333333333333,
+  "avg_prediction_interval_width": 0.19694166666666665
 }

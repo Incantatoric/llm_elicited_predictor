@@ -1,9 +1,9 @@
 {
   "method": "bayesian_elicited",
-  "timestamp": "2025-07-21T09:57:48.776995",
+  "timestamp": "2025-07-21T13:46:22.154701",
   "data_summary": {
-    "total_points": 36,
-    "training_points": 30,
+    "total_points": 35,
+    "training_points": 29,
     "test_points": 6,
     "features": [
       "kospi_return",
@@ -14,11 +14,11 @@
     ]
   },
   "metrics": {
-    "mae": 0.1245085249963533,
-    "rmse": 0.19872839935247924,
-    "r_squared": 0.31019371742409296,
-    "directional_accuracy": 0.6666666666666666,
-    "coverage_95": 0.8333333333333334
+    "mae": 0.15112302467457292,
+    "rmse": 0.21599769445423786,
+    "r_squared": 0.1916090870024314,
+    "directional_accuracy": 0.8333333333333334,
+    "coverage_95": 0.6666666666666666
   },
   "bayesian_info": {
     "prior_type": "elicited",

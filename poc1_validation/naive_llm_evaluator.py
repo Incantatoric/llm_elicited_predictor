@@ -50,60 +50,87 @@ class NaiveLLMEvaluator(BaseEvaluator):
         print(f"✓ Results formatted for evaluation")
     
     def _prepare_context(self) -> str:
-        """Prepare training data as context for LLM"""
+        """Prepare ALL training data as context for LLM"""
         
-        # Create a sample of training data for context (limit to avoid token limits)
-        n_context = min(50, len(self.X_train))  # Use up to 50 examples
-        indices = np.random.choice(len(self.X_train), n_context, replace=False)
-        
-        # Handle DataFrame indexing properly
-        context_X = self.X_train.iloc[indices]  # Use .iloc for integer indexing
-        context_y = self.y_train.iloc[indices]  # Use .iloc for integer indexing
-        
-        # Format as text
+        # Use ALL training data (no random sampling)
         context_lines = []
-        context_lines.append("Historical Data (Features -> Return):")
-        context_lines.append("=" * 50)
+        context_lines.append("Historical 한화솔루션 Stock Return Data (2022-2024):")
+        context_lines.append("Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return")
+        context_lines.append("=" * 100)
         
-        for i in range(len(context_X)):
-            feature_str = ", ".join([f"{name}={val:.3f}" for name, val in 
-                                   zip(self.feature_names, context_X.iloc[i])])
-            context_lines.append(f"{feature_str} -> Return: {context_y.iloc[i]:.4f}")
+        # Add all training data chronologically
+        for i in range(len(self.X_train)):
+            date = self.X_train.index[i]
+            features = self.X_train.iloc[i]
+            target = self.y_train.iloc[i]
+            
+            # Format as CSV-like row
+            feature_vals = ",".join([f"{val:.4f}" for val in features])
+            context_lines.append(f"{date},{feature_vals},{target:.4f}")
         
         return "\n".join(context_lines)
     
     def _generate_predictions(self, context: str) -> tuple:
-        """Generate predictions using LLM"""
+        """Generate predictions using LLM with reasoning"""
         
         predictions = []
         all_samples = []
+        self.detailed_predictions = {}  # Store detailed predictions with reasoning
         
         # Generate multiple samples for uncertainty quantification
         n_samples = 10  # Generate multiple predictions per test point
         
         for i in range(len(self.X_test)):
-            print(f"Predicting for test sample {i+1}/{len(self.X_test)}")
+            test_date = self.X_test.index[i]
+            print(f"Predicting for {test_date} ({i+1}/{len(self.X_test)})")
             
             # Format test features  
             test_features = self.X_test.iloc[i]
-            feature_str = ", ".join([f"{name}={val:.3f}" for name, val in 
-                                   zip(self.feature_names, test_features)])
+            feature_vals = ",".join([f"{val:.4f}" for val in test_features])
             
             # Generate multiple samples for this test point
             samples = []
+            sample_details = []
+            
             for sample_idx in range(n_samples):
-                prediction = self._get_single_prediction(context, feature_str, sample_idx)
-                if prediction is not None:
+                result = self._get_single_prediction_with_reasoning(context, test_date, feature_vals, sample_idx)
+                if result is not None:
+                    prediction, reasoning = result
                     samples.append(prediction)
+                    sample_details.append({
+                        'prediction': prediction,
+                        'reasoning': reasoning
+                    })
             
             if len(samples) > 0:
                 # Use mean as point prediction
-                predictions.append(np.mean(samples))
+                mean_pred = np.mean(samples)
+                predictions.append(mean_pred)
                 all_samples.append(samples)
+                
+                # Store detailed results
+                self.detailed_predictions[test_date] = {
+                    'features': {
+                        'kospi_return': test_features['kospi_return'],
+                        'oil_price_change': test_features['oil_price_change'],
+                        'usd_krw_change': test_features['usd_krw_change'],
+                        'vix_change': test_features['vix_change'],
+                        'materials_sector_return': test_features['materials_sector_return']
+                    },
+                    'samples': sample_details,
+                    'mean_prediction': mean_pred,
+                    'std_prediction': np.std(samples) if len(samples) > 1 else 0.0
+                }
             else:
                 # Fallback if all predictions failed
                 predictions.append(0.0)
                 all_samples.append([0.0])
+                self.detailed_predictions[test_date] = {
+                    'features': dict(zip(self.feature_names, test_features)),
+                    'samples': [{'prediction': 0.0, 'reasoning': 'Prediction failed'}],
+                    'mean_prediction': 0.0,
+                    'std_prediction': 0.0
+                }
         
         return np.array(predictions), all_samples
     
@@ -132,24 +159,26 @@ class NaiveLLMEvaluator(BaseEvaluator):
             self.results_df['Lower_5%'] = lower_bounds
             self.results_df['Upper_95%'] = upper_bounds
     
-    def _get_single_prediction(self, context: str, feature_str: str, sample_idx: int) -> float:
-        """Get a single prediction from LLM"""
+    def _get_single_prediction_with_reasoning(self, context: str, test_date: str, feature_vals: str, sample_idx: int):
+        """Get a single prediction with reasoning from LLM"""
         
-        prompt = f"""You are a financial analyst predicting stock returns for 한화솔루션.
+        prompt = f"""You are a financial analyst predicting 한화솔루션 stock returns.
 
 {context}
 
-Based on this historical pattern, predict the return for:
-{feature_str}
+Based on the historical patterns above, predict the stock return for {test_date}:
+{test_date},{feature_vals},???
 
 Instructions:
-- Analyze the relationship between features and returns
-- Consider the patterns in the historical data
-- Respond with ONLY a numerical value (e.g., 0.0234 for 2.34% return)
-- Be precise to 4 decimal places
-- Negative values indicate losses, positive indicate gains
+1. First, provide your reasoning by analyzing each economic factor
+2. Then provide your final numerical prediction
+3. Format your response as:
 
-Prediction:"""
+REASONING: [Your step-by-step analysis of each factor and overall market conditions]
+
+PREDICTION: [numerical value only, e.g., 0.0234 for 2.34% return, precise to 4 decimal places]
+
+Your analysis:"""
 
         try:
             response = self.client.chat.completions.create(
@@ -158,24 +187,49 @@ Prediction:"""
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.3,  # Some randomness for sampling
-                max_tokens=50
+                max_tokens=300
             )
             
-            # Extract numerical value
-            prediction_text = response.choices[0].message.content.strip()
+            # Extract reasoning and prediction
+            response_text = response.choices[0].message.content.strip()
             
-            # Try to extract number from response
-            import re
-            numbers = re.findall(r'-?\d+\.?\d*', prediction_text)
+            # Parse response
+            reasoning = ""
+            prediction = None
             
-            if numbers:
-                return float(numbers[0])
+            lines = response_text.split('\n')
+            current_section = None
+            
+            for line in lines:
+                line = line.strip()
+                if line.startswith('REASONING:'):
+                    current_section = 'reasoning'
+                    reasoning = line.replace('REASONING:', '').strip()
+                elif line.startswith('PREDICTION:'):
+                    current_section = 'prediction'
+                    pred_text = line.replace('PREDICTION:', '').strip()
+                    # Extract number
+                    import re
+                    numbers = re.findall(r'-?\d+\.?\d*', pred_text)
+                    if numbers:
+                        prediction = float(numbers[0])
+                elif current_section == 'reasoning' and line:
+                    reasoning += " " + line
+                elif current_section == 'prediction' and line:
+                    # Try to extract number from additional prediction lines
+                    import re
+                    numbers = re.findall(r'-?\d+\.?\d*', line)
+                    if numbers and prediction is None:
+                        prediction = float(numbers[0])
+            
+            if prediction is not None:
+                return prediction, reasoning
             else:
-                logger.warning(f"Could not extract number from: {prediction_text}")
+                logger.warning(f"Could not extract prediction from: {response_text}")
                 return None
                 
         except Exception as e:
-            logger.error(f"LLM prediction failed (sample {sample_idx}): {e}")
+            logger.error(f"LLM prediction failed for {test_date} (sample {sample_idx}): {e}")
             return None
     
     def calculate_uncertainty_metrics(self):
@@ -353,7 +407,18 @@ Prediction:"""
         with open(self.results_dir / "summary.json", 'w') as f:
             json.dump(summary, f, indent=2)
         
+        # Save detailed predictions with reasoning
+        self._save_detailed_predictions()
+        
         print(f"\n✅ NAIVE LLM EVALUATION COMPLETE")
         print(f"Results saved to: {self.results_dir}")
         
-        return self.metrics 
+        return self.metrics
+    
+    def _save_detailed_predictions(self):
+        """Save detailed predictions with reasoning to JSON"""
+        if hasattr(self, 'detailed_predictions') and self.detailed_predictions:
+            detailed_path = self.results_dir / "detailed_predictions_with_reasoning.json"
+            with open(detailed_path, 'w') as f:
+                json.dump(self.detailed_predictions, f, indent=2)
+            print(f"✓ Detailed predictions with reasoning saved to detailed_predictions_with_reasoning.json")

@@ -215,7 +215,7 @@ class HanwhaDataCollector:
         return X_standardized, standardization_stats
     
     def save_data_to_files(self, X: pd.DataFrame, y: pd.Series, feature_names: List[str], 
-                       standardization_stats: dict, data_dir: str = "data"):
+                       standardization_stats: dict, data_dir: str = "data/processed"):
         """
         Save processed data to files
         """

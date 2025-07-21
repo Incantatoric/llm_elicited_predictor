@@ -1,9 +1,9 @@
 {
   "method": "bayesian_uninformed",
-  "timestamp": "2025-07-21T09:58:12.909274",
+  "timestamp": "2025-07-21T13:46:56.473349",
   "data_summary": {
-    "total_points": 36,
-    "training_points": 30,
+    "total_points": 35,
+    "training_points": 29,
     "test_points": 6,
     "features": [
       "kospi_return",
@@ -14,11 +14,11 @@
     ]
   },
   "metrics": {
-    "mae": 0.12417824470063256,
-    "rmse": 0.20064521186832296,
-    "r_squared": 0.2968226438618,
-    "directional_accuracy": 0.6666666666666666,
-    "coverage_95": 0.8333333333333334
+    "mae": 0.15110658893520512,
+    "rmse": 0.21584486726810467,
+    "r_squared": 0.1927526214516403,
+    "directional_accuracy": 1.0,
+    "coverage_95": 0.6666666666666666
   },
   "bayesian_info": {
     "prior_type": "uninformed",

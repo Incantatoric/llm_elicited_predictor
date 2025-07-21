@@ -1,0 +1,96 @@
+{
+  "scenario_names": [
+    "Bull Market Recovery",
+    "Market Correction",
+    "Baseline Continuation",
+    "Geopolitical Tensions"
+  ],
+  "decision_matrix": {
+    "scenarios": [
+      "Bull Market Recovery",
+      "Market Correction",
+      "Baseline Continuation",
+      "Geopolitical Tensions"
+    ],
+    "expected_returns": [
+      0.011078065664673833,
+      -0.018253918881530155,
+      -0.008541198065209156,
+      -0.032457670497601974
+    ],
+    "risk_levels": [
+      "HIGH",
+      "MEDIUM",
+      "HIGH",
+      "HIGH"
+    ],
+    "probabilities_positive": [
+      0.53425,
+      0.43025,
+      0.4665,
+      0.38625
+    ],
+    "key_opportunities": [
+      "Oil Price Movement provides significant upside potential",
+      "Limited opportunities identified",
+      "Korean Stock Market Performance provides significant upside potential",
+      "Limited opportunities identified"
+    ],
+    "key_risks": [
+      "High uncertainty requires risk management attention",
+      "Korean Stock Market Performance poses significant downside risk",
+      "High uncertainty requires risk management attention",
+      "High uncertainty requires risk management attention"
+    ],
+    "recommended_actions": [
+      "Implement risk mitigation strategies and maintain flexibility",
+      "Continue standard business operations with regular monitoring",
+      "Implement risk mitigation strategies and maintain flexibility",
+      "Implement risk mitigation strategies and maintain flexibility"
+    ]
+  },
+  "portfolio_recommendations": [
+    {
+      "category": "risk_management",
+      "priority": "critical",
+      "recommendation": "Strengthen enterprise risk management framework",
+      "rationale": "3/4 scenarios show high uncertainty requiring enhanced risk controls",
+      "scenarios_supporting": [
+        "Bull Market Recovery",
+        "Baseline Continuation",
+        "Geopolitical Tensions"
+      ],
+      "confidence": "high",
+      "implementation_cost": "medium",
+      "expected_impact": "high"
+    },
+    {
+      "category": "operational",
+      "priority": "high",
+      "recommendation": "Implement comprehensive oil price hedging strategy",
+      "rationale": "High oil price sensitivity across multiple scenarios requires active hedging",
+      "scenarios_supporting": [
+        "Bull Market Recovery",
+        "Geopolitical Tensions"
+      ],
+      "confidence": "high",
+      "implementation_cost": "medium",
+      "expected_impact": "medium"
+    },
+    {
+      "category": "financial",
+      "priority": "medium",
+      "recommendation": "Consider market-neutral positioning strategies",
+      "rationale": "High market sensitivity suggests benefit from reducing market beta exposure",
+      "scenarios_supporting": [
+        "Bull Market Recovery",
+        "Market Correction",
+        "Baseline Continuation"
+      ],
+      "confidence": "medium",
+      "implementation_cost": "high",
+      "expected_impact": "medium"
+    }
+  ],
+  "generated_at": "2025-07-21T11:12:20.524281"
+}

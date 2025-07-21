@@ -1,0 +1,68 @@
+
+====================================================================================================
+🏢 한화솔루션 EXECUTIVE DECISION SUPPORT DASHBOARD
+====================================================================================================
+
+📋 EXECUTIVE SUMMARY
+--------------------------------------------------
+Analysis of 4 strategic scenarios reveals:
+• Expected Return Range: -3.2% to +1.1%
+• Average Probability of Gains: 45.4%
+• Strategic Position: DEFENSIVE
+• Risk Profile: 3/4 scenarios require heightened risk management
+
+📊 SCENARIO COMPARISON MATRIX
+--------------------------------------------------
+Scenario                  Expected   Risk     Prob+    Key Opportunity                    
+Return                    Level    Gains   
+------------------------------------------------------------------------------------------
+Bull Market Recovery         +1.1% HIGH        53.4% Oil Price Movement provides signif...
+Market Correction            -1.8% MEDIUM      43.0% Limited opportunities identified   
+Baseline Continuation        -0.9% HIGH        46.7% Korean Stock Market Performance pr...
+Geopolitical Tensions        -3.2% HIGH        38.6% Limited opportunities identified   
+
+🎯 STRATEGIC RECOMMENDATIONS (Priority Order)
+--------------------------------------------------
+1. 🔴 🛡️ Strengthen enterprise risk management framework
+   💡 Rationale: 3/4 scenarios show high uncertainty requiring enhanced risk controls
+   📊 Supporting Scenarios: Bull Market Recovery, Baseline Continuation, Geopolitical Tensions
+   🎲 Confidence: HIGH | 💸 Cost: MEDIUM | 📈 Impact: HIGH
+2. 🟠 ⚙️ Implement comprehensive oil price hedging strategy
+   💡 Rationale: High oil price sensitivity across multiple scenarios requires active hedging
+   📊 Supporting Scenarios: Bull Market Recovery, Geopolitical Tensions
+   🎲 Confidence: HIGH | 💸 Cost: MEDIUM | 📈 Impact: MEDIUM
+3. 🟡 💰 Consider market-neutral positioning strategies
+   💡 Rationale: High market sensitivity suggests benefit from reducing market beta exposure
+   📊 Supporting Scenarios: Bull Market Recovery, Market Correction, Baseline Continuation
+   🎲 Confidence: MEDIUM | 💸 Cost: HIGH | 📈 Impact: MEDIUM
+
+🔍 KEY INSIGHTS & IMPLICATIONS
+--------------------------------------------------
+🏆 BEST CASE: Bull Market Recovery
+   Expected Return: +1.1%
+   Key Opportunity: Oil Price Movement provides significant upside potential
+   
+📉 WORST CASE: Geopolitical Tensions
+   Expected Return: -3.2%
+   Key Risk: High uncertainty requires risk management attention
+
+🎲 PROBABILITY ASSESSMENT:
+   Average Chance of Gains: 45.4%
+   Range of Outcomes: 4.4% spread indicates MODERATE scenario sensitivity
+
+⚡ IMMEDIATE ACTIONS REQUIRED
+--------------------------------------------------
+1. 🔴 CRITICAL: Strengthen enterprise risk management framework
+2. 🟠 HIGH: Implement comprehensive oil price hedging strategy
+
+📅 MONITORING & REVIEW FRAMEWORK
+--------------------------------------------------
+• Daily: Market conditions, oil prices, currency movements
+• Weekly: Scenario probability reassessment  
+• Monthly: Strategic position review
+• Quarterly: Full scenario model update
+
+====================================================================================================
+Dashboard Generated: 2025-07-21 11:12:20
+Model: Bayesian with LLM-Elicited Priors | Scenarios: 4 | Confidence: HIGH
+====================================================================================================
