@@ -33,9 +33,13 @@ class HanwhaDataCollector:
             'materials_etf': 'XLB'          # Materials Sector ETF (as chemical proxy)
         }
         
-        # Date range: 3 years of data ending June 2025
+        # Date range: exactly 36 months ending June 2025 for proper 30 train + 6 test split
         self.end_date = datetime(2025, 6, 30)
-        self.start_date = self.end_date - timedelta(days=3*365)
+        
+        # Calculate start date for exactly 36 months of monthly returns
+        # We need 37 months of price data to get 36 months of returns (pct_change drops first)
+        # 37 months ending June 2025 means starting from June 2022
+        self.start_date = datetime(2022, 6, 1)  # Start from June 1 to capture June 30 month-end
         
         logger.info(f"Initialized HanwhaDataCollector")
         logger.info(f"Date range: {self.start_date.date()} to {self.end_date.date()}")

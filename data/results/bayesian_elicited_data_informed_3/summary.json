@@ -1,0 +1,29 @@
+{
+  "method": "bayesian_elicited_data_informed_3",
+  "timestamp": "2025-07-22T17:11:54.639199",
+  "data_summary": {
+    "total_points": 36,
+    "training_points": 30,
+    "test_points": 6,
+    "features": [
+      "kospi_return",
+      "oil_price_change",
+      "usd_krw_change",
+      "vix_change",
+      "materials_sector_return"
+    ]
+  },
+  "metrics": {
+    "mae": 0.14854462890269798,
+    "rmse": 0.21330009226750982,
+    "r_squared": 0.21167503795596276,
+    "directional_accuracy": 1.0,
+    "coverage_95": 0.6666666666666666
+  },
+  "bayesian_info": {
+    "prior_type": "elicited",
+    "prior_folder": "data_informed_3",
+    "n_priors": 9,
+    "n_parameters": 6
+  }
+}

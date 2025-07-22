@@ -172,11 +172,15 @@ Based on the historical patterns above, predict the stock return for {test_date}
 Instructions:
 1. First, provide your reasoning by analyzing each economic factor
 2. Then provide your final numerical prediction
-3. Format your response as:
+3. Respond in JSON format with these exact keys:
 
-REASONING: [Your step-by-step analysis of each factor and overall market conditions]
+{{
+  "prediction": 0.0234,
+  "reasoning": "Your step-by-step analysis of each factor and overall market conditions"
+}}
 
-PREDICTION: [numerical value only, e.g., 0.0234 for 2.34% return, precise to 4 decimal places]
+The prediction should be a numerical value (e.g., 0.0234 for 2.34% return, precise to 4 decimal places).
+The reasoning should be your detailed analysis of the economic factors and market conditions.
 
 Your analysis:"""
 
@@ -187,49 +191,39 @@ Your analysis:"""
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.3,  # Some randomness for sampling
-                max_tokens=300
+                max_tokens=1000,
+                response_format={"type": "json_object"}  # Force JSON response
             )
             
-            # Extract reasoning and prediction
+            # Parse JSON response
             response_text = response.choices[0].message.content.strip()
             
-            # Parse response
-            reasoning = ""
-            prediction = None
-            
-            lines = response_text.split('\n')
-            current_section = None
-            
-            for line in lines:
-                line = line.strip()
-                if line.startswith('REASONING:'):
-                    current_section = 'reasoning'
-                    reasoning = line.replace('REASONING:', '').strip()
-                elif line.startswith('PREDICTION:'):
-                    current_section = 'prediction'
-                    pred_text = line.replace('PREDICTION:', '').strip()
-                    # Extract number
-                    import re
-                    numbers = re.findall(r'-?\d+\.?\d*', pred_text)
-                    if numbers:
-                        prediction = float(numbers[0])
-                elif current_section == 'reasoning' and line:
-                    reasoning += " " + line
-                elif current_section == 'prediction' and line:
-                    # Try to extract number from additional prediction lines
-                    import re
-                    numbers = re.findall(r'-?\d+\.?\d*', line)
-                    if numbers and prediction is None:
-                        prediction = float(numbers[0])
-            
-            if prediction is not None:
-                return prediction, reasoning
-            else:
-                logger.warning(f"Could not extract prediction from: {response_text}")
+            try:
+                response_json = json.loads(response_text)
+                prediction = response_json.get("prediction")
+                reasoning = response_json.get("reasoning", "")
+                
+                if prediction is not None:
+                    # Validate prediction is reasonable (between -100% and +100%)
+                    prediction = float(prediction)
+                    if abs(prediction) > 1.0:
+                        logger.warning(f"Prediction {prediction} seems unreasonable (>100%), scaling down")
+                        if prediction > 1000:  # Likely confused with year/date
+                            prediction = prediction / 10000  # Convert 2025 -> 0.2025
+                        elif prediction > 100:  # Likely percentage instead of decimal
+                            prediction = prediction / 100   # Convert 5.0 -> 0.05
+                    
+                    return prediction, reasoning
+                else:
+                    logger.warning(f"No prediction key found in JSON response: {response_text}")
+                    return None
+                    
+            except json.JSONDecodeError as e:
+                logger.warning(f"Could not parse JSON response: {response_text}, Error: {e}")
                 return None
                 
         except Exception as e:
-            logger.error(f"LLM prediction failed for {test_date} (sample {sample_idx}): {e}")
+            logger.error(f"Error getting prediction: {e}")
             return None
     
     def calculate_uncertainty_metrics(self):
@@ -367,7 +361,7 @@ Your analysis:"""
         
         plt.tight_layout()
         plt.savefig(self.results_dir / 'llm_predictions.png', dpi=300, bbox_inches='tight')
-        plt.show()
+        plt.close()  # Close figure to free memory
         
         print(f"✓ LLM plots saved to llm_predictions.png")
     

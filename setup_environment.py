@@ -88,7 +88,7 @@ def check_prior_files():
     """Check if LLM-elicited prior files exist"""
     print("\n🧠 Checking LLM prior files...")
     
-    priors_dir = Path('data/priors')
+    priors_dir = Path('data/priors/expert_10')
     if not priors_dir.exists():
         print(f"❌ Priors directory not found: {priors_dir}")
         print("Run prior elicitation first: python main.py")

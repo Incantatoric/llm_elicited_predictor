@@ -1,0 +1,719 @@
+HISTORICAL DATA FOR REGRESSION COEFFICIENT PRIOR ASSESSMENT:
+The following data shows 30 months of historical relationships between
+economic variables and Hanwha Solutions stock returns.
+You are going to use this data to generate mean and std for each regression coefficient priors in a very specific JSON format(mean = expected correlation strength, std = confidence level).
+Later these normal distributions with different means and std will be added to create the prior distribution for the coefficients
+VARIABLE EXPLANATIONS:
+• kospi_return: Monthly % change in Korean KOSPI stock index
+• oil_price_change: Monthly % change in crude oil prices
+• usd_krw_change: Monthly % change in USD/KRW exchange rate
+• vix_change: Monthly % change in VIX volatility index
+• materials_sector_return: Monthly % change in materials sector index
+• hanwha_stock: Monthly % return of Hanwha Solutions stock
+All variables are standardized (z-score) with mean=0, std=1 for historical period.
+Data represents end-of-month values from July 2022 to January 2025.
+HISTORICAL DATA:
+Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return
+2022-07-31,0.7477,-0.8016,-0.2031,-1.3475,0.9419,0.1557
+2022-08-31,-0.0120,-1.1469,1.2514,1.0859,-0.7592,0.2009
+2022-09-30,-2.4467,-1.4344,1.7634,1.1347,-1.7868,-0.1027
+2022-10-31,0.9819,1.4015,-0.2307,-0.9564,1.4310,0.0000
+2022-11-30,1.2305,-0.8242,-2.1201,-1.0768,1.9214,0.0869
+2022-12-31,-1.8658,0.1005,-1.5512,0.2580,-1.1188,-0.1618
+2023-01-31,1.3439,-0.0931,-0.7466,-0.5588,1.4394,0.0628
+2023-02-28,-0.2516,-0.1744,2.1087,0.3307,-0.7327,-0.0897
+2023-03-31,0.3118,-0.1015,-0.5555,-0.5166,-0.3213,0.1659
+2023-04-30,0.0161,0.3584,0.9634,-0.8249,-0.1687,-0.1071
+2023-05-31,0.3776,-1.4463,-0.4961,0.6925,-1.3565,-0.0667
+2023-06-30,-0.2505,0.6800,0.0275,-1.2720,1.7982,-0.0547
+2023-07-31,0.3137,2.3814,-1.2202,-0.0011,0.4625,-0.1052
+2023-08-31,-0.6789,0.4672,1.1688,-0.0391,-0.7274,-0.0370
+2023-09-30,-0.7982,1.3599,0.5253,1.4911,-0.9882,-0.1838
+2023-10-31,-1.5159,-1.3677,-0.0435,0.1670,-0.7042,-0.0370
+2023-11-30,1.8540,-0.7302,-1.4034,-1.5065,1.3292,0.1658
+2023-12-31,0.6830,-0.6496,-0.2983,-0.2047,0.6539,0.1919
+2024-01-31,-1.2247,0.9788,1.1191,0.7740,-0.8318,-0.1557
+2024-02-29,0.8766,0.5999,0.1073,-0.3591,1.0042,-0.1679
+2024-03-31,0.5426,1.0370,0.3282,-0.1670,0.9973,0.0216
+2024-04-30,-0.5161,-0.0591,0.5144,1.0345,-0.9542,-0.0970
+2024-05-31,-0.5297,-0.6998,-0.0267,-0.9196,0.4330,0.2285
+2024-06-30,0.9301,0.9856,0.2034,-0.2087,-0.6845,-0.1224
+2024-07-31,-0.3346,-0.4770,-0.1246,1.6155,0.6210,-0.1033
+2024-08-31,-0.7823,-0.6386,-1.1677,-0.4468,0.2654,0.0424
+2024-09-30,-0.7023,-0.8812,-0.5897,0.5810,0.3291,0.0019
+2024-10-31,-0.4170,0.3771,1.5698,1.9740,-0.6922,-0.1702
+2024-11-30,-0.8614,-0.1054,0.2783,-2.1740,0.1181,-0.2438
+2024-12-31,-0.5715,0.9236,1.5780,1.4556,-2.0446,0.0129
+Based on these historical patterns and your own knowledge, provide mean and std for each coefficient prior into the exact JSON format below.
+We need COEFFICIENT PRIORS for linear regression, not data generation.
+Based on the historical patterns shown above, I need your expert assessment of regression coefficient priors for predicting Hanwha Solutions monthly stock returns. My dataset has these standardized features: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return"]. For each feature, analyze how it affects Hanwha Solutions stock returns and provide your regression coefficient priors.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+    "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+HISTORICAL DATA FOR REGRESSION COEFFICIENT PRIOR ASSESSMENT:
+The following data shows 30 months of historical relationships between
+economic variables and Hanwha Solutions stock returns.
+You are going to use this data to generate mean and std for each regression coefficient priors in a very specific JSON format(mean = expected correlation strength, std = confidence level).
+Later these normal distributions with different means and std will be added to create the prior distribution for the coefficients
+VARIABLE EXPLANATIONS:
+• kospi_return: Monthly % change in Korean KOSPI stock index
+• oil_price_change: Monthly % change in crude oil prices
+• usd_krw_change: Monthly % change in USD/KRW exchange rate
+• vix_change: Monthly % change in VIX volatility index
+• materials_sector_return: Monthly % change in materials sector index
+• hanwha_stock: Monthly % return of Hanwha Solutions stock
+All variables are standardized (z-score) with mean=0, std=1 for historical period.
+Data represents end-of-month values from July 2022 to January 2025.
+HISTORICAL DATA:
+Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return
+2022-07-31,0.7477,-0.8016,-0.2031,-1.3475,0.9419,0.1557
+2022-08-31,-0.0120,-1.1469,1.2514,1.0859,-0.7592,0.2009
+2022-09-30,-2.4467,-1.4344,1.7634,1.1347,-1.7868,-0.1027
+2022-10-31,0.9819,1.4015,-0.2307,-0.9564,1.4310,0.0000
+2022-11-30,1.2305,-0.8242,-2.1201,-1.0768,1.9214,0.0869
+2022-12-31,-1.8658,0.1005,-1.5512,0.2580,-1.1188,-0.1618
+2023-01-31,1.3439,-0.0931,-0.7466,-0.5588,1.4394,0.0628
+2023-02-28,-0.2516,-0.1744,2.1087,0.3307,-0.7327,-0.0897
+2023-03-31,0.3118,-0.1015,-0.5555,-0.5166,-0.3213,0.1659
+2023-04-30,0.0161,0.3584,0.9634,-0.8249,-0.1687,-0.1071
+2023-05-31,0.3776,-1.4463,-0.4961,0.6925,-1.3565,-0.0667
+2023-06-30,-0.2505,0.6800,0.0275,-1.2720,1.7982,-0.0547
+2023-07-31,0.3137,2.3814,-1.2202,-0.0011,0.4625,-0.1052
+2023-08-31,-0.6789,0.4672,1.1688,-0.0391,-0.7274,-0.0370
+2023-09-30,-0.7982,1.3599,0.5253,1.4911,-0.9882,-0.1838
+2023-10-31,-1.5159,-1.3677,-0.0435,0.1670,-0.7042,-0.0370
+2023-11-30,1.8540,-0.7302,-1.4034,-1.5065,1.3292,0.1658
+2023-12-31,0.6830,-0.6496,-0.2983,-0.2047,0.6539,0.1919
+2024-01-31,-1.2247,0.9788,1.1191,0.7740,-0.8318,-0.1557
+2024-02-29,0.8766,0.5999,0.1073,-0.3591,1.0042,-0.1679
+2024-03-31,0.5426,1.0370,0.3282,-0.1670,0.9973,0.0216
+2024-04-30,-0.5161,-0.0591,0.5144,1.0345,-0.9542,-0.0970
+2024-05-31,-0.5297,-0.6998,-0.0267,-0.9196,0.4330,0.2285
+2024-06-30,0.9301,0.9856,0.2034,-0.2087,-0.6845,-0.1224
+2024-07-31,-0.3346,-0.4770,-0.1246,1.6155,0.6210,-0.1033
+2024-08-31,-0.7823,-0.6386,-1.1677,-0.4468,0.2654,0.0424
+2024-09-30,-0.7023,-0.8812,-0.5897,0.5810,0.3291,0.0019
+2024-10-31,-0.4170,0.3771,1.5698,1.9740,-0.6922,-0.1702
+2024-11-30,-0.8614,-0.1054,0.2783,-2.1740,0.1181,-0.2438
+2024-12-31,-0.5715,0.9236,1.5780,1.4556,-2.0446,0.0129
+Based on these historical patterns and your own knowledge, provide mean and std for each coefficient prior into the exact JSON format below.
+We need COEFFICIENT PRIORS for linear regression, not data generation.
+Given the historical patterns depicted previously, I require your expert evaluation of regression coefficient priors to forecast monthly stock returns of Hanwha Solutions. The standardized features in my dataset include: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return"]. Please assess the impact of each feature on the stock returns of Hanwha Solutions and furnish your regression coefficient priors.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+    "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+HISTORICAL DATA FOR REGRESSION COEFFICIENT PRIOR ASSESSMENT:
+The following data shows 30 months of historical relationships between
+economic variables and Hanwha Solutions stock returns.
+You are going to use this data to generate mean and std for each regression coefficient priors in a very specific JSON format(mean = expected correlation strength, std = confidence level).
+Later these normal distributions with different means and std will be added to create the prior distribution for the coefficients
+VARIABLE EXPLANATIONS:
+• kospi_return: Monthly % change in Korean KOSPI stock index
+• oil_price_change: Monthly % change in crude oil prices
+• usd_krw_change: Monthly % change in USD/KRW exchange rate
+• vix_change: Monthly % change in VIX volatility index
+• materials_sector_return: Monthly % change in materials sector index
+• hanwha_stock: Monthly % return of Hanwha Solutions stock
+All variables are standardized (z-score) with mean=0, std=1 for historical period.
+Data represents end-of-month values from July 2022 to January 2025.
+HISTORICAL DATA:
+Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return
+2022-07-31,0.7477,-0.8016,-0.2031,-1.3475,0.9419,0.1557
+2022-08-31,-0.0120,-1.1469,1.2514,1.0859,-0.7592,0.2009
+2022-09-30,-2.4467,-1.4344,1.7634,1.1347,-1.7868,-0.1027
+2022-10-31,0.9819,1.4015,-0.2307,-0.9564,1.4310,0.0000
+2022-11-30,1.2305,-0.8242,-2.1201,-1.0768,1.9214,0.0869
+2022-12-31,-1.8658,0.1005,-1.5512,0.2580,-1.1188,-0.1618
+2023-01-31,1.3439,-0.0931,-0.7466,-0.5588,1.4394,0.0628
+2023-02-28,-0.2516,-0.1744,2.1087,0.3307,-0.7327,-0.0897
+2023-03-31,0.3118,-0.1015,-0.5555,-0.5166,-0.3213,0.1659
+2023-04-30,0.0161,0.3584,0.9634,-0.8249,-0.1687,-0.1071
+2023-05-31,0.3776,-1.4463,-0.4961,0.6925,-1.3565,-0.0667
+2023-06-30,-0.2505,0.6800,0.0275,-1.2720,1.7982,-0.0547
+2023-07-31,0.3137,2.3814,-1.2202,-0.0011,0.4625,-0.1052
+2023-08-31,-0.6789,0.4672,1.1688,-0.0391,-0.7274,-0.0370
+2023-09-30,-0.7982,1.3599,0.5253,1.4911,-0.9882,-0.1838
+2023-10-31,-1.5159,-1.3677,-0.0435,0.1670,-0.7042,-0.0370
+2023-11-30,1.8540,-0.7302,-1.4034,-1.5065,1.3292,0.1658
+2023-12-31,0.6830,-0.6496,-0.2983,-0.2047,0.6539,0.1919
+2024-01-31,-1.2247,0.9788,1.1191,0.7740,-0.8318,-0.1557
+2024-02-29,0.8766,0.5999,0.1073,-0.3591,1.0042,-0.1679
+2024-03-31,0.5426,1.0370,0.3282,-0.1670,0.9973,0.0216
+2024-04-30,-0.5161,-0.0591,0.5144,1.0345,-0.9542,-0.0970
+2024-05-31,-0.5297,-0.6998,-0.0267,-0.9196,0.4330,0.2285
+2024-06-30,0.9301,0.9856,0.2034,-0.2087,-0.6845,-0.1224
+2024-07-31,-0.3346,-0.4770,-0.1246,1.6155,0.6210,-0.1033
+2024-08-31,-0.7823,-0.6386,-1.1677,-0.4468,0.2654,0.0424
+2024-09-30,-0.7023,-0.8812,-0.5897,0.5810,0.3291,0.0019
+2024-10-31,-0.4170,0.3771,1.5698,1.9740,-0.6922,-0.1702
+2024-11-30,-0.8614,-0.1054,0.2783,-2.1740,0.1181,-0.2438
+2024-12-31,-0.5715,0.9236,1.5780,1.4556,-2.0446,0.0129
+Based on these historical patterns and your own knowledge, provide mean and std for each coefficient prior into the exact JSON format below.
+We need COEFFICIENT PRIORS for linear regression, not data generation.
+Drawing from the patterns observed in the historical data above, I seek your expert judgment on regression coefficient priors essential for predicting monthly stock returns of Hanwha Solutions. The standardized features present in my dataset encompass: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return"]. Evaluate the influence of each feature on the stock returns of Hanwha Solutions and share your regression coefficient priors.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+    "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+HISTORICAL DATA FOR REGRESSION COEFFICIENT PRIOR ASSESSMENT:
+The following data shows 30 months of historical relationships between
+economic variables and Hanwha Solutions stock returns.
+You are going to use this data to generate mean and std for each regression coefficient priors in a very specific JSON format(mean = expected correlation strength, std = confidence level).
+Later these normal distributions with different means and std will be added to create the prior distribution for the coefficients
+VARIABLE EXPLANATIONS:
+• kospi_return: Monthly % change in Korean KOSPI stock index
+• oil_price_change: Monthly % change in crude oil prices
+• usd_krw_change: Monthly % change in USD/KRW exchange rate
+• vix_change: Monthly % change in VIX volatility index
+• materials_sector_return: Monthly % change in materials sector index
+• hanwha_stock: Monthly % return of Hanwha Solutions stock
+All variables are standardized (z-score) with mean=0, std=1 for historical period.
+Data represents end-of-month values from July 2022 to January 2025.
+HISTORICAL DATA:
+Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return
+2022-07-31,0.7477,-0.8016,-0.2031,-1.3475,0.9419,0.1557
+2022-08-31,-0.0120,-1.1469,1.2514,1.0859,-0.7592,0.2009
+2022-09-30,-2.4467,-1.4344,1.7634,1.1347,-1.7868,-0.1027
+2022-10-31,0.9819,1.4015,-0.2307,-0.9564,1.4310,0.0000
+2022-11-30,1.2305,-0.8242,-2.1201,-1.0768,1.9214,0.0869
+2022-12-31,-1.8658,0.1005,-1.5512,0.2580,-1.1188,-0.1618
+2023-01-31,1.3439,-0.0931,-0.7466,-0.5588,1.4394,0.0628
+2023-02-28,-0.2516,-0.1744,2.1087,0.3307,-0.7327,-0.0897
+2023-03-31,0.3118,-0.1015,-0.5555,-0.5166,-0.3213,0.1659
+2023-04-30,0.0161,0.3584,0.9634,-0.8249,-0.1687,-0.1071
+2023-05-31,0.3776,-1.4463,-0.4961,0.6925,-1.3565,-0.0667
+2023-06-30,-0.2505,0.6800,0.0275,-1.2720,1.7982,-0.0547
+2023-07-31,0.3137,2.3814,-1.2202,-0.0011,0.4625,-0.1052
+2023-08-31,-0.6789,0.4672,1.1688,-0.0391,-0.7274,-0.0370
+2023-09-30,-0.7982,1.3599,0.5253,1.4911,-0.9882,-0.1838
+2023-10-31,-1.5159,-1.3677,-0.0435,0.1670,-0.7042,-0.0370
+2023-11-30,1.8540,-0.7302,-1.4034,-1.5065,1.3292,0.1658
+2023-12-31,0.6830,-0.6496,-0.2983,-0.2047,0.6539,0.1919
+2024-01-31,-1.2247,0.9788,1.1191,0.7740,-0.8318,-0.1557
+2024-02-29,0.8766,0.5999,0.1073,-0.3591,1.0042,-0.1679
+2024-03-31,0.5426,1.0370,0.3282,-0.1670,0.9973,0.0216
+2024-04-30,-0.5161,-0.0591,0.5144,1.0345,-0.9542,-0.0970
+2024-05-31,-0.5297,-0.6998,-0.0267,-0.9196,0.4330,0.2285
+2024-06-30,0.9301,0.9856,0.2034,-0.2087,-0.6845,-0.1224
+2024-07-31,-0.3346,-0.4770,-0.1246,1.6155,0.6210,-0.1033
+2024-08-31,-0.7823,-0.6386,-1.1677,-0.4468,0.2654,0.0424
+2024-09-30,-0.7023,-0.8812,-0.5897,0.5810,0.3291,0.0019
+2024-10-31,-0.4170,0.3771,1.5698,1.9740,-0.6922,-0.1702
+2024-11-30,-0.8614,-0.1054,0.2783,-2.1740,0.1181,-0.2438
+2024-12-31,-0.5715,0.9236,1.5780,1.4556,-2.0446,0.0129
+Based on these historical patterns and your own knowledge, provide mean and std for each coefficient prior into the exact JSON format below.
+We need COEFFICIENT PRIORS for linear regression, not data generation.
+In light of the historical trends illustrated above, I am in need of your expert assessment concerning regression coefficient priors aimed at forecasting monthly stock returns of Hanwha Solutions. The standardized features within my dataset consist of: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return"]. Conduct an analysis on how each feature impacts the stock returns of Hanwha Solutions and provide your regression coefficient priors accordingly.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+    "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+HISTORICAL DATA FOR REGRESSION COEFFICIENT PRIOR ASSESSMENT:
+The following data shows 30 months of historical relationships between
+economic variables and Hanwha Solutions stock returns.
+You are going to use this data to generate mean and std for each regression coefficient priors in a very specific JSON format(mean = expected correlation strength, std = confidence level).
+Later these normal distributions with different means and std will be added to create the prior distribution for the coefficients
+VARIABLE EXPLANATIONS:
+• kospi_return: Monthly % change in Korean KOSPI stock index
+• oil_price_change: Monthly % change in crude oil prices
+• usd_krw_change: Monthly % change in USD/KRW exchange rate
+• vix_change: Monthly % change in VIX volatility index
+• materials_sector_return: Monthly % change in materials sector index
+• hanwha_stock: Monthly % return of Hanwha Solutions stock
+All variables are standardized (z-score) with mean=0, std=1 for historical period.
+Data represents end-of-month values from July 2022 to January 2025.
+HISTORICAL DATA:
+Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return
+2022-07-31,0.7477,-0.8016,-0.2031,-1.3475,0.9419,0.1557
+2022-08-31,-0.0120,-1.1469,1.2514,1.0859,-0.7592,0.2009
+2022-09-30,-2.4467,-1.4344,1.7634,1.1347,-1.7868,-0.1027
+2022-10-31,0.9819,1.4015,-0.2307,-0.9564,1.4310,0.0000
+2022-11-30,1.2305,-0.8242,-2.1201,-1.0768,1.9214,0.0869
+2022-12-31,-1.8658,0.1005,-1.5512,0.2580,-1.1188,-0.1618
+2023-01-31,1.3439,-0.0931,-0.7466,-0.5588,1.4394,0.0628
+2023-02-28,-0.2516,-0.1744,2.1087,0.3307,-0.7327,-0.0897
+2023-03-31,0.3118,-0.1015,-0.5555,-0.5166,-0.3213,0.1659
+2023-04-30,0.0161,0.3584,0.9634,-0.8249,-0.1687,-0.1071
+2023-05-31,0.3776,-1.4463,-0.4961,0.6925,-1.3565,-0.0667
+2023-06-30,-0.2505,0.6800,0.0275,-1.2720,1.7982,-0.0547
+2023-07-31,0.3137,2.3814,-1.2202,-0.0011,0.4625,-0.1052
+2023-08-31,-0.6789,0.4672,1.1688,-0.0391,-0.7274,-0.0370
+2023-09-30,-0.7982,1.3599,0.5253,1.4911,-0.9882,-0.1838
+2023-10-31,-1.5159,-1.3677,-0.0435,0.1670,-0.7042,-0.0370
+2023-11-30,1.8540,-0.7302,-1.4034,-1.5065,1.3292,0.1658
+2023-12-31,0.6830,-0.6496,-0.2983,-0.2047,0.6539,0.1919
+2024-01-31,-1.2247,0.9788,1.1191,0.7740,-0.8318,-0.1557
+2024-02-29,0.8766,0.5999,0.1073,-0.3591,1.0042,-0.1679
+2024-03-31,0.5426,1.0370,0.3282,-0.1670,0.9973,0.0216
+2024-04-30,-0.5161,-0.0591,0.5144,1.0345,-0.9542,-0.0970
+2024-05-31,-0.5297,-0.6998,-0.0267,-0.9196,0.4330,0.2285
+2024-06-30,0.9301,0.9856,0.2034,-0.2087,-0.6845,-0.1224
+2024-07-31,-0.3346,-0.4770,-0.1246,1.6155,0.6210,-0.1033
+2024-08-31,-0.7823,-0.6386,-1.1677,-0.4468,0.2654,0.0424
+2024-09-30,-0.7023,-0.8812,-0.5897,0.5810,0.3291,0.0019
+2024-10-31,-0.4170,0.3771,1.5698,1.9740,-0.6922,-0.1702
+2024-11-30,-0.8614,-0.1054,0.2783,-2.1740,0.1181,-0.2438
+2024-12-31,-0.5715,0.9236,1.5780,1.4556,-2.0446,0.0129
+Based on these historical patterns and your own knowledge, provide mean and std for each coefficient prior into the exact JSON format below.
+We need COEFFICIENT PRIORS for linear regression, not data generation.
+Evaluating the historical patterns displayed above, I am requesting your expert evaluation of regression coefficient priors for the prediction of monthly stock returns for Hanwha Solutions. The standardized features available in my dataset are: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return"]. Assess the influence of each feature on the stock returns of Hanwha Solutions and present your regression coefficient priors.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+    "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+HISTORICAL DATA FOR REGRESSION COEFFICIENT PRIOR ASSESSMENT:
+The following data shows 30 months of historical relationships between
+economic variables and Hanwha Solutions stock returns.
+You are going to use this data to generate mean and std for each regression coefficient priors in a very specific JSON format(mean = expected correlation strength, std = confidence level).
+Later these normal distributions with different means and std will be added to create the prior distribution for the coefficients
+VARIABLE EXPLANATIONS:
+• kospi_return: Monthly % change in Korean KOSPI stock index
+• oil_price_change: Monthly % change in crude oil prices
+• usd_krw_change: Monthly % change in USD/KRW exchange rate
+• vix_change: Monthly % change in VIX volatility index
+• materials_sector_return: Monthly % change in materials sector index
+• hanwha_stock: Monthly % return of Hanwha Solutions stock
+All variables are standardized (z-score) with mean=0, std=1 for historical period.
+Data represents end-of-month values from July 2022 to January 2025.
+HISTORICAL DATA:
+Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return
+2022-07-31,0.7477,-0.8016,-0.2031,-1.3475,0.9419,0.1557
+2022-08-31,-0.0120,-1.1469,1.2514,1.0859,-0.7592,0.2009
+2022-09-30,-2.4467,-1.4344,1.7634,1.1347,-1.7868,-0.1027
+2022-10-31,0.9819,1.4015,-0.2307,-0.9564,1.4310,0.0000
+2022-11-30,1.2305,-0.8242,-2.1201,-1.0768,1.9214,0.0869
+2022-12-31,-1.8658,0.1005,-1.5512,0.2580,-1.1188,-0.1618
+2023-01-31,1.3439,-0.0931,-0.7466,-0.5588,1.4394,0.0628
+2023-02-28,-0.2516,-0.1744,2.1087,0.3307,-0.7327,-0.0897
+2023-03-31,0.3118,-0.1015,-0.5555,-0.5166,-0.3213,0.1659
+2023-04-30,0.0161,0.3584,0.9634,-0.8249,-0.1687,-0.1071
+2023-05-31,0.3776,-1.4463,-0.4961,0.6925,-1.3565,-0.0667
+2023-06-30,-0.2505,0.6800,0.0275,-1.2720,1.7982,-0.0547
+2023-07-31,0.3137,2.3814,-1.2202,-0.0011,0.4625,-0.1052
+2023-08-31,-0.6789,0.4672,1.1688,-0.0391,-0.7274,-0.0370
+2023-09-30,-0.7982,1.3599,0.5253,1.4911,-0.9882,-0.1838
+2023-10-31,-1.5159,-1.3677,-0.0435,0.1670,-0.7042,-0.0370
+2023-11-30,1.8540,-0.7302,-1.4034,-1.5065,1.3292,0.1658
+2023-12-31,0.6830,-0.6496,-0.2983,-0.2047,0.6539,0.1919
+2024-01-31,-1.2247,0.9788,1.1191,0.7740,-0.8318,-0.1557
+2024-02-29,0.8766,0.5999,0.1073,-0.3591,1.0042,-0.1679
+2024-03-31,0.5426,1.0370,0.3282,-0.1670,0.9973,0.0216
+2024-04-30,-0.5161,-0.0591,0.5144,1.0345,-0.9542,-0.0970
+2024-05-31,-0.5297,-0.6998,-0.0267,-0.9196,0.4330,0.2285
+2024-06-30,0.9301,0.9856,0.2034,-0.2087,-0.6845,-0.1224
+2024-07-31,-0.3346,-0.4770,-0.1246,1.6155,0.6210,-0.1033
+2024-08-31,-0.7823,-0.6386,-1.1677,-0.4468,0.2654,0.0424
+2024-09-30,-0.7023,-0.8812,-0.5897,0.5810,0.3291,0.0019
+2024-10-31,-0.4170,0.3771,1.5698,1.9740,-0.6922,-0.1702
+2024-11-30,-0.8614,-0.1054,0.2783,-2.1740,0.1181,-0.2438
+2024-12-31,-0.5715,0.9236,1.5780,1.4556,-2.0446,0.0129
+Based on these historical patterns and your own knowledge, provide mean and std for each coefficient prior into the exact JSON format below.
+We need COEFFICIENT PRIORS for linear regression, not data generation.
+Based on the historical trends depicted above, I am seeking your expert analysis on regression coefficient priors necessary to predict monthly stock returns for Hanwha Solutions. My dataset includes these standardized features: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return"]. Please examine the impact of each feature on the stock returns of Hanwha Solutions and provide your regression coefficient priors.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+    "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+HISTORICAL DATA FOR REGRESSION COEFFICIENT PRIOR ASSESSMENT:
+The following data shows 30 months of historical relationships between
+economic variables and Hanwha Solutions stock returns.
+You are going to use this data to generate mean and std for each regression coefficient priors in a very specific JSON format(mean = expected correlation strength, std = confidence level).
+Later these normal distributions with different means and std will be added to create the prior distribution for the coefficients
+VARIABLE EXPLANATIONS:
+• kospi_return: Monthly % change in Korean KOSPI stock index
+• oil_price_change: Monthly % change in crude oil prices
+• usd_krw_change: Monthly % change in USD/KRW exchange rate
+• vix_change: Monthly % change in VIX volatility index
+• materials_sector_return: Monthly % change in materials sector index
+• hanwha_stock: Monthly % return of Hanwha Solutions stock
+All variables are standardized (z-score) with mean=0, std=1 for historical period.
+Data represents end-of-month values from July 2022 to January 2025.
+HISTORICAL DATA:
+Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return
+2022-07-31,0.7477,-0.8016,-0.2031,-1.3475,0.9419,0.1557
+2022-08-31,-0.0120,-1.1469,1.2514,1.0859,-0.7592,0.2009
+2022-09-30,-2.4467,-1.4344,1.7634,1.1347,-1.7868,-0.1027
+2022-10-31,0.9819,1.4015,-0.2307,-0.9564,1.4310,0.0000
+2022-11-30,1.2305,-0.8242,-2.1201,-1.0768,1.9214,0.0869
+2022-12-31,-1.8658,0.1005,-1.5512,0.2580,-1.1188,-0.1618
+2023-01-31,1.3439,-0.0931,-0.7466,-0.5588,1.4394,0.0628
+2023-02-28,-0.2516,-0.1744,2.1087,0.3307,-0.7327,-0.0897
+2023-03-31,0.3118,-0.1015,-0.5555,-0.5166,-0.3213,0.1659
+2023-04-30,0.0161,0.3584,0.9634,-0.8249,-0.1687,-0.1071
+2023-05-31,0.3776,-1.4463,-0.4961,0.6925,-1.3565,-0.0667
+2023-06-30,-0.2505,0.6800,0.0275,-1.2720,1.7982,-0.0547
+2023-07-31,0.3137,2.3814,-1.2202,-0.0011,0.4625,-0.1052
+2023-08-31,-0.6789,0.4672,1.1688,-0.0391,-0.7274,-0.0370
+2023-09-30,-0.7982,1.3599,0.5253,1.4911,-0.9882,-0.1838
+2023-10-31,-1.5159,-1.3677,-0.0435,0.1670,-0.7042,-0.0370
+2023-11-30,1.8540,-0.7302,-1.4034,-1.5065,1.3292,0.1658
+2023-12-31,0.6830,-0.6496,-0.2983,-0.2047,0.6539,0.1919
+2024-01-31,-1.2247,0.9788,1.1191,0.7740,-0.8318,-0.1557
+2024-02-29,0.8766,0.5999,0.1073,-0.3591,1.0042,-0.1679
+2024-03-31,0.5426,1.0370,0.3282,-0.1670,0.9973,0.0216
+2024-04-30,-0.5161,-0.0591,0.5144,1.0345,-0.9542,-0.0970
+2024-05-31,-0.5297,-0.6998,-0.0267,-0.9196,0.4330,0.2285
+2024-06-30,0.9301,0.9856,0.2034,-0.2087,-0.6845,-0.1224
+2024-07-31,-0.3346,-0.4770,-0.1246,1.6155,0.6210,-0.1033
+2024-08-31,-0.7823,-0.6386,-1.1677,-0.4468,0.2654,0.0424
+2024-09-30,-0.7023,-0.8812,-0.5897,0.5810,0.3291,0.0019
+2024-10-31,-0.4170,0.3771,1.5698,1.9740,-0.6922,-0.1702
+2024-11-30,-0.8614,-0.1054,0.2783,-2.1740,0.1181,-0.2438
+2024-12-31,-0.5715,0.9236,1.5780,1.4556,-2.0446,0.0129
+Based on these historical patterns and your own knowledge, provide mean and std for each coefficient prior into the exact JSON format below.
+We need COEFFICIENT PRIORS for linear regression, not data generation.
+Considering the historical patterns indicated above, I am looking for your expert assessment of regression coefficient priors for forecasting monthly stock returns of Hanwha Solutions. The standardized features in my dataset are: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return"]. Analyze the effect of each feature on Hanwha Solutions stock returns and share your regression coefficient priors.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+    "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+HISTORICAL DATA FOR REGRESSION COEFFICIENT PRIOR ASSESSMENT:
+The following data shows 30 months of historical relationships between
+economic variables and Hanwha Solutions stock returns.
+You are going to use this data to generate mean and std for each regression coefficient priors in a very specific JSON format(mean = expected correlation strength, std = confidence level).
+Later these normal distributions with different means and std will be added to create the prior distribution for the coefficients
+VARIABLE EXPLANATIONS:
+• kospi_return: Monthly % change in Korean KOSPI stock index
+• oil_price_change: Monthly % change in crude oil prices
+• usd_krw_change: Monthly % change in USD/KRW exchange rate
+• vix_change: Monthly % change in VIX volatility index
+• materials_sector_return: Monthly % change in materials sector index
+• hanwha_stock: Monthly % return of Hanwha Solutions stock
+All variables are standardized (z-score) with mean=0, std=1 for historical period.
+Data represents end-of-month values from July 2022 to January 2025.
+HISTORICAL DATA:
+Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return
+2022-07-31,0.7477,-0.8016,-0.2031,-1.3475,0.9419,0.1557
+2022-08-31,-0.0120,-1.1469,1.2514,1.0859,-0.7592,0.2009
+2022-09-30,-2.4467,-1.4344,1.7634,1.1347,-1.7868,-0.1027
+2022-10-31,0.9819,1.4015,-0.2307,-0.9564,1.4310,0.0000
+2022-11-30,1.2305,-0.8242,-2.1201,-1.0768,1.9214,0.0869
+2022-12-31,-1.8658,0.1005,-1.5512,0.2580,-1.1188,-0.1618
+2023-01-31,1.3439,-0.0931,-0.7466,-0.5588,1.4394,0.0628
+2023-02-28,-0.2516,-0.1744,2.1087,0.3307,-0.7327,-0.0897
+2023-03-31,0.3118,-0.1015,-0.5555,-0.5166,-0.3213,0.1659
+2023-04-30,0.0161,0.3584,0.9634,-0.8249,-0.1687,-0.1071
+2023-05-31,0.3776,-1.4463,-0.4961,0.6925,-1.3565,-0.0667
+2023-06-30,-0.2505,0.6800,0.0275,-1.2720,1.7982,-0.0547
+2023-07-31,0.3137,2.3814,-1.2202,-0.0011,0.4625,-0.1052
+2023-08-31,-0.6789,0.4672,1.1688,-0.0391,-0.7274,-0.0370
+2023-09-30,-0.7982,1.3599,0.5253,1.4911,-0.9882,-0.1838
+2023-10-31,-1.5159,-1.3677,-0.0435,0.1670,-0.7042,-0.0370
+2023-11-30,1.8540,-0.7302,-1.4034,-1.5065,1.3292,0.1658
+2023-12-31,0.6830,-0.6496,-0.2983,-0.2047,0.6539,0.1919
+2024-01-31,-1.2247,0.9788,1.1191,0.7740,-0.8318,-0.1557
+2024-02-29,0.8766,0.5999,0.1073,-0.3591,1.0042,-0.1679
+2024-03-31,0.5426,1.0370,0.3282,-0.1670,0.9973,0.0216
+2024-04-30,-0.5161,-0.0591,0.5144,1.0345,-0.9542,-0.0970
+2024-05-31,-0.5297,-0.6998,-0.0267,-0.9196,0.4330,0.2285
+2024-06-30,0.9301,0.9856,0.2034,-0.2087,-0.6845,-0.1224
+2024-07-31,-0.3346,-0.4770,-0.1246,1.6155,0.6210,-0.1033
+2024-08-31,-0.7823,-0.6386,-1.1677,-0.4468,0.2654,0.0424
+2024-09-30,-0.7023,-0.8812,-0.5897,0.5810,0.3291,0.0019
+2024-10-31,-0.4170,0.3771,1.5698,1.9740,-0.6922,-0.1702
+2024-11-30,-0.8614,-0.1054,0.2783,-2.1740,0.1181,-0.2438
+2024-12-31,-0.5715,0.9236,1.5780,1.4556,-2.0446,0.0129
+Based on these historical patterns and your own knowledge, provide mean and std for each coefficient prior into the exact JSON format below.
+We need COEFFICIENT PRIORS for linear regression, not data generation.
+Reflecting on the historical data patterns shown above, I need your expert evaluation of regression coefficient priors to predict monthly stock returns for Hanwha Solutions. My dataset comprises these standardized features: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return"]. Evaluate how each feature influences Hanwha Solutions stock returns and provide your regression coefficient priors.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+    "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+HISTORICAL DATA FOR REGRESSION COEFFICIENT PRIOR ASSESSMENT:
+The following data shows 30 months of historical relationships between
+economic variables and Hanwha Solutions stock returns.
+You are going to use this data to generate mean and std for each regression coefficient priors in a very specific JSON format(mean = expected correlation strength, std = confidence level).
+Later these normal distributions with different means and std will be added to create the prior distribution for the coefficients
+VARIABLE EXPLANATIONS:
+• kospi_return: Monthly % change in Korean KOSPI stock index
+• oil_price_change: Monthly % change in crude oil prices
+• usd_krw_change: Monthly % change in USD/KRW exchange rate
+• vix_change: Monthly % change in VIX volatility index
+• materials_sector_return: Monthly % change in materials sector index
+• hanwha_stock: Monthly % return of Hanwha Solutions stock
+All variables are standardized (z-score) with mean=0, std=1 for historical period.
+Data represents end-of-month values from July 2022 to January 2025.
+HISTORICAL DATA:
+Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return
+2022-07-31,0.7477,-0.8016,-0.2031,-1.3475,0.9419,0.1557
+2022-08-31,-0.0120,-1.1469,1.2514,1.0859,-0.7592,0.2009
+2022-09-30,-2.4467,-1.4344,1.7634,1.1347,-1.7868,-0.1027
+2022-10-31,0.9819,1.4015,-0.2307,-0.9564,1.4310,0.0000
+2022-11-30,1.2305,-0.8242,-2.1201,-1.0768,1.9214,0.0869
+2022-12-31,-1.8658,0.1005,-1.5512,0.2580,-1.1188,-0.1618
+2023-01-31,1.3439,-0.0931,-0.7466,-0.5588,1.4394,0.0628
+2023-02-28,-0.2516,-0.1744,2.1087,0.3307,-0.7327,-0.0897
+2023-03-31,0.3118,-0.1015,-0.5555,-0.5166,-0.3213,0.1659
+2023-04-30,0.0161,0.3584,0.9634,-0.8249,-0.1687,-0.1071
+2023-05-31,0.3776,-1.4463,-0.4961,0.6925,-1.3565,-0.0667
+2023-06-30,-0.2505,0.6800,0.0275,-1.2720,1.7982,-0.0547
+2023-07-31,0.3137,2.3814,-1.2202,-0.0011,0.4625,-0.1052
+2023-08-31,-0.6789,0.4672,1.1688,-0.0391,-0.7274,-0.0370
+2023-09-30,-0.7982,1.3599,0.5253,1.4911,-0.9882,-0.1838
+2023-10-31,-1.5159,-1.3677,-0.0435,0.1670,-0.7042,-0.0370
+2023-11-30,1.8540,-0.7302,-1.4034,-1.5065,1.3292,0.1658
+2023-12-31,0.6830,-0.6496,-0.2983,-0.2047,0.6539,0.1919
+2024-01-31,-1.2247,0.9788,1.1191,0.7740,-0.8318,-0.1557
+2024-02-29,0.8766,0.5999,0.1073,-0.3591,1.0042,-0.1679
+2024-03-31,0.5426,1.0370,0.3282,-0.1670,0.9973,0.0216
+2024-04-30,-0.5161,-0.0591,0.5144,1.0345,-0.9542,-0.0970
+2024-05-31,-0.5297,-0.6998,-0.0267,-0.9196,0.4330,0.2285
+2024-06-30,0.9301,0.9856,0.2034,-0.2087,-0.6845,-0.1224
+2024-07-31,-0.3346,-0.4770,-0.1246,1.6155,0.6210,-0.1033
+2024-08-31,-0.7823,-0.6386,-1.1677,-0.4468,0.2654,0.0424
+2024-09-30,-0.7023,-0.8812,-0.5897,0.5810,0.3291,0.0019
+2024-10-31,-0.4170,0.3771,1.5698,1.9740,-0.6922,-0.1702
+2024-11-30,-0.8614,-0.1054,0.2783,-2.1740,0.1181,-0.2438
+2024-12-31,-0.5715,0.9236,1.5780,1.4556,-2.0446,0.0129
+Based on these historical patterns and your own knowledge, provide mean and std for each coefficient prior into the exact JSON format below.
+We need COEFFICIENT PRIORS for linear regression, not data generation.
+With reference to the historical patterns demonstrated above, I require your expert assessment of regression coefficient priors for the estimation of Hanwha Solutions monthly stock returns. The standardized features available in my dataset are: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return"]. Analyze the impact of each feature on Hanwha Solutions stock returns and offer your regression coefficient priors.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+    "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+HISTORICAL DATA FOR REGRESSION COEFFICIENT PRIOR ASSESSMENT:
+The following data shows 30 months of historical relationships between
+economic variables and Hanwha Solutions stock returns.
+You are going to use this data to generate mean and std for each regression coefficient priors in a very specific JSON format(mean = expected correlation strength, std = confidence level).
+Later these normal distributions with different means and std will be added to create the prior distribution for the coefficients
+VARIABLE EXPLANATIONS:
+• kospi_return: Monthly % change in Korean KOSPI stock index
+• oil_price_change: Monthly % change in crude oil prices
+• usd_krw_change: Monthly % change in USD/KRW exchange rate
+• vix_change: Monthly % change in VIX volatility index
+• materials_sector_return: Monthly % change in materials sector index
+• hanwha_stock: Monthly % return of Hanwha Solutions stock
+All variables are standardized (z-score) with mean=0, std=1 for historical period.
+Data represents end-of-month values from July 2022 to January 2025.
+HISTORICAL DATA:
+Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return
+2022-07-31,0.7477,-0.8016,-0.2031,-1.3475,0.9419,0.1557
+2022-08-31,-0.0120,-1.1469,1.2514,1.0859,-0.7592,0.2009
+2022-09-30,-2.4467,-1.4344,1.7634,1.1347,-1.7868,-0.1027
+2022-10-31,0.9819,1.4015,-0.2307,-0.9564,1.4310,0.0000
+2022-11-30,1.2305,-0.8242,-2.1201,-1.0768,1.9214,0.0869
+2022-12-31,-1.8658,0.1005,-1.5512,0.2580,-1.1188,-0.1618
+2023-01-31,1.3439,-0.0931,-0.7466,-0.5588,1.4394,0.0628
+2023-02-28,-0.2516,-0.1744,2.1087,0.3307,-0.7327,-0.0897
+2023-03-31,0.3118,-0.1015,-0.5555,-0.5166,-0.3213,0.1659
+2023-04-30,0.0161,0.3584,0.9634,-0.8249,-0.1687,-0.1071
+2023-05-31,0.3776,-1.4463,-0.4961,0.6925,-1.3565,-0.0667
+2023-06-30,-0.2505,0.6800,0.0275,-1.2720,1.7982,-0.0547
+2023-07-31,0.3137,2.3814,-1.2202,-0.0011,0.4625,-0.1052
+2023-08-31,-0.6789,0.4672,1.1688,-0.0391,-0.7274,-0.0370
+2023-09-30,-0.7982,1.3599,0.5253,1.4911,-0.9882,-0.1838
+2023-10-31,-1.5159,-1.3677,-0.0435,0.1670,-0.7042,-0.0370
+2023-11-30,1.8540,-0.7302,-1.4034,-1.5065,1.3292,0.1658
+2023-12-31,0.6830,-0.6496,-0.2983,-0.2047,0.6539,0.1919
+2024-01-31,-1.2247,0.9788,1.1191,0.7740,-0.8318,-0.1557
+2024-02-29,0.8766,0.5999,0.1073,-0.3591,1.0042,-0.1679
+2024-03-31,0.5426,1.0370,0.3282,-0.1670,0.9973,0.0216
+2024-04-30,-0.5161,-0.0591,0.5144,1.0345,-0.9542,-0.0970
+2024-05-31,-0.5297,-0.6998,-0.0267,-0.9196,0.4330,0.2285
+2024-06-30,0.9301,0.9856,0.2034,-0.2087,-0.6845,-0.1224
+2024-07-31,-0.3346,-0.4770,-0.1246,1.6155,0.6210,-0.1033
+2024-08-31,-0.7823,-0.6386,-1.1677,-0.4468,0.2654,0.0424
+2024-09-30,-0.7023,-0.8812,-0.5897,0.5810,0.3291,0.0019
+2024-10-31,-0.4170,0.3771,1.5698,1.9740,-0.6922,-0.1702
+2024-11-30,-0.8614,-0.1054,0.2783,-2.1740,0.1181,-0.2438
+2024-12-31,-0.5715,0.9236,1.5780,1.4556,-2.0446,0.0129
+Based on these historical patterns and your own knowledge, provide mean and std for each coefficient prior into the exact JSON format below.
+We need COEFFICIENT PRIORS for linear regression, not data generation.
+In view of the historical patterns portrayed above, I am soliciting your expert evaluation of regression coefficient priors to anticipate monthly stock returns for Hanwha Solutions. The standardized features included in my dataset are: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return"]. Investigate how each feature affects Hanwha Solutions stock returns and provide your regression coefficient priors.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+    "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+    "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object

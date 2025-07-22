@@ -270,7 +270,7 @@ def comprehensive_analysis():
     
     plt.tight_layout()
     plt.savefig(results_dir / 'model_diagnostics.png', dpi=300, bbox_inches='tight')
-    plt.show()
+    plt.close()  # Close figure to free memory
     
     print(f"Diagnostic plots saved to {results_dir}/model_diagnostics.png")
     

@@ -179,7 +179,7 @@ class BaseEvaluator(ABC):
         
         plt.tight_layout()
         plt.savefig(self.results_dir / 'basic_plots.png', dpi=300, bbox_inches='tight')
-        plt.show()
+        plt.close()  # Close figure to free memory
         
         print(f"✓ Basic plots saved to {self.results_dir}/basic_plots.png")
         

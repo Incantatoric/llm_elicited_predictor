@@ -1,0 +1,25 @@
+{
+  "base_system": "You are a Korean stock market expert specializing in Hanwha Solutions. You will analyze historical data patterns to provide expert parameter priors for linear regression models predicting Hanwha Solutions stock returns.",
+  "base_user": "Based on the historical patterns shown above, I need your expert assessment of regression coefficient priors for predicting Hanwha Solutions monthly stock returns. My dataset has these standardized features: [\"kospi_return\", \"oil_price_change\", \"usd_krw_change\", \"vix_change\", \"materials_sector_return\"]. For each feature, analyze how it affects Hanwha Solutions stock returns and provide your regression coefficient priors.",
+  "system_rephrasings_raw": "1. IMPORTANT: You need to maintain the following components in EACH version:\n1. Any JSON formatting directives\n2. Any particular response format specifications\n3. Technical jargon and feature identifiers\n4. The primary task explanation\n\nRephrased text 1: Your expertise lies in the Korean stock market with a specialization in Hanwha Solutions. Your task involves analyzing historical data trends to establish expert parameter priors for linear regression models used in predicting Hanwha Solutions stock returns.\n\n2. CRUCIAL: It is essential to retain the elements listed below in ALL iterations:\n1. Any JSON formatting guidelines\n2. Any specific response format prerequisites\n3. Technical terms and feature designations\n4. The core task description\n\nRewritten text 2: You possess expertise in the Korean stock market, focusing on Hanwha Solutions. Your responsibility includes examining past data trends to determine expert parameter priors for linear regression models that forecast Hanwha Solutions stock returns.",
+  "user_rephrasings_raw": "1. CRITICAL: You must maintain the following elements in ALL versions:\n1. Any JSON formatting instructions\n2. Any specific response format requirements\n3. Technical terms and feature names\n4. The core task description\n\nVariation 1: Given the historical patterns illustrated above, I request your expert evaluation of regression coefficient priors to forecast Hanwha Solutions' monthly stock returns. The dataset comprises standardized features: [\"kospi_return\", \"oil_price_change\", \"usd_krw_change\", \"vix_change\", \"materials_sector_return\"]. Please assess the impact of each feature on Hanwha Solutions stock returns and present your regression coefficient priors.\n\nVariation 2: Drawing from the historical data patterns depicted earlier, I seek your expert judgment on the regression coefficient priors needed to predict the monthly stock returns of Hanwha Solutions. The dataset includes standardized features: [\"kospi_return\", \"oil_price_change\", \"usd_krw_change\", \"vix_change\", \"materials_sector_return\"]. Analyze the influence of each feature on Hanwha Solutions stock returns and share your regression coefficient priors.",
+  "feature_names": [
+    "kospi_return",
+    "oil_price_change",
+    "usd_krw_change",
+    "vix_change",
+    "materials_sector_return"
+  ],
+  "n_variations": {
+    "system": 3,
+    "user": 3
+  },
+  "generation_timestamp": "2025-07-22 14:38:03",
+  "approach": "data_informed_3",
+  "include_data_context": true,
+  "target_combinations": 9,
+  "template_parts": {
+    "fixed_data_context_chars": 3065,
+    "fixed_json_format_chars": 1333
+  }
+}

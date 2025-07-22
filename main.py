@@ -33,7 +33,7 @@ def main():
         feature_names = metadata['feature_names']
     
     # 2. LLM Prior elicitation (if not already done)
-    if not Path("data/priors/hanwha_prior_0.npy").exists():
+    if not Path("data/priors/expert_10/hanwha_prior_0.npy").exists():
         print("Eliciting priors from LLM...")
         # Get API key from environment or user input
         api_key = os.getenv("OPENAI_API_KEY")

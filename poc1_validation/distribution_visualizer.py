@@ -107,7 +107,7 @@ class DistributionVisualizer:
         plt.tight_layout()
         plt.savefig(self.results_dir / f'parameter_distributions_{prior_type}.png', 
                    dpi=300, bbox_inches='tight')
-        plt.show()
+        plt.close()  # Close figure to free memory
         
         print(f"✓ Parameter distributions saved to parameter_distributions_{prior_type}.png")
     
@@ -183,7 +183,7 @@ class DistributionVisualizer:
         plt.tight_layout()
         plt.savefig(self.results_dir / f'prior_posterior_comparison_{prior_type}.png', 
                    dpi=300, bbox_inches='tight')
-        plt.show()
+        plt.close()  # Close figure to free memory
         
         print(f"✓ Comparison plots saved to prior_posterior_comparison_{prior_type}.png")
     
@@ -224,6 +224,6 @@ class DistributionVisualizer:
             plt.tight_layout()
             plt.savefig(self.results_dir / f'mixture_components_{param_name}.png', 
                        dpi=300, bbox_inches='tight')
-            plt.show()
+            plt.close()
             
             print(f"✓ Mixture components plot saved to mixture_components_{param_name}.png") 

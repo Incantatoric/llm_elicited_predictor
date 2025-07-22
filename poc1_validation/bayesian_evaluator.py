@@ -18,18 +18,26 @@ class BayesianEvaluator(BaseEvaluator):
     Evaluator for Bayesian methods (both elicited and uninformed priors)
     """
     
-    def __init__(self, prior_type: str = "elicited"):
+    def __init__(self, prior_type: str = "elicited", prior_folder: str = "expert_10"):
         """
         Initialize Bayesian evaluator
         
         Args:
             prior_type: Either "elicited" or "uninformed"
+            prior_folder: Folder name for priors (e.g., "expert_10", "data_informed_3", "data_informed_10")
         """
         if prior_type not in ["elicited", "uninformed"]:
             raise ValueError("prior_type must be 'elicited' or 'uninformed'")
             
         self.prior_type = prior_type
-        method_name = f"bayesian_{prior_type}"
+        self.prior_folder = prior_folder
+        
+        # Create method name that includes prior folder for better organization
+        if prior_type == "elicited":
+            method_name = f"bayesian_elicited_{prior_folder}"
+        else:
+            method_name = "bayesian_uninformed"  # Uninformed doesn't need folder
+        
         super().__init__(method_name)
         
         # Bayesian-specific attributes
@@ -41,14 +49,18 @@ class BayesianEvaluator(BaseEvaluator):
     def train_and_predict(self):
         """Train Bayesian model and generate predictions"""
         print(f"\n🧠 BAYESIAN MODEL TRAINING ({self.prior_type.upper()} PRIORS)")
+        if self.prior_type == "elicited":
+            print(f"Prior folder: {self.prior_folder}")
         print(f"{'-'*40}")
         
-        # Initialize model
-        self.model = HanwhaBayesianModel()
-        
+        # Initialize model with custom prior folder
         if self.prior_type == "elicited":
-            print(f"✓ Using LLM-elicited priors: {len(self.model.priors)} prior sets")
+            priors_path = f"data/priors/{self.prior_folder}"
+            self.model = HanwhaBayesianModel(priors_dir=priors_path)
+            print(f"✓ Using LLM-elicited priors from {self.prior_folder}: {len(self.model.priors)} prior sets")
         else:
+            # For uninformed priors, use default path (doesn't matter since we override)
+            self.model = HanwhaBayesianModel()
             # Create uninformed priors
             self._create_uninformed_priors()
             print(f"✓ Using uninformed priors: flat distributions")
@@ -313,7 +325,7 @@ class BayesianEvaluator(BaseEvaluator):
         
         plt.tight_layout()
         plt.savefig(self.results_dir / 'bayesian_diagnostics.png', dpi=300, bbox_inches='tight')
-        plt.show()
+        plt.close()  # Close figure to free memory
         
         print(f"✓ Bayesian plots saved to {self.results_dir}/bayesian_diagnostics.png")
     
@@ -370,6 +382,7 @@ class BayesianEvaluator(BaseEvaluator):
         # Update summary with Bayesian-specific info
         bayesian_summary = {
             'prior_type': self.prior_type,
+            'prior_folder': self.prior_folder,
             'n_priors': len(self.model.priors) if self.prior_type == "elicited" else 1,
             'n_parameters': len(self.posterior_summary) if self.posterior_summary else 0
         }

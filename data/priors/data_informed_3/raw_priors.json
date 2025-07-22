@@ -1,0 +1,245 @@
+[
+  {
+    "kospi_return": {
+      "mean": 0.2,
+      "std": 0.3,
+      "reasoning": "KOSPI stock index performance tends to have a positive impact on Hanwha Solutions stock returns, but the relationship is not very strong and can be influenced by other factors."
+    },
+    "oil_price_change": {
+      "mean": -0.1,
+      "std": 0.2,
+      "reasoning": "Crude oil price changes may have a slight negative impact on Hanwha Solutions stock returns, but the relationship is not very significant and can be volatile."
+    },
+    "usd_krw_change": {
+      "mean": 0.1,
+      "std": 0.2,
+      "reasoning": "USD/KRW exchange rate fluctuations could have a small positive effect on Hanwha Solutions stock returns, but the impact may vary due to other market dynamics."
+    },
+    "vix_change": {
+      "mean": -0.3,
+      "std": 0.4,
+      "reasoning": "VIX volatility index changes are expected to have a moderate negative influence on Hanwha Solutions stock returns, indicating a potential risk-off sentiment in the market."
+    },
+    "materials_sector_return": {
+      "mean": 0.3,
+      "std": 0.3,
+      "reasoning": "Materials sector index performance is likely to positively impact Hanwha Solutions stock returns, with a relatively stronger relationship compared to other variables due to sector-specific factors."
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.2,
+      "std": 0.5,
+      "reasoning": "KOSPI stock index is a key indicator of overall market sentiment in Korea, and a positive relationship with Hanwha Solutions stock returns is expected."
+    },
+    "oil_price_change": {
+      "mean": -0.1,
+      "std": 0.4,
+      "reasoning": "Crude oil prices can impact production costs for Hanwha Solutions, but the relationship may not be very strong due to hedging strategies."
+    },
+    "usd_krw_change": {
+      "mean": 0.1,
+      "std": 0.3,
+      "reasoning": "USD/KRW exchange rate fluctuations can affect Hanwha Solutions' competitiveness in global markets, but the impact may not be very volatile."
+    },
+    "vix_change": {
+      "mean": -0.3,
+      "std": 0.6,
+      "reasoning": "VIX volatility index reflects market uncertainty, and Hanwha Solutions stock returns may have an inverse relationship due to risk aversion."
+    },
+    "materials_sector_return": {
+      "mean": 0.3,
+      "std": 0.4,
+      "reasoning": "Materials sector performance can directly impact Hanwha Solutions as a materials company, hence a positive correlation is expected."
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.2,
+      "std": 0.5,
+      "reasoning": "KOSPI stock index is a key indicator of overall market sentiment in Korea, which can influence investor behavior towards Hanwha Solutions stock."
+    },
+    "oil_price_change": {
+      "mean": -0.1,
+      "std": 0.4,
+      "reasoning": "Crude oil prices impact production costs and profitability for Hanwha Solutions, affecting its stock returns."
+    },
+    "usd_krw_change": {
+      "mean": 0.1,
+      "std": 0.3,
+      "reasoning": "Exchange rate fluctuations can impact Hanwha Solutions' competitiveness in global markets and its export/import dynamics."
+    },
+    "vix_change": {
+      "mean": -0.3,
+      "std": 0.6,
+      "reasoning": "VIX volatility index reflects market uncertainty, which can lead to changes in investor risk appetite and impact Hanwha Solutions stock."
+    },
+    "materials_sector_return": {
+      "mean": 0.3,
+      "std": 0.4,
+      "reasoning": "Performance of the materials sector can indicate trends in raw material costs and demand, affecting Hanwha Solutions' production costs and profitability."
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.2,
+      "std": 0.7,
+      "reasoning": "Positive mean as Korean KOSPI stock index may have a moderate positive impact on Hanwha Solutions stock returns based on historical data."
+    },
+    "oil_price_change": {
+      "mean": -0.1,
+      "std": 0.6,
+      "reasoning": "Negative mean as crude oil prices may have a slight negative impact on Hanwha Solutions stock returns based on historical data."
+    },
+    "usd_krw_change": {
+      "mean": 0.1,
+      "std": 0.8,
+      "reasoning": "Positive mean as USD/KRW exchange rate may have a small positive impact on Hanwha Solutions stock returns based on historical data."
+    },
+    "vix_change": {
+      "mean": -0.3,
+      "std": 0.7,
+      "reasoning": "Negative mean as VIX volatility index may have a moderate negative impact on Hanwha Solutions stock returns based on historical data."
+    },
+    "materials_sector_return": {
+      "mean": 0.3,
+      "std": 0.6,
+      "reasoning": "Positive mean as materials sector index may have a moderate positive impact on Hanwha Solutions stock returns based on historical data."
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.2,
+      "std": 0.5,
+      "reasoning": "KOSPI stock index is a key indicator of the overall market sentiment and can have a significant impact on individual stock returns."
+    },
+    "oil_price_change": {
+      "mean": -0.1,
+      "std": 0.4,
+      "reasoning": "Crude oil prices can influence production costs and profitability for energy-intensive companies like Hanwha Solutions."
+    },
+    "usd_krw_change": {
+      "mean": 0.1,
+      "std": 0.3,
+      "reasoning": "Exchange rate fluctuations can affect the competitiveness of Hanwha Solutions in international markets."
+    },
+    "vix_change": {
+      "mean": -0.05,
+      "std": 0.2,
+      "reasoning": "Changes in market volatility, as measured by VIX, may signal shifts in investor sentiment impacting stock returns."
+    },
+    "materials_sector_return": {
+      "mean": 0.3,
+      "std": 0.6,
+      "reasoning": "Performance of the materials sector can reflect demand for industrial inputs which can impact Hanwha Solutions as a materials company."
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.2,
+      "std": 0.8,
+      "reasoning": "KOSPI stock index is a key indicator of the overall market sentiment and can have a significant impact on individual stock returns."
+    },
+    "oil_price_change": {
+      "mean": -0.1,
+      "std": 0.6,
+      "reasoning": "Oil prices can influence production costs and profitability of companies in the materials sector, affecting stock returns."
+    },
+    "usd_krw_change": {
+      "mean": 0.1,
+      "std": 0.7,
+      "reasoning": "Exchange rate fluctuations can impact the competitiveness of export-oriented companies like Hanwha Solutions."
+    },
+    "vix_change": {
+      "mean": -0.05,
+      "std": 0.4,
+      "reasoning": "VIX volatility index reflects market uncertainty and can affect investor behavior, leading to stock price fluctuations."
+    },
+    "materials_sector_return": {
+      "mean": 0.3,
+      "std": 0.9,
+      "reasoning": "Performance of the materials sector can directly impact Hanwha Solutions as it operates in this industry."
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.2,
+      "std": 0.8,
+      "reasoning": "Positive correlation expected based on historical data"
+    },
+    "oil_price_change": {
+      "mean": -0.1,
+      "std": 0.7,
+      "reasoning": "Negative correlation expected based on historical data"
+    },
+    "usd_krw_change": {
+      "mean": 0.1,
+      "std": 0.6,
+      "reasoning": "Weak positive correlation expected based on historical data"
+    },
+    "vix_change": {
+      "mean": -0.3,
+      "std": 0.9,
+      "reasoning": "Strong negative correlation expected based on historical data"
+    },
+    "materials_sector_return": {
+      "mean": 0.3,
+      "std": 0.7,
+      "reasoning": "Positive correlation expected based on historical data"
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.1,
+      "std": 0.8,
+      "reasoning": "Positive historical correlation with stock returns"
+    },
+    "oil_price_change": {
+      "mean": -0.2,
+      "std": 0.7,
+      "reasoning": "Negative historical correlation with stock returns"
+    },
+    "usd_krw_change": {
+      "mean": 0.05,
+      "std": 0.6,
+      "reasoning": "Weak historical correlation with stock returns"
+    },
+    "vix_change": {
+      "mean": -0.15,
+      "std": 0.9,
+      "reasoning": "Strong historical correlation with stock returns"
+    },
+    "materials_sector_return": {
+      "mean": 0.2,
+      "std": 0.7,
+      "reasoning": "Positive historical correlation with stock returns"
+    }
+  },
+  {
+    "kospi_return": {
+      "mean": 0.2,
+      "std": 0.8,
+      "reasoning": "Positive correlation with stock returns based on historical data"
+    },
+    "oil_price_change": {
+      "mean": -0.1,
+      "std": 0.7,
+      "reasoning": "Negative correlation with stock returns based on historical data"
+    },
+    "usd_krw_change": {
+      "mean": 0.1,
+      "std": 0.6,
+      "reasoning": "Weak positive correlation with stock returns based on historical data"
+    },
+    "vix_change": {
+      "mean": -0.2,
+      "std": 0.9,
+      "reasoning": "Strong negative correlation with stock returns based on historical data"
+    },
+    "materials_sector_return": {
+      "mean": 0.3,
+      "std": 0.7,
+      "reasoning": "Positive correlation with stock returns based on historical data"
+    }
+  }
+]

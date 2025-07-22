@@ -1,0 +1,1302 @@
+[
+  {
+    "elicitation_num": 1,
+    "system_idx": 0,
+    "user_idx": 0,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns due to the overall market sentiment.",
+      "oil_price_change": "Hanwha Solutions, being a chemical company, may experience lower stock returns with an increase in oil prices as it could lead to higher production costs.",
+      "usd_krw_change": "A depreciation of the Korean Won (increase in USD/KRW) might positively impact Hanwha Solutions stock returns by making exports more competitive.",
+      "vix_change": "An increase in market volatility (VIX) could lead to a decrease in Hanwha Solutions stock returns as investors seek safer assets.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, is likely to have stock returns positively influenced by the overall performance of the materials sector."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 2,
+    "system_idx": 0,
+    "user_idx": 1,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Oil price changes can impact the cost structure of chemical companies like Hanwha Solutions.",
+      "usd_krw_change": "Hanwha Solutions may benefit from a weaker Korean won due to export competitiveness.",
+      "vix_change": "Increased market volatility (VIX) may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Performance of the materials sector can influence investor sentiment towards chemical companies like Hanwha Solutions."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 3,
+    "system_idx": 0,
+    "user_idx": 2,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Hanwha Solutions, being a chemical company, may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Changes in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in the global market.",
+      "vix_change": "Higher market volatility (VIX) tends to have a negative impact on stock returns, including Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, is influenced positively by sector-wide returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 4,
+    "system_idx": 0,
+    "user_idx": 3,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in international markets.",
+      "vix_change": "Higher VIX levels often indicate increased market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 5,
+    "system_idx": 0,
+    "user_idx": 4,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Hanwha Solutions, being a chemical company, may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often indicate increased market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, operating in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 6,
+    "system_idx": 0,
+    "user_idx": 5,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Elevated market volatility, reflected in VIX changes, may lead to lower Hanwha Solutions stock returns as investors seek safer assets.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide positive returns, thus positively impacting its own stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 7,
+    "system_idx": 0,
+    "user_idx": 6,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "A weaker Korean won (KRW) against the US dollar (USD) could benefit Hanwha Solutions through increased export competitiveness.",
+      "vix_change": "Elevated market volatility, indicated by VIX changes, may lead to lower Hanwha Solutions stock returns as investors seek safer assets.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 8,
+    "system_idx": 0,
+    "user_idx": 7,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Hanwha Solutions, being a chemical company, may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' export competitiveness and hence stock returns.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 9,
+    "system_idx": 0,
+    "user_idx": 8,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Higher VIX levels often indicate increased market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions being in the materials sector, tends to benefit from sector-wide positive returns, hence a positive coefficient is expected."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 10,
+    "system_idx": 0,
+    "user_idx": 9,
+    "reasoning": {
+      "kospi_return": "Historically, changes in KOSPI index have shown a moderate positive correlation with Hanwha Solutions stock returns.",
+      "oil_price_change": "Hanwha Solutions, being a chemical company, may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rate can impact Hanwha Solutions' export competitiveness and hence stock returns.",
+      "vix_change": "Elevated market volatility, indicated by VIX changes, may lead to lower investor confidence and hence lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions being in the materials sector, its stock returns are likely to positively correlate with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 11,
+    "system_idx": 1,
+    "user_idx": 0,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may be sensitive to changes in oil prices affecting production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels may indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions being in the materials sector, its stock returns tend to move in line with the sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 12,
+    "system_idx": 1,
+    "user_idx": 1,
+    "reasoning": {
+      "kospi_return": "Historically, the Korean stock market index (KOSPI) has shown a positive correlation with the stock returns of Hanwha Solutions.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may be sensitive to changes in oil prices due to its impact on production costs.",
+      "usd_krw_change": "Fluctuations in the USD/KRW exchange rate can influence Hanwha Solutions' competitiveness in the global market.",
+      "vix_change": "Changes in the VIX, a measure of market volatility, may affect investor sentiment and thus impact Hanwha Solutions' stock returns.",
+      "materials_sector_return": "Given that Hanwha Solutions operates in the materials sector, the overall performance of this sector can influence its stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 13,
+    "system_idx": 1,
+    "user_idx": 2,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may be sensitive to changes in oil prices due to its impact on production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, so sector-wide returns can impact its stock performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 14,
+    "system_idx": 1,
+    "user_idx": 3,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may experience lower returns with increasing oil prices due to higher production costs.",
+      "usd_krw_change": "A weaker Korean won (KRW) against the US dollar (USD) could positively impact Hanwha Solutions' export competitiveness and stock returns.",
+      "vix_change": "Higher market volatility, as measured by VIX, tends to have a negative impact on Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, is likely to benefit from sector-wide positive returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 15,
+    "system_idx": 1,
+    "user_idx": 4,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, influencing stock returns.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide positive returns, hence a positive coefficient is expected."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 16,
+    "system_idx": 1,
+    "user_idx": 5,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Higher VIX levels often indicate increased market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide positive returns, hence a positive coefficient is expected."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 17,
+    "system_idx": 1,
+    "user_idx": 6,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Given that Hanwha Solutions is a chemical firm, higher oil prices may lead to increased production costs, hence a negative impact on stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets, influencing stock returns positively or negatively.",
+      "vix_change": "Increased market volatility, as measured by VIX, tends to have a negative effect on stock returns of chemical firms like Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, and sector-wide performance can significantly impact its stock returns positively."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 18,
+    "system_idx": 1,
+    "user_idx": 7,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Given that Hanwha Solutions is a chemical firm, a decrease in oil prices may positively impact its profitability.",
+      "usd_krw_change": "A weaker Korean won relative to the US dollar could benefit Hanwha Solutions' export competitiveness.",
+      "vix_change": "Higher market volatility, as indicated by VIX changes, may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, and sector-wide returns can influence its stock performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 19,
+    "system_idx": 1,
+    "user_idx": 8,
+    "reasoning": {
+      "kospi_return": "Historically, the Korean stock market index (KOSPI) has shown a positive correlation with Hanwha Solutions stock returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may be sensitive to changes in oil prices, with a negative impact on stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness and export revenues.",
+      "vix_change": "Increased market volatility, reflected in the VIX index, tends to have a negative effect on Hanwha Solutions stock returns.",
+      "materials_sector_return": "The performance of the materials sector can impact Hanwha Solutions as a chemical company, with a positive relationship to stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 20,
+    "system_idx": 1,
+    "user_idx": 9,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Higher market volatility, reflected in VIX changes, may lead to lower Hanwha Solutions stock returns as investors seek safer assets.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide positive returns, hence a positive coefficient is expected."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 21,
+    "system_idx": 2,
+    "user_idx": 0,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Higher VIX levels often indicate increased market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide positive returns, hence a positive coefficient is expected."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 22,
+    "system_idx": 2,
+    "user_idx": 1,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices affecting production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often coincide with market uncertainty, potentially leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with sector returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 23,
+    "system_idx": 2,
+    "user_idx": 2,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices affecting production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, so sector-wide returns can influence its stock performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 24,
+    "system_idx": 2,
+    "user_idx": 3,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in the global market.",
+      "vix_change": "Higher market volatility, indicated by VIX changes, may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 25,
+    "system_idx": 2,
+    "user_idx": 4,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Hanwha Solutions, being a chemical company, may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "A weaker Korean won (increase in USD/KRW) may positively impact Hanwha Solutions' stock returns by boosting export competitiveness.",
+      "vix_change": "Higher market volatility (VIX) tends to have a negative impact on stock returns, including Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, is likely to benefit from a strong performance in the sector overall."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 26,
+    "system_idx": 2,
+    "user_idx": 5,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 27,
+    "system_idx": 2,
+    "user_idx": 6,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels usually indicate higher market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 28,
+    "system_idx": 2,
+    "user_idx": 7,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "A weaker Korean won (KRW) against the US dollar (USD) could benefit Hanwha Solutions by potentially increasing export competitiveness.",
+      "vix_change": "Higher market volatility, as measured by VIX, may lead to lower stock returns for Hanwha Solutions due to increased uncertainty.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 29,
+    "system_idx": 2,
+    "user_idx": 8,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market.",
+      "vix_change": "Elevated market volatility, reflected in VIX changes, tends to have a negative effect on Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, benefits from sector-wide positive returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 30,
+    "system_idx": 2,
+    "user_idx": 9,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices for its production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' export competitiveness and revenue.",
+      "vix_change": "Higher VIX levels usually indicate higher market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, so sector-wide returns can influence its stock performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 31,
+    "system_idx": 3,
+    "user_idx": 0,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may experience lower stock returns with increasing oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets, influencing stock returns.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide growth, positively affecting its stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 32,
+    "system_idx": 3,
+    "user_idx": 1,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may be sensitive to changes in oil prices due to its impact on production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in the global market.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, so sector-wide returns can impact its stock performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 33,
+    "system_idx": 3,
+    "user_idx": 2,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Given Hanwha Solutions' reliance on oil-related inputs, a decrease in oil prices may positively impact stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets, affecting stock returns.",
+      "vix_change": "An increase in VIX (market volatility) often leads to a decrease in stock returns, hence the negative coefficient.",
+      "materials_sector_return": "As a chemical firm within the materials sector, Hanwha Solutions tends to move in line with sector returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 34,
+    "system_idx": 3,
+    "user_idx": 3,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Given Hanwha Solutions' business focus, a decrease in oil prices may positively impact stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, hence sector-wide returns can impact its stock performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 35,
+    "system_idx": 3,
+    "user_idx": 4,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may be sensitive to changes in oil prices affecting production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' export competitiveness.",
+      "vix_change": "Higher VIX levels may indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 36,
+    "system_idx": 3,
+    "user_idx": 5,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Increased market volatility, reflected in VIX changes, tends to have a negative impact on Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, is influenced positively by sector-wide returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 37,
+    "system_idx": 3,
+    "user_idx": 6,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Given Hanwha Solutions' reliance on oil-related inputs, a decrease in oil prices may positively impact stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence the competitiveness of Hanwha Solutions in the global market.",
+      "vix_change": "An increase in market volatility, as measured by VIX, tends to have a negative impact on Hanwha Solutions stock returns.",
+      "materials_sector_return": "As a chemical firm, Hanwha Solutions is part of the materials sector, and sector-wide performance can affect its stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 38,
+    "system_idx": 3,
+    "user_idx": 7,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may be sensitive to changes in oil prices affecting production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels may indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions being in the materials sector, its stock returns tend to move in line with the sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 39,
+    "system_idx": 3,
+    "user_idx": 8,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical firm, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 40,
+    "system_idx": 3,
+    "user_idx": 9,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Given that Hanwha Solutions is a chemical firm, a decrease in oil prices may positively impact its profitability.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' export competitiveness and revenue.",
+      "vix_change": "An increase in market volatility (VIX) may lead to a decrease in Hanwha Solutions stock returns due to higher risk aversion.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 41,
+    "system_idx": 4,
+    "user_idx": 0,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Higher market volatility, reflected in VIX changes, may lead to lower Hanwha Solutions stock returns as investors seek safer assets.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance, hence a positive coefficient is expected."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 42,
+    "system_idx": 4,
+    "user_idx": 1,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Hanwha Solutions, being a chemical company, may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' export competitiveness and hence stock returns.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 43,
+    "system_idx": 4,
+    "user_idx": 2,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices, leading to a negative impact on stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, influencing stock returns positively.",
+      "vix_change": "Increased market volatility, as measured by VIX, tends to have a negative effect on Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, and sector-wide performance can significantly impact its stock returns positively."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 44,
+    "system_idx": 4,
+    "user_idx": 3,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "A weaker Korean won (KRW) against the US dollar (USD) could benefit Hanwha Solutions through increased export competitiveness.",
+      "vix_change": "Higher market volatility, reflected in VIX changes, may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 45,
+    "system_idx": 4,
+    "user_idx": 4,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices, leading to a negative impact on stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in the global market, hence a slight positive effect on stock returns.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which can negatively impact stock returns of Hanwha Solutions.",
+      "materials_sector_return": "Being in the materials sector, positive sector returns may lead to increased investor confidence and higher stock returns for Hanwha Solutions."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 46,
+    "system_idx": 4,
+    "user_idx": 5,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, influencing stock returns.",
+      "vix_change": "Higher market volatility, reflected in VIX changes, tends to have a negative effect on Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, and sector-wide performance can significantly impact its stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 47,
+    "system_idx": 4,
+    "user_idx": 6,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often coincide with market uncertainty, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 48,
+    "system_idx": 4,
+    "user_idx": 7,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices, leading to a negative impact on stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in the global market, hence a slight positive effect on stock returns.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which can negatively affect Hanwha Solutions stock returns.",
+      "materials_sector_return": "Being in the materials sector, positive sector returns may lead to increased investor confidence and higher stock returns for Hanwha Solutions."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 49,
+    "system_idx": 4,
+    "user_idx": 8,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 50,
+    "system_idx": 4,
+    "user_idx": 9,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels may indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 51,
+    "system_idx": 5,
+    "user_idx": 0,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Higher market volatility, indicated by VIX changes, may lead to lower Hanwha Solutions stock returns as investors seek safer assets.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide growth, positively impacting stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 52,
+    "system_idx": 5,
+    "user_idx": 1,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices, leading to a negative impact on stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets, hence a slight positive effect on stock returns.",
+      "vix_change": "Higher market volatility, as indicated by VIX changes, tends to have a negative impact on Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, and sector-wide performance can positively affect its stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 53,
+    "system_idx": 5,
+    "user_idx": 2,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices affecting production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher market volatility, indicated by VIX changes, may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 54,
+    "system_idx": 5,
+    "user_idx": 3,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices affecting production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often coincide with market uncertainty, potentially leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 55,
+    "system_idx": 5,
+    "user_idx": 4,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' export competitiveness and thus stock returns.",
+      "vix_change": "Elevated market volatility, reflected in VIX changes, tends to have a negative effect on Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, typically benefits from sector-wide positive returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 56,
+    "system_idx": 5,
+    "user_idx": 5,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Hanwha Solutions, being a chemical company, may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' export competitiveness and hence stock returns.",
+      "vix_change": "Higher VIX levels usually indicate higher market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 57,
+    "system_idx": 5,
+    "user_idx": 6,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices affecting production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, so sector-wide returns can influence its stock performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 58,
+    "system_idx": 5,
+    "user_idx": 7,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide growth, positively impacting stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 59,
+    "system_idx": 5,
+    "user_idx": 8,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect the competitiveness of Hanwha Solutions in the global market.",
+      "vix_change": "Higher market volatility, as measured by VIX, tends to have a negative impact on Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, is influenced positively by sector-wide returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 60,
+    "system_idx": 5,
+    "user_idx": 9,
+    "reasoning": {
+      "kospi_return": "Historically, the KOSPI index has shown a positive correlation with Hanwha Solutions stock returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels may indicate increased market volatility, which could negatively affect Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, so sector-wide returns may influence its stock performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 61,
+    "system_idx": 6,
+    "user_idx": 0,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher market volatility, as measured by VIX, may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 62,
+    "system_idx": 6,
+    "user_idx": 1,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence the competitiveness of Hanwha Solutions in the global market.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, and sector performance can impact its stock returns positively."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 63,
+    "system_idx": 6,
+    "user_idx": 2,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels usually indicate higher market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 64,
+    "system_idx": 6,
+    "user_idx": 3,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in the global market.",
+      "vix_change": "Higher market volatility, indicated by VIX changes, may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 65,
+    "system_idx": 6,
+    "user_idx": 4,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect the competitiveness of Hanwha Solutions in the global market.",
+      "vix_change": "Higher VIX levels often coincide with market uncertainty, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 66,
+    "system_idx": 6,
+    "user_idx": 5,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Hanwha Solutions, being a chemical company, may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "A weaker Korean won (KRW) against the US dollar (USD) could positively impact Hanwha Solutions' stock returns by potentially increasing export competitiveness.",
+      "vix_change": "An increase in the VIX (market volatility index) may lead to lower stock returns for Hanwha Solutions due to increased market uncertainty.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 67,
+    "system_idx": 6,
+    "user_idx": 6,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices, with a negative impact on stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates could influence Hanwha Solutions' competitiveness and export/import costs.",
+      "vix_change": "Higher VIX levels may indicate increased market volatility, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, so sector-wide returns could impact its stock performance positively."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 68,
+    "system_idx": 6,
+    "user_idx": 7,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "A weaker Korean won (KRW) against the US dollar (USD) could positively impact Hanwha Solutions' stock returns by potentially increasing export competitiveness.",
+      "vix_change": "Higher market volatility, as measured by VIX, may lead to lower stock returns for Hanwha Solutions due to increased uncertainty.",
+      "materials_sector_return": "Hanwha Solutions being in the materials sector, a positive sector return could indicate favorable market conditions leading to higher stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 69,
+    "system_idx": 6,
+    "user_idx": 8,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence the competitiveness of Hanwha Solutions in the global market.",
+      "vix_change": "Higher VIX levels typically indicate higher market volatility, which may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, and sector performance can impact its stock returns positively."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 70,
+    "system_idx": 6,
+    "user_idx": 9,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets, affecting stock returns.",
+      "vix_change": "Elevated market volatility, reflected in VIX changes, may lead to lower Hanwha Solutions stock returns as investors seek safer assets.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide growth, positively impacting stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 71,
+    "system_idx": 7,
+    "user_idx": 0,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices, leading to a negative impact on stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets, hence a slight positive effect on stock returns.",
+      "vix_change": "Higher VIX levels often indicate increased market volatility, which can negatively impact Hanwha Solutions stock returns.",
+      "materials_sector_return": "Being in the materials sector, positive sector returns may lead to higher demand for Hanwha Solutions products, thus positively affecting stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 72,
+    "system_idx": 7,
+    "user_idx": 1,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices, leading to a negative impact on stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets, hence a slight positive effect on stock returns.",
+      "vix_change": "Higher VIX levels often indicate increased market volatility, which can negatively affect stock returns of Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, and sector-wide performance may positively impact its stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 73,
+    "system_idx": 7,
+    "user_idx": 2,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices affecting production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 74,
+    "system_idx": 7,
+    "user_idx": 3,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 75,
+    "system_idx": 7,
+    "user_idx": 4,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in the global market.",
+      "vix_change": "Higher market volatility, indicated by VIX changes, may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 76,
+    "system_idx": 7,
+    "user_idx": 5,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Hanwha Solutions, being a chemical company, may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "A weaker Korean won (KRW) against the US dollar (USD) could positively impact Hanwha Solutions' stock returns by potentially increasing export competitiveness.",
+      "vix_change": "An increase in the VIX (market volatility index) may lead to lower stock returns for Hanwha Solutions as investors seek safer assets.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 77,
+    "system_idx": 7,
+    "user_idx": 6,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices, leading to a negative impact on stock returns.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in the global market, affecting stock returns positively.",
+      "vix_change": "Increased market volatility, as measured by VIX, tends to have a negative impact on Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, and a strong performance in this sector typically leads to higher stock returns for the company."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 78,
+    "system_idx": 7,
+    "user_idx": 7,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in the global market.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 79,
+    "system_idx": 7,
+    "user_idx": 8,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in the global market.",
+      "vix_change": "Higher market volatility, as measured by VIX, may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 80,
+    "system_idx": 7,
+    "user_idx": 9,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in the global market.",
+      "vix_change": "Higher VIX levels often indicate increased market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 81,
+    "system_idx": 8,
+    "user_idx": 0,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with increasing oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets, influencing stock returns.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide growth, positively impacting stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 82,
+    "system_idx": 8,
+    "user_idx": 1,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact the competitiveness of Hanwha Solutions in the global market.",
+      "vix_change": "Higher market volatility, reflected in VIX changes, tends to have a negative effect on Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, is influenced positively by sector-wide returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 83,
+    "system_idx": 8,
+    "user_idx": 2,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 84,
+    "system_idx": 8,
+    "user_idx": 3,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets, affecting stock returns.",
+      "vix_change": "Increased market volatility, reflected in VIX changes, tends to have a negative impact on Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, is influenced positively by sector-wide returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 85,
+    "system_idx": 8,
+    "user_idx": 4,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets, influencing stock returns positively or negatively.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide growth, hence a positive impact on stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 86,
+    "system_idx": 8,
+    "user_idx": 5,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "Hanwha Solutions, being a chemical company, may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "A weaker Korean won (increased USD/KRW) may positively impact Hanwha Solutions stock returns by potentially boosting export competitiveness.",
+      "vix_change": "Higher market volatility (VIX) tends to have a negative impact on stock returns, including Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, is likely to benefit from a strong performance in the sector as a whole."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 87,
+    "system_idx": 8,
+    "user_idx": 6,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide growth, positively influencing stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 88,
+    "system_idx": 8,
+    "user_idx": 7,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets, affecting stock returns.",
+      "vix_change": "Higher VIX levels often indicate increased market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide positive returns, hence a positive coefficient is expected."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 89,
+    "system_idx": 8,
+    "user_idx": 8,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' export competitiveness and hence stock returns.",
+      "vix_change": "Higher market volatility, reflected in VIX changes, tends to have a negative effect on Hanwha Solutions stock returns.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, is likely to benefit from overall sector performance, hence a positive coefficient is expected."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 90,
+    "system_idx": 8,
+    "user_idx": 9,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can affect Hanwha Solutions' competitiveness in the global market.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 91,
+    "system_idx": 9,
+    "user_idx": 0,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with increasing oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide growth, positively impacting stock returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 92,
+    "system_idx": 9,
+    "user_idx": 1,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact the competitiveness of Hanwha Solutions in the global market.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 93,
+    "system_idx": 9,
+    "user_idx": 2,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 94,
+    "system_idx": 9,
+    "user_idx": 3,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher market volatility, indicated by VIX changes, may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 95,
+    "system_idx": 9,
+    "user_idx": 4,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' export competitiveness and thus stock returns.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, leading to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from sector-wide positive returns."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 96,
+    "system_idx": 9,
+    "user_idx": 5,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns with an increase in oil prices due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' export competitiveness and thus stock returns.",
+      "vix_change": "Higher market volatility, indicated by VIX changes, may lead to lower Hanwha Solutions stock returns as investors seek safer assets.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 97,
+    "system_idx": 9,
+    "user_idx": 6,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be sensitive to changes in oil prices affecting production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels usually indicate market uncertainty, which may lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions being in the materials sector, tends to move in line with the overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 98,
+    "system_idx": 9,
+    "user_idx": 7,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Higher VIX levels usually indicate increased market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, so sector-wide returns can influence its stock performance positively."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 99,
+    "system_idx": 9,
+    "user_idx": 8,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may be negatively impacted by increases in oil prices.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can influence Hanwha Solutions' competitiveness in global markets.",
+      "vix_change": "Higher VIX levels often indicate market uncertainty, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions, being in the materials sector, tends to benefit from overall sector performance."
+    },
+    "approach": "expert_10"
+  },
+  {
+    "elicitation_num": 100,
+    "system_idx": 9,
+    "user_idx": 9,
+    "reasoning": {
+      "kospi_return": "Historically, Hanwha Solutions stock returns have shown a positive correlation with KOSPI returns.",
+      "oil_price_change": "As a chemical company, Hanwha Solutions may experience lower stock returns when oil prices increase due to higher production costs.",
+      "usd_krw_change": "Fluctuations in USD/KRW exchange rates can impact Hanwha Solutions' competitiveness in the global market, affecting stock returns.",
+      "vix_change": "Higher VIX levels often indicate increased market volatility, which can lead to lower stock returns for Hanwha Solutions.",
+      "materials_sector_return": "Hanwha Solutions operates in the materials sector, so sector-wide returns can influence its stock performance."
+    },
+    "approach": "expert_10"
+  }
+]

@@ -8,21 +8,26 @@ Comprehensive comparison of all three methods:
 This implements the complete PoC 1 validation from the Capstick paper.
 """
 
-from bayesian_evaluator import BayesianEvaluator
-from naive_llm_evaluator import NaiveLLMEvaluator
-import pandas as pd
-import numpy as np
 import sys
 import os
 from pathlib import Path
 
+# Add the poc1_validation directory to the path so we can import local modules
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from bayesian_evaluator import BayesianEvaluator
+from naive_llm_evaluator import NaiveLLMEvaluator
+import pandas as pd
+import numpy as np
+
 
 def run_all_evaluations():
-    """Run all three evaluation methods"""
+    """Run all five evaluation methods"""
     
     print("🚀 COMPREHENSIVE EVALUATION: PoC 1 VALIDATION")
     print("=" * 80)
     print("Implementing Capstick et al. methodology for 한화솔루션 prediction")
+    print("Testing all prior types: Expert, Data-informed (10x10), Data-informed (3x3), Uninformed, Naive LLM")
     print("=" * 80)
     
     # Check API key setup
@@ -30,38 +35,60 @@ def run_all_evaluations():
         print("❌ OPENAI_API_KEY environment variable not set!")
         print("Please set it with: export OPENAI_API_KEY='your-key-here'")
         print("Or copy config/env.example to .env and fill in your key")
-        return None, None, None
+        return None
     
     results = {}
     
-    # 1. Bayesian with LLM-elicited priors
-    print(f"\n{'🧠 METHOD 1: BAYESIAN + LLM-ELICITED PRIORS'}")
+    # 1. Bayesian with Expert LLM-elicited priors (10x10)
+    print(f"\n{'🧠 METHOD 1: BAYESIAN + EXPERT PRIORS (10x10)'}")
     print("-" * 60)
     try:
-        evaluator1 = BayesianEvaluator(prior_type="elicited")
-        results['elicited'] = evaluator1.run_evaluation()
-        print("✅ Elicited Bayesian completed")
+        evaluator1 = BayesianEvaluator(prior_type="elicited", prior_folder="expert_10")
+        results['expert_10'] = evaluator1.run_evaluation()
+        print("✅ Expert Bayesian (10x10) completed")
     except Exception as e:
-        print(f"❌ Elicited Bayesian failed: {e}")
-        results['elicited'] = None
+        print(f"❌ Expert Bayesian (10x10) failed: {e}")
+        results['expert_10'] = None
     
-    # 2. Bayesian with uninformed priors
-    print(f"\n{'📊 METHOD 2: BAYESIAN + UNINFORMED PRIORS'}")
+    # 2. Bayesian with Data-informed LLM-elicited priors (10x10)
+    print(f"\n{'🧠 METHOD 2: BAYESIAN + DATA-INFORMED PRIORS (10x10)'}")
     print("-" * 60)
     try:
-        evaluator2 = BayesianEvaluator(prior_type="uninformed")
-        results['uninformed'] = evaluator2.run_evaluation()
+        evaluator2 = BayesianEvaluator(prior_type="elicited", prior_folder="data_informed_10")
+        results['data_informed_10'] = evaluator2.run_evaluation()
+        print("✅ Data-informed Bayesian (10x10) completed")
+    except Exception as e:
+        print(f"❌ Data-informed Bayesian (10x10) failed: {e}")
+        results['data_informed_10'] = None
+    
+    # 3. Bayesian with Data-informed LLM-elicited priors (3x3)
+    print(f"\n{'🧠 METHOD 3: BAYESIAN + DATA-INFORMED PRIORS (3x3)'}")
+    print("-" * 60)
+    try:
+        evaluator3 = BayesianEvaluator(prior_type="elicited", prior_folder="data_informed_3")
+        results['data_informed_3'] = evaluator3.run_evaluation()
+        print("✅ Data-informed Bayesian (3x3) completed")
+    except Exception as e:
+        print(f"❌ Data-informed Bayesian (3x3) failed: {e}")
+        results['data_informed_3'] = None
+    
+    # 4. Bayesian with uninformed priors
+    print(f"\n{'📊 METHOD 4: BAYESIAN + UNINFORMED PRIORS'}")
+    print("-" * 60)
+    try:
+        evaluator4 = BayesianEvaluator(prior_type="uninformed")
+        results['uninformed'] = evaluator4.run_evaluation()
         print("✅ Uninformed Bayesian completed")
     except Exception as e:
         print(f"❌ Uninformed Bayesian failed: {e}")
         results['uninformed'] = None
     
-    # 3. Naive LLM (in-context learning)
-    print(f"\n{'🤖 METHOD 3: NAIVE LLM (IN-CONTEXT LEARNING)'}")
+    # 5. Naive LLM (in-context learning)
+    print(f"\n{'🤖 METHOD 5: NAIVE LLM (IN-CONTEXT LEARNING)'}")
     print("-" * 60)
     try:
-        evaluator3 = NaiveLLMEvaluator()
-        results['naive_llm'] = evaluator3.run_evaluation()
+        evaluator5 = NaiveLLMEvaluator()
+        results['naive_llm'] = evaluator5.run_evaluation()
         print("✅ Naive LLM completed")
     except Exception as e:
         print(f"❌ Naive LLM failed: {e}")
@@ -81,7 +108,9 @@ def create_comparison_table(results):
     metrics_data = []
     
     method_names = {
-        'elicited': 'Bayesian + LLM Priors',
+        'expert_10': 'Bayesian + Expert (10x10)',
+        'data_informed_10': 'Bayesian + Data-informed (10x10)',
+        'data_informed_3': 'Bayesian + Data-informed (3x3)',
         'uninformed': 'Bayesian + Uninformed',
         'naive_llm': 'Naive LLM (In-Context)'
     }
@@ -121,8 +150,8 @@ def create_comparison_table(results):
     df = pd.DataFrame(comparison_data, index=methods)
     
     # Print formatted table
-    print(f"{'Method':<25} {'MAE':<8} {'RMSE':<8} {'R²':<8} {'Dir.Acc':<10} {'Cov.95%':<8} {'Cov.90%':<8}")
-    print("-" * 90)
+    print(f"{'Method':<30} {'MAE':<8} {'RMSE':<8} {'R²':<8} {'Dir.Acc':<10} {'Cov.95%':<8} {'Cov.90%':<8}")
+    print("-" * 95)
     
     for i, method in enumerate(methods):
         mae = df.iloc[i]['mae'] if not np.isnan(df.iloc[i]['mae']) else 'N/A'
@@ -140,7 +169,7 @@ def create_comparison_table(results):
         cov95_str = f"{cov95:.2%}" if not np.isnan(cov95) else 'N/A'
         cov90_str = f"{cov90:.2%}" if not np.isnan(cov90) else 'N/A'
         
-        print(f"{method:<25} {mae_str:<8} {rmse_str:<8} {r2_str:<8} {dir_str:<10} {cov95_str:<8} {cov90_str:<8}")
+        print(f"{method:<30} {mae_str:<8} {rmse_str:<8} {r2_str:<8} {dir_str:<10} {cov95_str:<8} {cov90_str:<8}")
     
     # Save detailed comparison
     results_dir = Path("data/results/comprehensive_comparison")
@@ -185,31 +214,89 @@ def analyze_results(results, comparison_df):
     findings = []
     
     # Check if LLM-elicited priors outperform uninformed
-    if 'elicited' in results and 'uninformed' in results:
-        if results['elicited'] and results['uninformed']:
-            elicited_mae = results['elicited']['mae']
+    if 'expert_10' in results and 'uninformed' in results:
+        if results['expert_10'] and results['uninformed']:
+            expert_mae = results['expert_10']['mae']
             uninformed_mae = results['uninformed']['mae']
             
-            if elicited_mae < uninformed_mae:
-                improvement = (uninformed_mae - elicited_mae) / uninformed_mae * 100
-                findings.append(f"✅ LLM-elicited priors reduce MAE by {improvement:.1f}% vs uninformed")
+            if expert_mae < uninformed_mae:
+                improvement = (uninformed_mae - expert_mae) / uninformed_mae * 100
+                findings.append(f"✅ Expert (10x10) priors reduce MAE by {improvement:.1f}% vs uninformed")
             else:
-                degradation = (elicited_mae - uninformed_mae) / uninformed_mae * 100
-                findings.append(f"⚠️ LLM-elicited priors increase MAE by {degradation:.1f}% vs uninformed")
+                degradation = (expert_mae - uninformed_mae) / uninformed_mae * 100
+                findings.append(f"⚠️ Expert (10x10) priors increase MAE by {degradation:.1f}% vs uninformed")
+    
+    if 'data_informed_10' in results and 'uninformed' in results:
+        if results['data_informed_10'] and results['uninformed']:
+            data_informed_mae = results['data_informed_10']['mae']
+            uninformed_mae = results['uninformed']['mae']
+            
+            if data_informed_mae < uninformed_mae:
+                improvement = (uninformed_mae - data_informed_mae) / uninformed_mae * 100
+                findings.append(f"✅ Data-informed (10x10) priors reduce MAE by {improvement:.1f}% vs uninformed")
+            else:
+                degradation = (data_informed_mae - uninformed_mae) / uninformed_mae * 100
+                findings.append(f"⚠️ Data-informed (10x10) priors increase MAE by {degradation:.1f}% vs uninformed")
+    
+    if 'data_informed_3' in results and 'uninformed' in results:
+        if results['data_informed_3'] and results['uninformed']:
+            data_informed_mae = results['data_informed_3']['mae']
+            uninformed_mae = results['uninformed']['mae']
+            
+            if data_informed_mae < uninformed_mae:
+                improvement = (uninformed_mae - data_informed_mae) / uninformed_mae * 100
+                findings.append(f"✅ Data-informed (3x3) priors reduce MAE by {improvement:.1f}% vs uninformed")
+            else:
+                degradation = (data_informed_mae - uninformed_mae) / uninformed_mae * 100
+                findings.append(f"⚠️ Data-informed (3x3) priors increase MAE by {degradation:.1f}% vs uninformed")
+    
+    # Compare expert vs data-informed priors
+    if 'expert_10' in results and 'data_informed_10' in results:
+        if results['expert_10'] and results['data_informed_10']:
+            expert_mae = results['expert_10']['mae']
+            data_informed_mae = results['data_informed_10']['mae']
+            
+            if data_informed_mae < expert_mae:
+                improvement = (expert_mae - data_informed_mae) / expert_mae * 100
+                findings.append(f"✅ Data-informed (10x10) beats expert (10x10) by {improvement:.1f}% (MAE)")
+            else:
+                degradation = (data_informed_mae - expert_mae) / expert_mae * 100
+                findings.append(f"⚠️ Expert (10x10) beats data-informed (10x10) by {degradation:.1f}% (MAE)")
+    
+    # Compare combination size effects (10x10 vs 3x3)
+    if 'data_informed_10' in results and 'data_informed_3' in results:
+        if results['data_informed_10'] and results['data_informed_3']:
+            data_10_mae = results['data_informed_10']['mae']
+            data_3_mae = results['data_informed_3']['mae']
+            
+            if data_10_mae < data_3_mae:
+                improvement = (data_3_mae - data_10_mae) / data_3_mae * 100
+                findings.append(f"✅ More combinations (10x10) beat fewer (3x3) by {improvement:.1f}% (MAE)")
+            else:
+                degradation = (data_10_mae - data_3_mae) / data_3_mae * 100
+                findings.append(f"⚠️ Fewer combinations (3x3) beat more (10x10) by {degradation:.1f}% (MAE)")
     
     # Check directional accuracy improvements
-    if 'elicited' in results and results['elicited']:
-        dir_acc = results['elicited']['directional_accuracy']
-        findings.append(f"📈 LLM-elicited directional accuracy: {dir_acc:.1%}")
+    if 'expert_10' in results and results['expert_10']:
+        dir_acc = results['expert_10']['directional_accuracy']
+        findings.append(f"📈 Expert (10x10) directional accuracy: {dir_acc:.1%}")
+    
+    if 'data_informed_10' in results and results['data_informed_10']:
+        dir_acc = results['data_informed_10']['directional_accuracy']
+        findings.append(f"📈 Data-informed (10x10) directional accuracy: {dir_acc:.1%}")
+    
+    if 'data_informed_3' in results and results['data_informed_3']:
+        dir_acc = results['data_informed_3']['directional_accuracy']
+        findings.append(f"📈 Data-informed (3x3) directional accuracy: {dir_acc:.1%}")
     
     # Compare with naive LLM approach
-    if 'naive_llm' in results and 'elicited' in results:
-        if results['naive_llm'] and results['elicited']:
+    if 'naive_llm' in results and 'expert_10' in results:
+        if results['naive_llm'] and results['expert_10']:
             naive_mae = results['naive_llm']['mae']
-            elicited_mae = results['elicited']['mae']
+            expert_mae = results['expert_10']['mae']
             
-            if elicited_mae < naive_mae:
-                improvement = (naive_mae - elicited_mae) / naive_mae * 100
+            if expert_mae < naive_mae:
+                improvement = (naive_mae - expert_mae) / expert_mae * 100
                 findings.append(f"✅ Bayesian approach beats naive LLM by {improvement:.1f}% (MAE)")
             else:
                 findings.append(f"⚠️ Naive LLM outperforms Bayesian approach")
@@ -230,13 +317,27 @@ def analyze_results(results, comparison_df):
             print(f"🏆 Best performing method: {best_method}")
         
         # Check if results align with paper expectations
-        if 'elicited' in results and results['elicited']:
-            print("📝 LLM-elicited priors successfully implemented")
+        if 'expert_10' in results and results['expert_10']:
+            print("📝 Expert (10x10) priors successfully implemented")
             print("📊 Bayesian mixture model with 100 components working")
-            
-            # Data efficiency analysis
-            print(f"💡 This approach should be most beneficial in low-data regimes")
-            print(f"   (Current test uses {len(comparison_df)} data points)")
+        
+        if 'data_informed_10' in results and results['data_informed_10']:
+            print("📝 Data-informed (10x10) priors successfully implemented")
+            print("📊 Data-informed approach with 100 components working")
+        
+        if 'data_informed_3' in results and results['data_informed_3']:
+            print("📝 Data-informed (3x3) priors successfully implemented")
+            print("📊 Data-informed approach with 9 components working")
+        
+        # Data efficiency analysis
+        print(f"💡 This approach should be most beneficial in low-data regimes")
+        print(f"   (Current test uses {len(comparison_df)} data points)")
+        
+        # Additional insights
+        print(f"🔍 Comprehensive comparison completed:")
+        print(f"   - Expert vs Data-informed priors")
+        print(f"   - Combination size effects (3x3 vs 10x10)")
+        print(f"   - Bayesian vs Naive LLM approaches")
 
 
 def main():
@@ -256,7 +357,12 @@ def main():
     
     print(f"\n{'🎉 PoC 1 VALIDATION COMPLETE'}")
     print("=" * 50)
-    print("All three methods from Capstick et al. have been implemented and tested")
+    print("All five methods from Capstick et al. have been implemented and tested:")
+    print("1. Bayesian + Expert priors (10x10)")
+    print("2. Bayesian + Data-informed priors (10x10)")
+    print("3. Bayesian + Data-informed priors (3x3)")
+    print("4. Bayesian + Uninformed priors")
+    print("5. Naive LLM (in-context learning)")
     print("Results saved to data/results/comprehensive_comparison/")
     
     return 0

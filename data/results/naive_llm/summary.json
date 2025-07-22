@@ -1,27 +1,27 @@
 {
   "method": "naive_llm",
   "model": "gpt-3.5-turbo",
-  "n_train": 29,
+  "n_train": 30,
   "n_test": 6,
   "metrics": {
-    "mae": 0.1979038380314501,
-    "rmse": 0.2581539399580697,
-    "r_squared": -0.15473068674126478,
+    "mae": 0.1950584265137483,
+    "rmse": 0.2730321060894537,
+    "r_squared": -0.291667196249793,
     "directional_accuracy": 0.6666666666666666,
-    "coverage_95": 0.3333333333333333
+    "coverage_95": 0.16666666666666666
   },
   "prediction_stats": {
-    "mean_prediction": 0.11335781084656087,
-    "std_prediction": 0.11011276400159434,
-    "min_prediction": -0.02737777777777778,
-    "max_prediction": 0.23574285714285717,
-    "n_positive": 4,
-    "n_negative": 2,
-    "prediction_range": 0.263120634920635,
-    "prediction_std_mean": 0.07865383120142799,
-    "prediction_std_std": 0.032652260612617355,
-    "coverage_90": 0.3333333333333333,
-    "avg_prediction_interval_width": 0.19694166666666665
+    "mean_prediction": 0.046448333333333335,
+    "std_prediction": 0.03499791918417754,
+    "min_prediction": 0.018220000000000004,
+    "max_prediction": 0.11089000000000002,
+    "n_positive": 6,
+    "n_negative": 0,
+    "prediction_range": 0.09267000000000002,
+    "prediction_std_mean": 0.018930448393476313,
+    "prediction_std_std": 0.016506340406702208,
+    "coverage_90": 0.16666666666666666,
+    "avg_prediction_interval_width": 0.04683666666666666
   },
   "feature_names": [
     "kospi_return",

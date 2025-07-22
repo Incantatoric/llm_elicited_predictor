@@ -12,7 +12,7 @@ class HanwhaBayesianModel:
     Bayesian linear regression with LLM-elicited priors for 한화솔루션
     """
     
-    def __init__(self, priors_dir: str = "data/priors"):
+    def __init__(self, priors_dir: str = "data/priors/expert_10"):
         self.priors_dir = priors_dir
         self.priors = self.load_priors()
         self.model = None
