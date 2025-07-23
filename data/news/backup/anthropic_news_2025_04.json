@@ -1,0 +1,30 @@
+{
+  "year": 2025,
+  "month": 4,
+  "collected_date": "2025-07-23T15:38:32.073892",
+  "news_count": 7,
+  "news_items": [
+    {
+      "month": "April 2025"
+    },
+    {
+      "month": "April 2025"
+    },
+    {
+      "month": "April 2025"
+    },
+    {
+      "month": "April 2025"
+    },
+    {
+      "month": "April 2025"
+    },
+    {
+      "month": "April 2025"
+    },
+    {
+      "month": "April 2025"
+    }
+  ],
+  "method": "anthropic_web_search"
+}

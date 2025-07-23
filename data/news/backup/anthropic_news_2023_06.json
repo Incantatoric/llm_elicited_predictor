@@ -1,0 +1,30 @@
+{
+  "year": 2023,
+  "month": 6,
+  "collected_date": "2025-07-23T15:39:34.266152",
+  "news_count": 7,
+  "news_items": [
+    {
+      "month": "June 2023"
+    },
+    {
+      "month": "June 2023"
+    },
+    {
+      "month": "June 2023"
+    },
+    {
+      "month": "June 2023"
+    },
+    {
+      "month": "June 2023"
+    },
+    {
+      "month": "June 2023"
+    },
+    {
+      "month": "June 2023"
+    }
+  ],
+  "method": "anthropic_web_search"
+}

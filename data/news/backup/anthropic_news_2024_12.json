@@ -1,0 +1,16 @@
+{
+  "year": 2024,
+  "month": 12,
+  "collected_date": "2025-07-23T15:39:08.260192",
+  "news_count": 2,
+  "news_items": [
+    {
+      "date": "** February 7, 2025 (earnings call)"
+    },
+    {
+      "month": "December 2024",
+      "source": "** https://finance.yahoo.com/news/hanwha-solutions-corp-xkrx-009830-070106618.html"
+    }
+  ],
+  "method": "anthropic_web_search"
+}

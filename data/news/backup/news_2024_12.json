@@ -1,0 +1,48 @@
+{
+  "year": 2024,
+  "month": 12,
+  "collected_date": "2025-07-23T15:25:36.380129",
+  "news_count": 5,
+  "news_items": [
+    {
+      "date": "",
+      "headline": "009830.KR | Hanwha Solutions Corp. Quarterly Income Statement",
+      "summary": "Fiscal year is January-December. All values KRW Millions. 31-Mar-2025, 31-Dec-2024, 30-Sep-2024, 30-Jun-2024, 31-Mar-2024, 5-qtr trend. Sales/Revenue, 3,094,476",
+      "source": "",
+      "url": "https://www.wsj.com/market-data/quotes/KR/009830/financials/quarter/income-statement",
+      "query": "Hanwha Solutions"
+    },
+    {
+      "date": "",
+      "headline": "Hanwha Solutions Corp. Pfd. Series 1 Quarterly Balance Sheet - WSJ",
+      "summary": "Fiscal year is January-December. All values KRW Millions. 31-Mar-2025, 31-Dec-2024, 30-Sep-2024, 30-Jun-2024, 31-Mar-2024, 5-qtr trend. Net Income before",
+      "source": "",
+      "url": "https://www.wsj.com/market-data/quotes/KR/009835/financials/quarter/balance-sheet",
+      "query": "Hanwha Solutions"
+    },
+    {
+      "date": "",
+      "headline": "009830.KR | Hanwha Solutions Corp. Company Profile & Executives",
+      "summary": "Most Recent Insider Transactions August 2024 - December 2024. Filing Date, Name/Title, Shares, Transaction, Value. 08/19/24, Kyeong-Won Moon, 3109, Disposition",
+      "source": "",
+      "url": "https://www.wsj.com/market-data/quotes/KR/XKRX/009830/company-people",
+      "query": "Hanwha Solutions; Hanwha Solutions chemicals"
+    },
+    {
+      "date": "",
+      "headline": "Hanwha Solutions reports net loss of 1.28 tln won for 2024",
+      "summary": "Korean Newspaper Headlines # Hanwha Solutions reports net loss of 1.28 tln won for 2024 on Thursday reported a net loss of 1.28 trillion won (US$890.6 million) for the year 2024. U.S. calls Russia's use of N.K. workers, soldiers for operations against Ukraine 'deeply concerning' U.S. calls Russia's use of N.K. workers, soldiers for operations against Ukraine 'deeply concerning' S. Korean, U.S. diplomats agree on efforts for bilateral alliance, trilateral cooperation with Japan Korea vows efforts",
+      "source": "",
+      "url": "https://en.yna.co.kr/view/AEN20250206007000320",
+      "query": "Hanwha Solutions; Hanwha Solutions earnings; Hanwha Solutions news"
+    },
+    {
+      "date": "",
+      "headline": "Hanwha Systems bags 205 bln-won deal for Army weapon system ...",
+      "summary": "Hanwha Systems bags 205 bln-won deal for Army weapon system maintenance. 17:36 December 03, 2024.",
+      "source": "",
+      "url": "https://en.yna.co.kr/view/AEN20241203010700320",
+      "query": "Hanwha Solutions; Hanwha Solutions news"
+    }
+  ]
+}
