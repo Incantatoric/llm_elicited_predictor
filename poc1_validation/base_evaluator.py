@@ -16,27 +16,23 @@ warnings.filterwarnings('ignore')
 
 class BaseEvaluator(ABC):
     """
-    Base class for all prediction method evaluators
-    
-    Provides common functionality:
-    - Data loading and preprocessing
-    - Train/test split
-    - Basic evaluation metrics
-    - Common visualization plots
-    - Result saving
+    Abstract base class for all prediction method evaluators
     """
     
-    def __init__(self, method_name: str):
+    def __init__(self, method_name: str, include_news: bool = False):
         self.method_name = method_name
+        self.include_news = include_news
         self.project_root = Path(__file__).parent.parent
-        self.results_dir = self.project_root / "data" / "results" / method_name
+        
+        # Create results directory
+        self.results_dir = self.project_root / 'data/results' / method_name
         self.results_dir.mkdir(parents=True, exist_ok=True)
         
-        # Data containers
+        # Data
         self.X = None
         self.y = None
-        self.feature_names = None
         self.metadata = None
+        self.feature_names = None
         
         # Train/test split
         self.X_train = None
@@ -54,9 +50,17 @@ class BaseEvaluator(ABC):
         print(f"LOADING DATA FOR {self.method_name.upper()}")
         print(f"{'='*60}")
         
+        # Conditionally load features file based on news inclusion
+        if self.include_news:
+            features_file = 'features_standardized_with_news.csv'
+            print(f"✓ Loading features with news data: {features_file}")
+        else:
+            features_file = 'features_standardized.csv'
+            print(f"✓ Loading features without news data: {features_file}")
+        
         # Load features and target
         self.X = pd.read_csv(
-            self.project_root / 'data/processed/features_standardized.csv', 
+            self.project_root / 'data/processed' / features_file, 
             index_col=0
         )
         self.y = pd.read_csv(
@@ -68,6 +72,11 @@ class BaseEvaluator(ABC):
         with open(self.project_root / 'data/processed/metadata.json') as f:
             self.metadata = json.load(f)
         self.feature_names = self.metadata['feature_names']
+        
+        # Add news_score to feature names if using news data
+        if self.include_news:
+            self.feature_names = self.feature_names + ['news_score']
+            print(f"✓ Added news_score to feature names: {self.feature_names}")
         
         print(f"✓ Loaded {len(self.X)} data points")
         print(f"✓ Features: {self.feature_names}")

@@ -1,0 +1,24 @@
+{
+  "n_priors": 100,
+  "n_features": 6,
+  "feature_names": [
+    "kospi_return",
+    "oil_price_change",
+    "usd_krw_change",
+    "vix_change",
+    "materials_sector_return",
+    "news_score"
+  ],
+  "array_shape": [
+    100,
+    7,
+    2
+  ],
+  "method": "expert_10_with_news prior elicitation",
+  "temperature": 0.1,
+  "has_reasoning": true,
+  "approach": "expert_10_with_news",
+  "include_data_context": false,
+  "n_variations": 10,
+  "total_combinations": 100
+}

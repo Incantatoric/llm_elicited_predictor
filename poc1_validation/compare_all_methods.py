@@ -22,12 +22,13 @@ import numpy as np
 
 
 def run_all_evaluations():
-    """Run all five evaluation methods"""
+    """Run all seven evaluation methods (including news-based)"""
     
     print("🚀 COMPREHENSIVE EVALUATION: PoC 1 VALIDATION")
     print("=" * 80)
     print("Implementing Capstick et al. methodology for 한화솔루션 prediction")
     print("Testing all prior types: Expert, Data-informed (10x10), Data-informed (3x3), Uninformed, Naive LLM")
+    print("Plus news-based variants: Expert with News, Uninformed with News")
     print("=" * 80)
     
     # Check API key setup
@@ -94,6 +95,28 @@ def run_all_evaluations():
         print(f"❌ Naive LLM failed: {e}")
         results['naive_llm'] = None
     
+    # 6. Bayesian with Expert LLM-elicited priors with News (10x10)
+    print(f"\n{'🧠 METHOD 6: BAYESIAN + EXPERT PRIORS WITH NEWS (10x10)'}")
+    print("-" * 60)
+    try:
+        evaluator6 = BayesianEvaluator(prior_type="elicited", prior_folder="expert_10_with_news", include_news=True)
+        results['expert_10_with_news'] = evaluator6.run_evaluation()
+        print("✅ Expert Bayesian with News (10x10) completed")
+    except Exception as e:
+        print(f"❌ Expert Bayesian with News (10x10) failed: {e}")
+        results['expert_10_with_news'] = None
+    
+    # 7. Bayesian with uninformed priors with News
+    print(f"\n{'📊 METHOD 7: BAYESIAN + UNINFORMED PRIORS WITH NEWS'}")
+    print("-" * 60)
+    try:
+        evaluator7 = BayesianEvaluator(prior_type="uninformed", include_news=True)
+        results['uninformed_with_news'] = evaluator7.run_evaluation()
+        print("✅ Uninformed Bayesian with News completed")
+    except Exception as e:
+        print(f"❌ Uninformed Bayesian with News failed: {e}")
+        results['uninformed_with_news'] = None
+    
     return results
 
 
@@ -101,18 +124,20 @@ def create_comparison_table(results):
     """Create comprehensive comparison table"""
     
     print(f"\n{'📋 COMPREHENSIVE COMPARISON TABLE'}")
-    print("=" * 90)
+    print("=" * 120)
     
     # Prepare data for comparison
     methods = []
     metrics_data = []
     
     method_names = {
-        'expert_10': 'Bayesian + Expert (10x10)',
-        'data_informed_10': 'Bayesian + Data-informed (10x10)',
-        'data_informed_3': 'Bayesian + Data-informed (3x3)',
-        'uninformed': 'Bayesian + Uninformed',
-        'naive_llm': 'Naive LLM (In-Context)'
+        'expert_10': 'Expert (10x10)',
+        'data_informed_10': 'Data-informed (10x10)',
+        'data_informed_3': 'Data-informed (3x3)',
+        'uninformed': 'Uninformed',
+        'naive_llm': 'Naive LLM',
+        'expert_10_with_news': 'Expert (10x10) + News',
+        'uninformed_with_news': 'Uninformed + News'
     }
     
     for method, result in results.items():
@@ -149,9 +174,9 @@ def create_comparison_table(results):
     # Create DataFrame
     df = pd.DataFrame(comparison_data, index=methods)
     
-    # Print formatted table
-    print(f"{'Method':<30} {'MAE':<8} {'RMSE':<8} {'R²':<8} {'Dir.Acc':<10} {'Cov.95%':<8} {'Cov.90%':<8}")
-    print("-" * 95)
+    # Print formatted table with better spacing for 7 methods
+    print(f"{'Method':<25} {'MAE':<8} {'RMSE':<8} {'R²':<8} {'Dir.Acc':<10} {'Cov.95%':<8} {'Cov.90%':<8}")
+    print("-" * 125)
     
     for i, method in enumerate(methods):
         mae = df.iloc[i]['mae'] if not np.isnan(df.iloc[i]['mae']) else 'N/A'
@@ -169,7 +194,7 @@ def create_comparison_table(results):
         cov95_str = f"{cov95:.2%}" if not np.isnan(cov95) else 'N/A'
         cov90_str = f"{cov90:.2%}" if not np.isnan(cov90) else 'N/A'
         
-        print(f"{method:<30} {mae_str:<8} {rmse_str:<8} {r2_str:<8} {dir_str:<10} {cov95_str:<8} {cov90_str:<8}")
+        print(f"{method:<25} {mae_str:<8} {rmse_str:<8} {r2_str:<8} {dir_str:<10} {cov95_str:<8} {cov90_str:<8}")
     
     # Save detailed comparison
     results_dir = Path("data/results/comprehensive_comparison")
@@ -276,6 +301,31 @@ def analyze_results(results, comparison_df):
                 degradation = (data_10_mae - data_3_mae) / data_3_mae * 100
                 findings.append(f"⚠️ Fewer combinations (3x3) beat more (10x10) by {degradation:.1f}% (MAE)")
     
+    # NEW: Compare news vs non-news methods
+    if 'expert_10' in results and 'expert_10_with_news' in results:
+        if results['expert_10'] and results['expert_10_with_news']:
+            expert_mae = results['expert_10']['mae']
+            expert_news_mae = results['expert_10_with_news']['mae']
+            
+            if expert_news_mae < expert_mae:
+                improvement = (expert_mae - expert_news_mae) / expert_mae * 100
+                findings.append(f"✅ Expert (10x10) + News beats Expert (10x10) by {improvement:.1f}% (MAE)")
+            else:
+                degradation = (expert_news_mae - expert_mae) / expert_mae * 100
+                findings.append(f"⚠️ Expert (10x10) beats Expert (10x10) + News by {degradation:.1f}% (MAE)")
+    
+    if 'uninformed' in results and 'uninformed_with_news' in results:
+        if results['uninformed'] and results['uninformed_with_news']:
+            uninformed_mae = results['uninformed']['mae']
+            uninformed_news_mae = results['uninformed_with_news']['mae']
+            
+            if uninformed_news_mae < uninformed_mae:
+                improvement = (uninformed_mae - uninformed_news_mae) / uninformed_mae * 100
+                findings.append(f"✅ Uninformed + News beats Uninformed by {improvement:.1f}% (MAE)")
+            else:
+                degradation = (uninformed_news_mae - uninformed_mae) / uninformed_mae * 100
+                findings.append(f"⚠️ Uninformed beats Uninformed + News by {degradation:.1f}% (MAE)")
+    
     # Check directional accuracy improvements
     if 'expert_10' in results and results['expert_10']:
         dir_acc = results['expert_10']['directional_accuracy']
@@ -289,6 +339,15 @@ def analyze_results(results, comparison_df):
         dir_acc = results['data_informed_3']['directional_accuracy']
         findings.append(f"📈 Data-informed (3x3) directional accuracy: {dir_acc:.1%}")
     
+    # NEW: Check news-based directional accuracy
+    if 'expert_10_with_news' in results and results['expert_10_with_news']:
+        dir_acc = results['expert_10_with_news']['directional_accuracy']
+        findings.append(f"📈 Expert (10x10) + News directional accuracy: {dir_acc:.1%}")
+    
+    if 'uninformed_with_news' in results and results['uninformed_with_news']:
+        dir_acc = results['uninformed_with_news']['directional_accuracy']
+        findings.append(f"📈 Uninformed + News directional accuracy: {dir_acc:.1%}")
+    
     # Compare with naive LLM approach
     if 'naive_llm' in results and 'expert_10' in results:
         if results['naive_llm'] and results['expert_10']:
@@ -300,6 +359,18 @@ def analyze_results(results, comparison_df):
                 findings.append(f"✅ Bayesian approach beats naive LLM by {improvement:.1f}% (MAE)")
             else:
                 findings.append(f"⚠️ Naive LLM outperforms Bayesian approach")
+    
+    # NEW: Compare news-based methods with naive LLM
+    if 'naive_llm' in results and 'expert_10_with_news' in results:
+        if results['naive_llm'] and results['expert_10_with_news']:
+            naive_mae = results['naive_llm']['mae']
+            expert_news_mae = results['expert_10_with_news']['mae']
+            
+            if expert_news_mae < naive_mae:
+                improvement = (naive_mae - expert_news_mae) / expert_news_mae * 100
+                findings.append(f"✅ Bayesian + News approach beats naive LLM by {improvement:.1f}% (MAE)")
+            else:
+                findings.append(f"⚠️ Naive LLM outperforms Bayesian + News approach")
     
     # Print findings
     for finding in findings:
@@ -329,6 +400,15 @@ def analyze_results(results, comparison_df):
             print("📝 Data-informed (3x3) priors successfully implemented")
             print("📊 Data-informed approach with 9 components working")
         
+        # NEW: News integration analysis
+        if 'expert_10_with_news' in results and results['expert_10_with_news']:
+            print("📝 Expert (10x10) + News priors successfully implemented")
+            print("📊 News sentiment integration working")
+        
+        if 'uninformed_with_news' in results and results['uninformed_with_news']:
+            print("📝 Uninformed + News priors successfully implemented")
+            print("📊 News feature integration working")
+        
         # Data efficiency analysis
         print(f"💡 This approach should be most beneficial in low-data regimes")
         print(f"   (Current test uses {len(comparison_df)} data points)")
@@ -338,6 +418,7 @@ def analyze_results(results, comparison_df):
         print(f"   - Expert vs Data-informed priors")
         print(f"   - Combination size effects (3x3 vs 10x10)")
         print(f"   - Bayesian vs Naive LLM approaches")
+        print(f"   - News integration impact analysis")
 
 
 def main():
@@ -357,12 +438,14 @@ def main():
     
     print(f"\n{'🎉 PoC 1 VALIDATION COMPLETE'}")
     print("=" * 50)
-    print("All five methods from Capstick et al. have been implemented and tested:")
+    print("All seven methods have been implemented and tested:")
     print("1. Bayesian + Expert priors (10x10)")
     print("2. Bayesian + Data-informed priors (10x10)")
     print("3. Bayesian + Data-informed priors (3x3)")
     print("4. Bayesian + Uninformed priors")
     print("5. Naive LLM (in-context learning)")
+    print("6. Bayesian + Expert priors with News (10x10)")
+    print("7. Bayesian + Uninformed priors with News")
     print("Results saved to data/results/comprehensive_comparison/")
     
     return 0

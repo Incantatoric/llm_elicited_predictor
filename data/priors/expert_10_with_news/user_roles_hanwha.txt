@@ -1,0 +1,269 @@
+
+I need your expert opinion on regression coefficient priors for predicting Hanwha Solutions monthly stock returns. My dataset has these standardized features: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return", "news_score"]. For each feature, analyze how it affects Hanwha Solutions stock returns and provide your regression coefficient priors.The news_score is from -1 to 1.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+
+I require your expert insight regarding regression coefficient priors to forecast monthly stock returns of Hanwha Solutions. The dataset comprises standardized features: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return", "news_score"]. Evaluate the impact of each feature on Hanwha Solutions stock returns and present your regression coefficient priors. The news_score ranges from -1 to 1.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+
+Your expert opinion is essential for analyzing regression coefficient priors in predicting monthly stock returns of Hanwha Solutions. The dataset includes standardized features: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return", "news_score"]. Assess the influence of each feature on Hanwha Solutions stock returns and share your regression coefficient priors. The news_score scale is -1 to 1.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+
+Seeking your expert view on regression coefficient priors for forecasting monthly stock returns of Hanwha Solutions. The dataset contains standardized features: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return", "news_score"]. Evaluate the impact of each feature on Hanwha Solutions stock returns and provide the regression coefficient priors. The news_score ranges between -1 and 1.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+
+Your expertise is required to assess regression coefficient priors for predicting monthly stock returns of Hanwha Solutions. The dataset features standardized elements: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return", "news_score"]. Analyze the influence of each element on Hanwha Solutions stock returns and offer your regression coefficient priors. The news_score is rated from -1 to 1.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+
+I am seeking your expert opinion on regression coefficient priors for forecasting Hanwha Solutions' monthly stock returns. The dataset includes standardized features: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return", "news_score"]. Evaluate the impact of each feature on Hanwha Solutions stock returns and present your regression coefficient priors. The news_score ranges from -1 to 1.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+
+Your expert insight is needed to analyze regression coefficient priors for predicting monthly stock returns of Hanwha Solutions. The dataset comprises standardized features: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return", "news_score"]. Examine how each feature influences Hanwha Solutions stock returns and provide your regression coefficient priors. The news_score ranges between -1 and 1.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+
+I require your expert opinion on regression coefficient priors for forecasting monthly stock returns of Hanwha Solutions. The dataset contains standardized features: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return", "news_score"]. Analyze the impact of each feature on Hanwha Solutions stock returns and share your regression coefficient priors. The news_score is from -1 to 1.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+
+Seeking your expert view on regression coefficient priors to predict monthly stock returns of Hanwha Solutions. The dataset features standardized elements: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return", "news_score"]. Evaluate the influence of each element on Hanwha Solutions stock returns and provide the regression coefficient priors. The news_score scale is -1 to 1.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object
+
+
+Your expertise is crucial for assessing regression coefficient priors in forecasting monthly stock returns of Hanwha Solutions. The dataset includes standardized features: ["kospi_return", "oil_price_change", "usd_krw_change", "vix_change", "materials_sector_return", "news_score"]. Analyze how each feature impacts Hanwha Solutions stock returns and offer your regression coefficient priors. The news_score is rated from -1 to 1.
+REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
+{
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+}
+Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
+  "regression_coefficient_priors": {
+  "kospi_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "oil_price_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "usd_krw_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "vix_change": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "materials_sector_return": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"},
+  "news_score": {"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}
+  }
+CRITICAL INSTRUCTIONS:
+- Use EXACT feature names above
+- mean: expected regression coefficient (how this variable affects stock returns)
+- std: your confidence level (smaller = more confident)
+- We need REGRESSION COEFFICIENT PRIORS, not data generation
+- Respond ONLY with the JSON object

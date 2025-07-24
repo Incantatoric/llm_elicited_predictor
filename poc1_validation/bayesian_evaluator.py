@@ -18,13 +18,14 @@ class BayesianEvaluator(BaseEvaluator):
     Evaluator for Bayesian methods (both elicited and uninformed priors)
     """
     
-    def __init__(self, prior_type: str = "elicited", prior_folder: str = "expert_10"):
+    def __init__(self, prior_type: str = "elicited", prior_folder: str = "expert_10", include_news: bool = False):
         """
         Initialize Bayesian evaluator
         
         Args:
             prior_type: Either "elicited" or "uninformed"
-            prior_folder: Folder name for priors (e.g., "expert_10", "data_informed_3", "data_informed_10")
+            prior_folder: Folder name for priors (e.g., "expert_10", "data_informed_3", "data_informed_10", "expert_10_with_news")
+            include_news: Whether to use news data (overrides detection from prior_folder name)
         """
         if prior_type not in ["elicited", "uninformed"]:
             raise ValueError("prior_type must be 'elicited' or 'uninformed'")
@@ -32,13 +33,21 @@ class BayesianEvaluator(BaseEvaluator):
         self.prior_type = prior_type
         self.prior_folder = prior_folder
         
+        # Use include_news parameter, or detect from prior folder name if not provided
+        if include_news is None:
+            include_news = "_with_news" in prior_folder
+        
         # Create method name that includes prior folder for better organization
         if prior_type == "elicited":
             method_name = f"bayesian_elicited_{prior_folder}"
         else:
-            method_name = "bayesian_uninformed"  # Uninformed doesn't need folder
+            # For uninformed priors, add _with_news suffix if using news data
+            if include_news:
+                method_name = "bayesian_uninformed_with_news"
+            else:
+                method_name = "bayesian_uninformed"
         
-        super().__init__(method_name)
+        super().__init__(method_name, include_news=include_news)
         
         # Bayesian-specific attributes
         self.model = None

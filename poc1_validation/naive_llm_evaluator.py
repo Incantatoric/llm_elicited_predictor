@@ -21,8 +21,8 @@ class NaiveLLMEvaluator(BaseEvaluator):
     This represents the baseline approach in the Capstick paper
     """
     
-    def __init__(self):
-        super().__init__("naive_llm")  # Just pass method name, BaseEvaluator handles the path
+    def __init__(self, include_news: bool = False):
+        super().__init__("naive_llm", include_news=include_news)  # Pass include_news to base class
         
         # LLM-specific attributes
         self.client = openai.OpenAI()  # Will use OPENAI_API_KEY from env
@@ -55,7 +55,13 @@ class NaiveLLMEvaluator(BaseEvaluator):
         # Use ALL training data (no random sampling)
         context_lines = []
         context_lines.append("Historical 한화솔루션 Stock Return Data (2022-2024):")
-        context_lines.append("Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return")
+        
+        # Conditionally include news column in header
+        if self.include_news:
+            context_lines.append("Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,News_Score,Hanwha_Stock_Return")
+        else:
+            context_lines.append("Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return")
+        
         context_lines.append("=" * 100)
         
         # Add all training data chronologically

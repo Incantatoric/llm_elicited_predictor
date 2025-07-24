@@ -30,21 +30,25 @@ class HanwhaLLMElicitor:
     """
     
     def __init__(self, api_key: str, model_name: str = "gpt-3.5-turbo-0125", 
-                 include_data_context: bool = False, n_variations: int = 10):
+                 include_data_context: bool = False, n_variations: int = 10,
+                 include_news: bool = False):
         self.client = openai.OpenAI(api_key=api_key)
         self.model_name = model_name
         self.temperature = 0.1  # Paper uses 0.1 for everything
         self.include_data_context = include_data_context
         self.n_variations = n_variations
+        self.include_news = include_news
         
         # Determine approach name and subfolder
         approach_name = "data_informed" if include_data_context else "expert"
-        self.approach_name = f"{approach_name}_{n_variations}"
+        news_suffix = "_with_news" if include_news else ""
+        self.approach_name = f"{approach_name}_{n_variations}{news_suffix}"
         
         logger.info(f"Initialized HanwhaLLMElicitor with model: {model_name}")
         logger.info(f"Temperature: {self.temperature}")
         logger.info(f"Approach: {self.approach_name}")
         logger.info(f"Include data context: {include_data_context}")
+        logger.info(f"Include news data: {include_news}")
         logger.info(f"Variations per prompt: {n_variations} (total combinations: {n_variations * n_variations})")
     
     def load_training_data(self, data_dir: str = "data/processed") -> Tuple[pd.DataFrame, pd.Series, List[str]]:
@@ -54,14 +58,26 @@ class HanwhaLLMElicitor:
             
         logger.info("Loading training data for data-informed context...")
         
-        # Load processed data
-        features_df = pd.read_csv(f"{data_dir}/features_standardized.csv", index_col='Date', parse_dates=True)
+        # Load processed data - conditionally use news file
+        if self.include_news:
+            features_file = "features_standardized_with_news.csv"
+            logger.info(f"Loading features with news data: {features_file}")
+        else:
+            features_file = "features_standardized.csv"
+            logger.info(f"Loading features without news data: {features_file}")
+            
+        features_df = pd.read_csv(f"{data_dir}/{features_file}", index_col='Date', parse_dates=True)
         targets_df = pd.read_csv(f"{data_dir}/target_returns.csv", index_col='Date', parse_dates=True)
         
         # Load metadata for feature names
         with open(f"{data_dir}/metadata.json", 'r') as f:
             metadata = json.load(f)
         feature_names = metadata['feature_names']
+        
+        # Add news_score to feature names if using news data
+        if self.include_news:
+            feature_names = feature_names + ['news_score']
+            logger.info(f"Added news_score to feature names: {feature_names}")
         
         # Create train/test split (same as main evaluation - first 30 for training)
         n_train = 30
@@ -96,13 +112,21 @@ class HanwhaLLMElicitor:
         context_lines.append("• usd_krw_change: Monthly % change in USD/KRW exchange rate")
         context_lines.append("• vix_change: Monthly % change in VIX volatility index")
         context_lines.append("• materials_sector_return: Monthly % change in materials sector index")
+        
+        # Add news explanation only when using news data
+        if self.include_news:
+            context_lines.append("• news_score: Monthly news sentiment score (-1 to 1, where -1 = very negative impact, 0 = neutral, 1 = very positive impact on stock returns)")
+        
         context_lines.append("• hanwha_stock: Monthly % return of Hanwha Solutions stock")
         context_lines.append("All variables are standardized (z-score) with mean=0, std=1 for historical period.")
         context_lines.append("Data represents end-of-month values from July 2022 to January 2025.")
         
-        # Historical data table
+        # Historical data table - conditionally include news column
         context_lines.append("HISTORICAL DATA:")
-        context_lines.append("Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return")
+        if self.include_news:
+            context_lines.append("Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,News_Score,Hanwha_Stock_Return")
+        else:
+            context_lines.append("Date,KOSPI_Return,Oil_Price_Change,USD_KRW_Change,VIX_Change,Materials_Sector_Return,Hanwha_Stock_Return")
         
         # Add all training data rows
         for i in range(len(X_train)):
@@ -130,23 +154,21 @@ class HanwhaLLMElicitor:
             if X_train is not None:
                 fixed_data_context = self.prepare_data_context(X_train, y_train) + "\n\n"
         
-        # FIXED JSON FORMAT (never rephrased)
+        # Dynamically generate JSON format based on feature names
+        json_entries = []
+        for feature in feature_names:
+            json_entries.append(f'  "{feature}": {{"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}}')
+        
+        json_entries_str = ",\n".join(json_entries)
+        
         fixed_json_format = f"""
 REQUIRED OUTPUT FORMAT (use the EXACT format with EXACT feature names):
 {{
-  "kospi_return": {{"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}},
-  "oil_price_change": {{"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}},
-  "usd_krw_change": {{"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}},
-  "vix_change": {{"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}},
-  "materials_sector_return": {{"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}}
+{json_entries_str}
 }}
 Do NOT create the first-level key for this JSON object. For example, JSON format below is WRONG:
   "regression_coefficient_priors": {{
-    "kospi_return": {{"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}},
-    "oil_price_change": {{"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}},
-    "usd_krw_change": {{"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}},
-    "vix_change": {{"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}},
-    "materials_sector_return": {{"mean": 0.0, "std": 1.0, "reasoning": "Brief explanation"}}
+{json_entries_str}
   }}
 CRITICAL INSTRUCTIONS:
 - Use EXACT feature names above
@@ -162,6 +184,10 @@ CRITICAL INSTRUCTIONS:
         else:
             base_system_variable = "You are a Korean stock market expert specializing in Hanwha Solutions. You have deep knowledge of how economic factors affect Korean chemical companies. You can provide expert parameter priors for linear regression models."
         
+        # Add news expertise to system prompt when using news data
+        if self.include_news:
+            base_system_variable += " You also have expertise in analyzing news sentiment and its impact on stock prices."
+        
         # Base user instruction (VARIABLE SECTION - can be rephrased)  
         feature_list_str = str(feature_names).replace("'", '"')
         
@@ -169,6 +195,11 @@ CRITICAL INSTRUCTIONS:
             base_user_variable = f"""Based on the historical patterns shown above, I need your expert assessment of regression coefficient priors for predicting Hanwha Solutions monthly stock returns. My dataset has these standardized features: {feature_list_str}. For each feature, analyze how it affects Hanwha Solutions stock returns and provide your regression coefficient priors."""
         else:
             base_user_variable = f"""I need your expert opinion on regression coefficient priors for predicting Hanwha Solutions monthly stock returns. My dataset has these standardized features: {feature_list_str}. For each feature, analyze how it affects Hanwha Solutions stock returns and provide your regression coefficient priors."""
+        
+        # Add news analysis context to user prompt when using news data
+        if self.include_news:
+        #   base_user_variable += " Pay special attention to the news_score feature, which represents the sentiment impact of news events on stock returns."
+            base_user_variable += "The news_score is from -1 to 1."
         
         # Store template parts for later assembly
         self.template_parts = {
@@ -770,6 +801,9 @@ if __name__ == "__main__":
     parser.add_argument('--include_data_context', type=str, default='False',
                        choices=['True', 'False', 'true', 'false'],
                        help='Include historical data context (True/False)')
+    parser.add_argument('--include_news', type=str, default='False',
+                       choices=['True', 'False', 'true', 'false'],
+                       help='Include news data (True/False)')
     parser.add_argument('--n_variations', type=int, default=10,
                        help='Number of prompt variations per type (default: 10)')
     parser.add_argument('--model', type=str, default='gpt-3.5-turbo-0125',
@@ -779,6 +813,7 @@ if __name__ == "__main__":
     
     # Convert string boolean to actual boolean
     include_data_context = args.include_data_context.lower() == 'true'
+    include_news = args.include_news.lower() == 'true'
     
     # Get API key from environment
     API_KEY = os.getenv("OPENAI_API_KEY")
@@ -790,11 +825,16 @@ if __name__ == "__main__":
         api_key=API_KEY,
         model_name=args.model,
         include_data_context=include_data_context,
-        n_variations=args.n_variations
+        n_variations=args.n_variations,
+        include_news=include_news
     )
     
     # Load feature names
     feature_names, metadata = elicitor.load_data_from_files()
+    
+    # Add news_score to feature names if using news data
+    if include_news:
+        feature_names = feature_names + ['news_score']
     
     # Run full pipeline
     prior_arrays = elicitor.run_full_pipeline(feature_names)
@@ -811,6 +851,7 @@ if __name__ == "__main__":
     print(f"Array shape: {prior_arrays.shape}")
     print(f"Temperature: 0.1 (paper exact)")
     print(f"Include data context: {elicitor.include_data_context}")
+    print(f"Include news data: {elicitor.include_news}")
     print(f"Variations per prompt: {elicitor.n_variations}")
     print(f"Output directory: data/priors/{elicitor.approach_name}/")
     print("="*60)

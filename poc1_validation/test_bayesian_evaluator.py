@@ -83,6 +83,44 @@ def test_uninformed_priors():
     return metrics
 
 
+def test_elicited_priors_expert_with_news():
+    """Test Bayesian evaluator with expert LLM-elicited priors including news data"""
+    print("\n" + "="*80)
+    print("Testing Bayesian evaluator with expert LLM-elicited priors (with news)...")
+    
+    evaluator = BayesianEvaluator(prior_type="elicited", prior_folder="expert_10_with_news", include_news=True)
+    metrics = evaluator.run_evaluation()
+    
+    print(f"\nExpert Priors with News Results:")
+    print(f"MAE: {metrics['mae']:.4f}")
+    print(f"RMSE: {metrics['rmse']:.4f}")
+    print(f"R-squared: {metrics['r_squared']:.4f}")
+    print(f"Directional Accuracy: {metrics['directional_accuracy']:.2%}")
+    if 'coverage_95' in metrics:
+        print(f"95% Coverage: {metrics['coverage_95']:.2%}")
+    
+    return metrics
+
+
+def test_uninformed_priors_with_news():
+    """Test Bayesian evaluator with uninformed priors including news data"""
+    print("\n" + "="*80)
+    print("Testing Bayesian evaluator with uninformed priors (with news)...")
+    
+    evaluator = BayesianEvaluator(prior_type="uninformed", include_news=True)
+    metrics = evaluator.run_evaluation()
+    
+    print(f"\nUninformed Priors with News Results:")
+    print(f"MAE: {metrics['mae']:.4f}")
+    print(f"RMSE: {metrics['rmse']:.4f}")
+    print(f"R-squared: {metrics['r_squared']:.4f}")
+    print(f"Directional Accuracy: {metrics['directional_accuracy']:.2%}")
+    if 'coverage_95' in metrics:
+        print(f"95% Coverage: {metrics['coverage_95']:.2%}")
+    
+    return metrics
+
+
 def compare_all_results(expert_metrics, data_informed_10_metrics, data_informed_3_metrics, uninformed_metrics):
     """Compare results between all prior types"""
     print("\n" + "="*80)
@@ -111,14 +149,43 @@ def compare_all_results(expert_metrics, data_informed_10_metrics, data_informed_
 
 if __name__ == "__main__":
     try:
-        # Test all prior types
+        # Test all prior types (without news)
+        print("🧪 TESTING BAYESIAN EVALUATOR - STANDARD PRIORS")
+        print("=" * 80)
         expert_metrics = test_elicited_priors_expert()
         data_informed_10_metrics = test_elicited_priors_data_informed_10()
         data_informed_3_metrics = test_elicited_priors_data_informed_3()
         uninformed_metrics = test_uninformed_priors()
         
-        # Compare all results
+        # Test news-based priors
+        print("\n🧪 TESTING BAYESIAN EVALUATOR - NEWS-BASED PRIORS")
+        print("=" * 80)
+        expert_news_metrics = test_elicited_priors_expert_with_news()
+        uninformed_news_metrics = test_uninformed_priors_with_news()
+        
+        # Compare standard results
+        print("\n📊 COMPARISON: STANDARD PRIORS")
         compare_all_results(expert_metrics, data_informed_10_metrics, data_informed_3_metrics, uninformed_metrics)
+        
+        # Compare news vs no-news for expert priors
+        print("\n📊 COMPARISON: EXPERT PRIORS WITH/WITHOUT NEWS")
+        print("=" * 80)
+        print(f"{'Metric':<20} {'Expert (no news)':<18} {'Expert (with news)':<18}")
+        print("-" * 60)
+        for metric in ['mae', 'rmse', 'r_squared', 'directional_accuracy']:
+            expert_val = expert_metrics[metric]
+            expert_news_val = expert_news_metrics[metric]
+            print(f"{metric:<20} {expert_val:>16.4f} {expert_news_val:>16.4f}")
+        
+        # Compare news vs no-news for uninformed priors
+        print("\n📊 COMPARISON: UNINFORMED PRIORS WITH/WITHOUT NEWS")
+        print("=" * 80)
+        print(f"{'Metric':<20} {'Uninformed (no news)':<20} {'Uninformed (with news)':<20}")
+        print("-" * 65)
+        for metric in ['mae', 'rmse', 'r_squared', 'directional_accuracy']:
+            uninformed_val = uninformed_metrics[metric]
+            uninformed_news_val = uninformed_news_metrics[metric]
+            print(f"{metric:<20} {uninformed_val:>18.4f} {uninformed_news_val:>18.4f}")
         
         print("\n✅ All tests completed successfully!")
         
